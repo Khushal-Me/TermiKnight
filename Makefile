@@ -1,36 +1,29 @@
-# Makefile for TermiKnight
+# Makefile for TermiKnight (producing 'MyRPG' executable)
 
 # Compiler and Flags
 CXX      = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra
+CXXFLAGS = -std=c++17
 
-# List of source files (add or remove as needed)
+# Sources (Adjust if you omit or rename files)
 SRCS = main.cpp \
        Game.cpp \
        Player.cpp \
        Enemy.cpp \
-       CombatManager.cpp \
        Item.cpp \
        Inventory.cpp \
-       Structure.cpp \
        World.cpp \
+       Structure.cpp \
+       CombatManager.cpp \
        SaveManager.cpp \
        Utilities.cpp
 
-# Derive object files by replacing .cpp with .o
-OBJS = $(SRCS:.cpp=.o)
+# Executable name
+TARGET = MyRPG
 
-# The final executable name
-TARGET = TermiKnight
+all: $(TARGET)
 
-# Default rule: build the executable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+$(TARGET):
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET)
 
-# Rule to compile each .cpp into a .o
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $<
-
-# Clean rule: remove object files and the binary
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGET)
