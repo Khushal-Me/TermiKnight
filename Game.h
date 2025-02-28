@@ -16,6 +16,9 @@ private:
     World world_;  
     bool isRunning_;  
 
+    // For demonstration, track if we have an active structure to explore
+    bool hasActiveStructure_ = false; 
+
     void initGame();              // Initialize game world, set up lands
     void mainMenu();              // Start/Load/Quit
     void gameLoop();              // Primary command loop
@@ -31,4 +34,5 @@ private:
 
     // Utilities
     void displayClassSelection(); // Let the user pick Civilian/Bandit/Mage/Soldier
+    void startNewGame();          // Called if user selects "New Game" in mainMenu
 };
