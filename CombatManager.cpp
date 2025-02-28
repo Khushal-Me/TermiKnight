@@ -1,5 +1,4 @@
 // CombatManager.cpp
-
 #include "CombatManager.h"
 #include <iostream>
 #include <cstdlib>
@@ -16,8 +15,8 @@ void CombatManager::startCombat(Player &player, std::vector<Enemy> &enemies) {
     if (player.getHealth() <= 0) {
         std::cout << "You have been defeated...\n";
     } else {
-        std::cout << "All enemies defeated!\n";
-        // Grant XP or items if desired
+        std::cout << "All enemies have been vanquished!\n";
+        // Potentially reward XP, items, etc.
     }
 }
 
@@ -27,13 +26,10 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
     std::string choice;
     std::getline(std::cin, choice);
 
-    Enemy &target = enemies.front(); // Simple logic: target first enemy
+    Enemy &target = enemies.front(); 
     if (choice == "ATTACK") {
         int damage = player.getAttack();
-        
-        // Insert class-based logic here if needed:
-        // e.g., if Soldier skill is active -> damage *= 2 
-        // if Mage skill -> 50% chance of one-shot, etc.
+        // You could add logic for special class skills or a random roll
 
         target.takeDamage(damage);
         std::cout << "You deal " << damage << " damage to the " << target.getType() << ".\n";
@@ -43,22 +39,20 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
             enemies.erase(enemies.begin());
         }
     } else if (choice == "BLOCK") {
-        std::cout << "You block, reducing incoming damage.\n";
-        // You could store a boolean or set a "defense mode" for the next enemyTurn
+        std::cout << "You raise your guard, reducing incoming damage next turn.\n";
+        // Could store a flag if you'd like
     } else if (choice == "FLEE") {
-        // Check player's luck or class skill
-        // If success, break out of the combat:
         std::cout << "You attempt to flee...\n";
-        bool success = (std::rand() % 100) < (player.getLuck() * 2); // example
+        bool success = (std::rand() % 100) < (player.getLuck() * 2); 
         if (success) {
-            std::cout << "You escaped combat!\n";
-            enemies.clear(); // no more combat
+            std::cout << "You successfully escaped combat!\n";
+            enemies.clear(); // no more enemies
         } else {
-            std::cout << "You failed to flee.\n";
+            std::cout << "Failed to flee!\n";
         }
     } else if (choice == "USE SKILL") {
         player.useSkill();
-        // Implementation depends on your Player class skill logic
+        // Insert logic for class-specific effects (e.g., doubling damage, healing, etc.)
     } else {
         std::cout << "Invalid action, turn skipped.\n";
     }
@@ -69,8 +63,9 @@ void CombatManager::enemyTurn(Player &player, std::vector<Enemy> &enemies) {
         if (enemy.isAlive()) {
             int damage = enemy.getAttack();
             player.takeDamage(damage);
-            std::cout << enemy.getType() << " hits you for " 
-                      << damage << " damage.\n";
+            std::cout << enemy.getType() << " hits you for "
+                      << damage << " damage! [Player HP: " 
+                      << player.getHealth() << "]\n";
         }
     }
 }

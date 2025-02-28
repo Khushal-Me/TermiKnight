@@ -14,31 +14,31 @@
    - **Soldier**: Higher health, higher damage, lower luck  
      - *Skill*: Double damage on a successful attack  
 
-2. **Stats**:  
+2. **Stats**  
    - **Health (HP)** – Amount of damage a character can withstand  
    - **Attack (ATK)** – Base damage dealt to enemies  
    - **Luck (LCK)** – Influences random outcomes (e.g., flee success)  
 
 3. **Exploration & Structures**  
    - **Five lands** to traverse, each capable of spawning random buildings  
-   - Structures have **1–5 rooms** (number increases with difficulty in later lands)  
-   - **Final Room** always guarded by a **riddle**; solving it grants an **artifact**  
-   - Rooms may contain **treasure chests**, **random enemies**, or additional events  
+   - Structures have **1–5 rooms** (increasing in later lands)  
+   - The **final room** always has a **riddle**, granting an **artifact** upon solving  
+   - Rooms may contain **treasure chests**, **random enemies**, or extra events  
 
 4. **Turn-Based Combat**  
    - **Attack**, **Block**, **Flee**, or **Use Skill**  
-   - Enemies scale in difficulty based on the current land and the player’s level  
+   - Enemies scale with the current land and the player’s level  
 
 5. **Inventory System & Items**  
-   - **Weapons** (alter Attack), **Health Potions**, **Charms** (boost stats), **Artifacts** (primary quest items)  
-   - Commands: “CHECK INVENTORY,” “PICK UP <item>,” “USE <potion>,” etc.  
+   - **Weapons** (boost Attack), **Health Potions**, **Charms** (boost stats), **Artifacts** (quest items)  
+   - Commands: “CHECK INVENTORY,” “USE <potion>,” “EQUIP <weapon>,” etc.  
 
 6. **Progression**  
-   - Each land requires **collecting an artifact** from the final room of a structure  
-   - Accumulate 5 artifacts total to complete the full journey  
+   - Each land requires **collecting an artifact** from its final room  
+   - **Collect 5 artifacts** to complete the journey  
 
 7. **Save/Load**  
-   - **SAVE GAME** and **LOAD GAME** commands preserve player stats, location, and inventory  
+   - **SAVE GAME / LOAD GAME** preserves player stats, land progression, and inventory  
 
 ---
 
@@ -46,6 +46,7 @@
 
 ```
 TermiKnight/
+├── Makefile
 ├── main.cpp
 ├── Game.h / Game.cpp
 ├── Player.h / Player.cpp
@@ -59,62 +60,74 @@ TermiKnight/
 └── Utilities.h / Utilities.cpp
 ```
 
-- **`main.cpp`**: Entry point, creates `Game` instance and starts the main loop  
-- **`Game.*`**: Orchestrates high-level flow (character creation, exploration, main loop, saving/loading)  
-- **`Player.*`**: Defines player stats and class-specific abilities  
-- **`Enemy.*`**: Describes enemy stats and combat behavior  
-- **`CombatManager.*`**: Manages turn-based combat between the player and enemies  
-- **`Item.*`, `Inventory.*`**: Manages item details (weapon, potion, charm, artifact) and inventory logic  
-- **`Structure.*`**: Represents caves, castles, villages with randomly generated rooms, riddles, and loot  
-- **`World.*`**: Maintains the five-land progression and triggers structure encounters  
-- **`SaveManager.*`** *(Optional)*: Handles serialization/deserialization for game state  
-- **`Utilities.*`**: Random number generation, helper functions, etc.
+**Description**:
+- **`main.cpp`**: Entry point, instantiates `Game` and starts the main loop.  
+- **`Game.*`**: Handles main gameplay flow (menus, exploration, etc.).  
+- **`Player.*`**: Stores stats (health, attack, luck), class-based skills, and an `Inventory`.  
+- **`Enemy.*`**: Simple class for enemy types, health, and attack.  
+- **`CombatManager.*`**: Runs turn-based encounters between a `Player` and `Enemy` objects.  
+- **`Item.*`, `Inventory.*`**: Manages items (weapons, potions, artifacts) and storing them.  
+- **`Structure.*`**: Represents a building/castle/cave, with multiple rooms, riddles, and loot.  
+- **`World.*`**: Tracks progression across five lands and triggers structure spawns.  
+- **`SaveManager.*`** (optional): Could handle file I/O for game state serialization.  
+- **`Utilities.*`** (optional): Random number generation or other helper functions.
 
 ---
 
 ## **Building the Game**
 
-1. Clone or download the **TermiKnight** repository  
-2. Open a terminal in the project directory  
-3. Compile using a C++17 (or later) compiler (e.g., `g++`):
+1. **Ensure** you have a modern C++ compiler (e.g., `g++`).  
+2. **Open a terminal** in the **TermiKnight** directory.  
+3. **Run**:
    ```bash
-   g++ -std=c++17 main.cpp Game.cpp Player.cpp Enemy.cpp CombatManager.cpp \
-       Item.cpp Inventory.cpp Structure.cpp World.cpp SaveManager.cpp Utilities.cpp \
-       -o TermiKnight
+   make
    ```
-   Adjust filenames if you’ve omitted or merged any.
+   This executes the **`Makefile`** instructions, compiling each `.cpp` to an object file, then linking into an executable named **`TermiKnight`**.
+
+4. **Run**:
+   ```bash
+   ./TermiKnight
+   ```
+
+5. **Cleaning**:  
+   ```bash
+   make clean
+   ```
+   Removes compiled object files and the `TermiKnight` executable.
 
 ---
 
 ## **How to Play**
 
-1. Run the **`TermiKnight`** executable:
-   ```bash
-   ./TermiKnight
-   ```
-2. **Main Menu**  
-   - **New Game**: Choose a class (Civilian, Bandit, Mage, Soldier) and begin your journey  
-   - **Load Game**: Resume a previously saved adventure  
+1. **Main Menu**  
+   - **New Game**: Choose your class (Civilian, Bandit, Mage, Soldier)  
+   - **Load Game**: Resume a previous save (if implemented)  
    - **Quit**: Exit the game  
 
-3. **In-Game Commands**  
-   - **MOVE FORWARD**: Explore the land; random structures may appear  
-   - **EXPLORE**: Enter a discovered cave/castle/village  
-   - **CHECK INVENTORY**: View and manage your items  
-   - **ATTACK / BLOCK / FLEE / USE SKILL**: Combat actions against enemies  
-   - **SAVE GAME / LOAD GAME**: Save or restore your progress  
-   - **QUIT**: Exit to the main menu or end your session  
+2. **In-Game Menu** (numeric choices)  
+   - **Move Forward**: Travel the land, random chance to find a structure  
+   - **Explore**: Enter the structure, explore multiple rooms, solve riddles  
+   - **Check Inventory**: View items (weapons, potions, charms)  
+   - **Use an Item**: Select an item (like a potion) to use  
+   - **Save Game / Load Game**: Manage your progress  
+   - **Quit**: Return to the main menu or exit  
 
-4. **Progress Through Lands**  
-   - Collect each **artifact** from a riddle-locked final room to advance  
-   - Combat difficulty and room counts increase in later lands  
-   - Achieve victory upon gathering all five artifacts
+3. **Combat**  
+   - **Attack**: Deal damage based on your Attack stat  
+   - **Block**: Reduce incoming damage  
+   - **Flee**: Attempt to escape using your Luck or class skill  
+   - **Use Skill**: Class-specific abilities (heal, one-shot kill, double damage, etc.)
+
+4. **Progress & Victory**  
+   - Each structure’s final room has a riddle-protected **artifact**.  
+   - Collect **5 artifacts** across the lands to ultimately break the curse and win!
 
 ---
 
 ## **Future Enhancements**
-- **OpenAI Integration**: Use ChatGPT to dynamically generate riddles or dialogue  
-- **Complex NPCs**: More in-depth branching quests and character interactions  
-- **Multiplayer / Networking**: Co-op exploration in a shared terminal environment  
 
-**Embark on your TermiKnight journey** and conquer all five lands with skillful combat, cunning puzzle-solving, and strategic item management! Enjoy the challenge!
+- **OpenAI Integration**: Dynamic dialogue or riddle generation via ChatGPT  
+- **Rich NPC Interactions**: Multiple story paths, dialogues, quests  
+- **Multiplayer**: Cooperative or PvP gameplay via networking libraries  
+
+**Embark on your TermiKnight adventure** and restore peace to the realm through strategy, cunning, and heroic feats. Good luck!

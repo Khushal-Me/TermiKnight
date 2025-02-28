@@ -13,6 +13,4 @@ private:
     static void playerTurn(Player &player, std::vector<Enemy> &enemies);
     static void enemyTurn(Player &player, std::vector<Enemy> &enemies);
     static bool allEnemiesDefeated(const std::vector<Enemy> &enemies);
-
-    static void applyClassSkillEffects(Player &player, Enemy &enemy);
 };

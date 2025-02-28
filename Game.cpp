@@ -1,11 +1,11 @@
-// Game.cpp
-
 #include "Game.h"
+#include "CombatManager.h"
 #include <iostream>
-#include <limits> // for std::numeric_limits<std::streamsize>
+#include <limits>
+#include <cstdlib>
 
-Game::Game() 
-    : isRunning_(true) 
+Game::Game()
+    : isRunning_(true), hasActiveStructure_(false)
 {}
 
 void Game::run() {
@@ -14,8 +14,13 @@ void Game::run() {
 }
 
 void Game::initGame() {
-    // Initialize the world (create 5 lands, etc.)
+    printIntroStory();
     world_.createWorld();  
+    // Give the player some starting items (two potions)
+    Item potion1("Small Healing Potion", ItemType::HEALTH_POTION, 20);
+    Item potion2("Small Healing Potion", ItemType::HEALTH_POTION, 20);
+    player_.getInventory().addItem(potion1);
+    player_.getInventory().addItem(potion2);
 }
 
 void Game::mainMenu() {
@@ -28,24 +33,18 @@ void Game::mainMenu() {
 
         int choice;
         if (!(std::cin >> choice)) {
-            // Handle non-integer input
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a number.\n";
+            badInputPrompt();
             continue;
         }
-        
-        // Clear leftover newline
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (choice == 1) {
             startNewGame();
-            gameLoop(); // enter the game command loop
-            break;      // once gameLoop ends, we exit mainMenu
+            gameLoop(); 
+            break;      
         } else if (choice == 2) {
             handleLoadGame();
-            // If successful, go to gameLoop
-            gameLoop();
+            gameLoop(); 
             break;
         } else if (choice == 3) {
             std::cout << "Goodbye!\n";
@@ -58,138 +57,227 @@ void Game::mainMenu() {
 }
 
 void Game::gameLoop() {
-    std::cout << "\nType a command (MOVE FORWARD, EXPLORE, CHECK INVENTORY, SAVE GAME, LOAD GAME, QUIT)\n";
     while (isRunning_) {
-        std::cout << "> ";
-        std::string input;
-        std::getline(std::cin, input);
-        processInput(input);
+        printGameMenu();
+        int input;
+        if (!(std::cin >> input)) {
+            badInputPrompt();
+            continue;
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        switch(input) {
+            case 1: handleMoveForward();    break; // Move 
+            case 2: handleExplore();        break; // Explore current structure/room
+            case 3: handleInventory();      break; // Show inv
+            case 4: handleUseItem();        break; // Use item from inventory
+            case 5: handleSaveGame();       break;
+            case 6: handleLoadGame();       break;
+            case 7: isRunning_ = false;     break; // Quit
+            default:
+                std::cout << "Invalid selection.\n";
+                break;
+        }
     }
-    std::cout << "Exiting Game...\n";
+    std::cout << "Exiting game...\n";
 }
 
-void Game::processInput(const std::string &input) {
-    if (input == "MOVE FORWARD") {
-        handleMoveForward();
-    } else if (input == "EXPLORE") {
-        handleExplore();
-    } else if (input == "CHECK INVENTORY") {
-        handleInventory();
-    } else if (input == "SAVE GAME") {
-        handleSaveGame();
-    } else if (input == "LOAD GAME") {
-        handleLoadGame();
-    } else if (input == "QUIT") {
-        isRunning_ = false;
-    } else {
-        std::cout << "Unknown command.\n";
+// Prints the in-game menu
+void Game::printGameMenu() {
+    std::cout << "\n=== Game Menu ===\n";
+    if (hasActiveStructure_) {
+        std::cout << "Currently exploring a " 
+                  << world_.getCurrentStructure().getTypeString() << "\n";
     }
+    std::cout << "1) Move Forward\n"
+              << "2) Explore Next Room\n"
+              << "3) Check Inventory\n"
+              << "4) Use an Item\n"
+              << "5) Save Game\n"
+              << "6) Load Game\n"
+              << "7) Quit\n"
+              << "Choice: ";
 }
 
+void Game::badInputPrompt() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Invalid input, please try again.\n";
+}
+
+// 1) Move Forward
 void Game::handleMoveForward() {
-    // Possibly increment steps or track distance traveled
-    // Check if a random building spawns in the current land
-    bool spawned = world_.attemptSpawnStructure();
-    if (spawned) {
-        // Mark that there's an active structure to explore
-        hasActiveStructure_ = true;
-        // This is a placeholder; your real code might check structure type
-        std::string structureType = world_.getLastSpawnedStructureType();
-        std::cout << "You come across a " << structureType << "!\n"
-                  << "Type EXPLORE to investigate.\n";
-    } else {
-        std::cout << "You continue down the path...\n";
-    }
-
-    // Optionally check if we can advance the land 
-    handleCheckArtifacts();
-}
-
-void Game::handleExplore() {
-    if (!hasActiveStructure_) {
-        std::cout << "There's no structure to explore right now.\n";
+    // If we are in the middle of exploring a structure, don't allow
+    if (hasActiveStructure_) {
+        std::cout << "You are currently inside a structure. Finish exploring it first.\n";
         return;
     }
 
-    // In a real implementation, you'd retrieve a pointer/reference to the spawned structure
-    // For demonstration, let's say we can spawn an enemy to fight:
-    auto enemies = world_.getEnemiesInCurrentStructure(); 
-    if (!enemies.empty()) {
-        std::cout << "Enemies appear in the building!\n";
-        // Now let's do a simple combat
-        CombatManager::startCombat(player_, enemies);
-        // After combat, if the player survives, maybe there's an item or riddle
-        if (player_.getHealth() > 0) {
-            std::cout << "You search the building after defeating enemies...\n";
-            // Possibly find an artifact or item
-            bool foundArtifact = true; // mock logic
-            if (foundArtifact) {
-                player_.addArtifact();
-                std::cout << "You found an artifact! You now have " 
-                          << player_.getArtifactsCollected() << " artifacts.\n";
-            }
-        }
+    // Flavor text
+    int roll = std::rand() % 100;
+    if (roll < 25) {
+        std::cout << "A bird swoops overhead, chirping madly.\n";
+    } else if (roll < 40) {
+        std::cout << "You pass by a lifeless deer. The land is eerily quiet...\n";
     } else {
-        std::cout << "This building seems empty...\n";
+        std::cout << "You continue along the winding path.\n";
     }
 
-    // Reset hasActiveStructure_ so we can't re-explore the same one
-    hasActiveStructure_ = false;
+    // Attempt structure spawn
+    bool spawned = world_.attemptSpawnStructure();
+    if (spawned) {
+        hasActiveStructure_ = true;
+        auto structType = world_.getLastSpawnedStructureType();
+        std::cout << "\nYou come upon a " << structType 
+                  << "! There may be multiple rooms inside.\n";
+    }
+    // Check if we can progress to next land 
+    handleCheckArtifacts();
 }
 
+// 2) Explore next room in the structure
+void Game::handleExplore() {
+    if (!hasActiveStructure_) {
+        std::cout << "No structure is currently available to explore.\n";
+        return;
+    }
+
+    Structure &currentStruct = world_.getCurrentStructure();
+    if (currentStruct.isFullyExplored()) {
+        std::cout << "You've finished exploring this " 
+                  << currentStruct.getTypeString() << "!\n"
+                  << "Leaving the structure...\n";
+        hasActiveStructure_ = false;
+        return;
+    }
+
+    bool success = currentStruct.exploreNextRoom(player_);
+    if (!success) {
+        // Possibly fully explored or an error
+        if (currentStruct.isFullyExplored()) {
+            std::cout << "You have fully explored this " 
+                      << currentStruct.getTypeString() << ".\n"
+                      << "Leaving now...\n";
+            hasActiveStructure_ = false;
+        }
+        return;
+    }
+
+    // Check if the final room had an artifact
+    if (currentStruct.hasFoundArtifactThisRoom()) {
+        Item artifact("Sacred Artifact", ItemType::ARTIFACT);
+        player_.getInventory().addItem(artifact);
+        player_.addArtifact();
+        std::cout << "\nYou now have " << player_.getArtifactsCollected() 
+                  << " total artifacts.\n";
+    }
+
+    // If after exploring that room we are done:
+    if (currentStruct.isFullyExplored()) {
+        std::cout << "\nYou have explored all rooms here.\n"
+                  << "Leaving the structure...\n";
+        hasActiveStructure_ = false;
+    }
+}
+
+// 3) Check Inventory
 void Game::handleInventory() {
     player_.showInventory();
 }
 
-void Game::handleSaveGame() {
-    // Could use SaveManager to serialize
-    // For now, just a placeholder
-    std::cout << "[DEBUG] Game saved (placeholder)!\n";
+// 4) Use Item
+void Game::handleUseItem() {
+    Inventory &inv = player_.getInventory();
+    if (inv.empty()) {
+        std::cout << "Your inventory is empty.\n";
+        return;
+    }
+
+    std::cout << "\nWhich item do you want to use?\n";
+    inv.listItems(); 
+    std::cout << "(Type the exact name of the item, or 'cancel')\n> ";
+
+    std::string itemName;
+    std::getline(std::cin, itemName);
+    if (itemName == "cancel") {
+        std::cout << "No item used.\n";
+        return;
+    }
+    if (!inv.hasItem(itemName)) {
+        std::cout << "You do not have " << itemName << ".\n";
+        return;
+    }
+
+    // Basic logic: if it's a "Healing" potion, we heal
+    if (itemName.find("Healing") != std::string::npos) {
+        bool found = false;
+        int healValue = 0;
+
+        // Let's find the item in inventory to get its .getValue()
+        for (auto &itm : inv.getItems()) {
+            if (itm.getName() == itemName) {
+                healValue = itm.getValue();
+                inv.removeItem(itemName);
+                found = true;
+                break;
+            }
+        }
+        if (found) {
+            player_.heal(healValue);
+            std::cout << "You drink " << itemName << " and recover " 
+                      << healValue << " HP. Your health is now " 
+                      << player_.getHealth() << ".\n";
+        }
+    } else {
+        std::cout << "You attempt to use " << itemName 
+                  << ", but nothing special happens.\n";
+    }
 }
 
+// 5) Save
+void Game::handleSaveGame() {
+    std::cout << "[DEBUG] Game saved. (placeholder)\n";
+}
+
+// 6) Load
 void Game::handleLoadGame() {
-    // Could use SaveManager to deserialize
-    // For now, just a placeholder
-    std::cout << "[DEBUG] Game loaded (placeholder)!\n";
-    // Suppose we set isRunning_ = true in case it was false
+    std::cout << "[DEBUG] Game loaded. (placeholder)\n";
     isRunning_ = true;
 }
 
+// Check if we can move to next land
 void Game::handleCheckArtifacts() {
     if (world_.canProgress(player_.getArtifactsCollected())) {
-        world_.advanceLand();
-        std::cout << "You travel to the next land.\n";
+        bool moved = world_.advanceLand();
+        if (!moved) {
+            std::cout << "\n*** You have collected all 9 artifacts and restored balance! ***\n";
+            printEndStory();
+            isRunning_ = false;
+        } else {
+            std::cout << "\nYou travel to the next land...\n";
+        }
     }
 }
 
 void Game::displayClassSelection() {
     std::cout << "\nChoose your class:\n"
-              << "1) Civilian (High Luck, Lower Damage)\n"
-              << "2) Bandit (Higher Damage, Lower Luck)\n"
-              << "3) Mage (High Damage, Less Health)\n"
-              << "4) Soldier (High Health, High Damage, Low Luck)\n"
+              << "1) Civilian (Higher luck, lower damage)\n"
+              << "2) Bandit (Higher damage, lower luck)\n"
+              << "3) Mage (High damage, less health)\n"
+              << "4) Soldier (High health, high damage, low luck)\n"
               << "Choice: ";
     int choice;
-    std::cin >> choice;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear buffer
+    if (!(std::cin >> choice)) {
+        badInputPrompt();
+        choice = 1;
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     switch (choice) {
-        case 1:
-            player_.setClassType(ClassType::CIVILIAN);
-            std::cout << "You chose Civilian.\n";
-            break;
-        case 2:
-            player_.setClassType(ClassType::BANDIT);
-            std::cout << "You chose Bandit.\n";
-            break;
-        case 3:
-            player_.setClassType(ClassType::MAGE);
-            std::cout << "You chose Mage.\n";
-            break;
-        case 4:
-            player_.setClassType(ClassType::SOLDIER);
-            std::cout << "You chose Soldier.\n";
-            break;
+        case 1: player_.setClassType(ClassType::CIVILIAN); std::cout << "You chose Civilian.\n"; break;
+        case 2: player_.setClassType(ClassType::BANDIT);   std::cout << "You chose Bandit.\n"; break;
+        case 3: player_.setClassType(ClassType::MAGE);     std::cout << "You chose Mage.\n"; break;
+        case 4: player_.setClassType(ClassType::SOLDIER);  std::cout << "You chose Soldier.\n"; break;
         default:
             std::cout << "Invalid choice. Defaulting to Civilian.\n";
             player_.setClassType(ClassType::CIVILIAN);
@@ -200,12 +288,18 @@ void Game::displayClassSelection() {
 void Game::startNewGame() {
     std::cout << "Starting a new game...\n";
     displayClassSelection();
+    std::cout << "Your quest begins!\n";
+}
 
-    // Potentially reset stats if needed
-    player_.setHealth(player_.getHealth()); // just example if you want to readjust
-    // If you want to do anything else on new game start:
-    // e.g. set starting inventory, gold, etc.
-    // For now, it's just a placeholder
+void Game::printIntroStory() {
+    std::cout << "\n=== PROLOGUE ===\n"
+              << "A dark curse has fractured the world into three lands.\n"
+              << "Each land has 3 hidden structures, each with a final riddle-locked artifact.\n"
+              << "Collect all 9 to break the curse...\n";
+}
 
-    std::cout << "New game started. Begin your adventure!\n";
+void Game::printEndStory() {
+    std::cout << "\n=== EPILOGUE ===\n"
+              << "With the ninth artifact claimed, the realm is restored.\n"
+              << "You are hailed as a hero for ages to come!\n";
 }

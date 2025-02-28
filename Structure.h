@@ -1,45 +1,47 @@
 // Structure.h
-// Represents a randomly generated building or "structure" with multiple rooms and potential enemies/items.
-
 #pragma once
 #include <string>
 #include <vector>
-#include "Item.h"
 #include "Enemy.h"
+#include "Item.h"
+#include "Player.h"
 
 enum class StructureType {
     CAVE,
     CASTLE,
-    VILLAGE
+    VILLAGE,
+    HOUSE
+};
+
+struct Riddle {
+    std::string question;
+    std::vector<std::string> options; // 4 multiple-choice answers
+    int correctIndex;                 // which index (0..3) is correct
+    std::vector<std::string> hints;
 };
 
 class Structure {
 public:
-    Structure(StructureType type, int minRooms, int maxRooms);
+    Structure(StructureType type, int totalRooms);
 
-    // Basic info
-    StructureType getType() const;
-    int getRoomCount() const;
-
-    // Exploration
-    void generateRooms();  // Randomly set the number of rooms
-    bool hasRiddleInFinalRoom() const;
-    bool solveRiddle();    // Logic for riddles, returns true if solved
-    bool hasArtifact() const; // True if final room has artifact
-
-    // Enemy / Item spawning
-    bool checkForEnemy();  // Possibly random chance to spawn enemy
-    std::vector<Enemy> spawnEnemies(); // return the actual enemies
-
-    // Room-based logic
-    void exploreRoom(int roomIndex);
+    std::string getTypeString() const;
+    bool isFullyExplored() const;
+    bool exploreNextRoom(Player &player);
+    bool hasFoundArtifactThisRoom() const { return foundArtifactThisRoom_; }
 
 private:
     StructureType type_;
-    int roomCount_;
-    int minRooms_;
-    int maxRooms_;
+    int totalRooms_;
+    int currentRoomIndex_;
+    bool fullyExplored_;
+    bool foundArtifactThisRoom_;
 
-    bool artifactFound_;
-    bool riddleSolved_;
+    std::vector<Riddle> riddlePool_;
+    Riddle riddleToAsk_;
+
+    void initRiddles();
+    bool doRiddle(Player &player); 
+
+    void handleRoom(Player &player);
+    void handleChest(Player &player);
 };

@@ -1,6 +1,3 @@
-// Game.h
-// Orchestrates core gameplay flow (character selection, exploring lands, etc.).
-
 #pragma once
 #include "Player.h"
 #include "World.h"
@@ -15,24 +12,30 @@ private:
     Player player_;  
     World world_;  
     bool isRunning_;  
+    bool hasActiveStructure_;
 
-    // For demonstration, track if we have an active structure to explore
-    bool hasActiveStructure_ = false; 
+    // CORE INIT
+    void initGame();
+    void mainMenu();
+    void gameLoop();
 
-    void initGame();              // Initialize game world, set up lands
-    void mainMenu();              // Start/Load/Quit
-    void gameLoop();              // Primary command loop
-    void processInput(const std::string &input);
+    // MENUS & INPUT
+    void printGameMenu();
+    void badInputPrompt();
 
-    // Command handlers
+    // ACTION HANDLERS
+    // (We used param-less handleUseItem() to match our usage in Game.cpp)
     void handleMoveForward();
-    void handleExplore();         // Explore a building/structure
+    void handleExplore();
     void handleInventory();
+    void handleUseItem();
     void handleSaveGame();
     void handleLoadGame();
-    void handleCheckArtifacts();  // Check if enough artifacts to advance land
+    void handleCheckArtifacts();
 
-    // Utilities
-    void displayClassSelection(); // Let the user pick Civilian/Bandit/Mage/Soldier
-    void startNewGame();          // Called if user selects "New Game" in mainMenu
+    // UTILITIES
+    void displayClassSelection();
+    void startNewGame();
+    void printIntroStory();
+    void printEndStory();
 };

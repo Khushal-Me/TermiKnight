@@ -5,6 +5,6 @@
 
 int main() {
     Game game;
-    game.run();  // Begins the main menu and game loop
+    game.run();  // Begin the main menu and game loop
     return 0;
 }
