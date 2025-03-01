@@ -1,4 +1,3 @@
-// Item.h
 #pragma once
 #include <string>
 
@@ -12,11 +11,13 @@ enum class ItemType {
 
 class Item {
 public:
+    // Declaration only
     Item(const std::string &name, ItemType type, int value = 0);
 
     std::string getName() const;
     ItemType getType() const;
-    int getValue() const;  // damage for a weapon, healing amount for potions, etc.
+    int getValue() const;
+    std::string getTypeString() const;
 
 private:
     std::string name_;

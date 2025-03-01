@@ -1,29 +1,23 @@
 // Enemy.cpp
-
 #include "Enemy.h"
 
-Enemy::Enemy(const std::string &type, int level, int health)
-    : type_(type), level_(level), health_(health), maxHealth_(health) {}
-
-int Enemy::getLevel() const {
-    return level_;
+Enemy::Enemy(const std::string &type, int health, int attack)
+    : type_(type), health_(health), attack_(attack) {
 }
 
-int Enemy::getHealth() const {
-    return health_;
+bool Enemy::isAlive() const {
+    return health_ > 0;
 }
 
 void Enemy::takeDamage(int dmg) {
     health_ -= dmg;
-    if (health_ < 0) {
-        health_ = 0;
-    }
+    if (health_ < 0) health_ = 0;
+}
+
+int Enemy::getAttack() const {
+    return attack_;
 }
 
 std::string Enemy::getType() const {
     return type_;
-}
-
-bool Enemy::isAlive() const {
-    return (health_ > 0);
 }

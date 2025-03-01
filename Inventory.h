@@ -1,9 +1,8 @@
 // Inventory.h
-// Manages a collection of items.
-
 #pragma once
-#include "Item.h"
 #include <vector>
+#include <string>
+#include "Item.h"
 
 class Inventory {
 public:
@@ -11,6 +10,9 @@ public:
     bool removeItem(const std::string &itemName);
     bool hasItem(const std::string &itemName) const;
     void listItems() const;
+
+    bool empty() const; // newly added
+    std::vector<Item>& getItems(); // newly added
 
 private:
     std::vector<Item> items_;

@@ -1,47 +1,106 @@
-// World.cpp
-
 #include "World.h"
-#include "Utilities.h"
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
 World::World()
-    : currentLandIndex_(0) {}
+  : currentLandIndex_(0),
+    justSpawned_(false),
+    activeStructure_(nullptr)
+{
+}
 
 void World::createWorld() {
-    // Not strictly necessary to pre-generate everything,
-    // but you can define the range of rooms per land, etc.
+    std::srand((unsigned)time(nullptr));
+
+    // For each land, store 3 different structure types
+    // Land 0 => each structure has 2 rooms
+    // Land 1 => 3 rooms
+    // Land 2 => 5 rooms
+
+    landStructurePool_.resize(3);
+    // land 0 (index=0)
+    landStructurePool_[0] = {
+        {StructureType::CAVE, 2},
+        {StructureType::CASTLE, 2},
+        {StructureType::VILLAGE, 2}
+    };
+    // land 1 (index=1)
+    landStructurePool_[1] = {
+        {StructureType::CAVE, 3},
+        {StructureType::CASTLE, 3},
+        {StructureType::VILLAGE, 3}
+    };
+    // land 2 (index=2)
+    landStructurePool_[2] = {
+        {StructureType::CAVE, 5},
+        {StructureType::CASTLE, 5},
+        {StructureType::VILLAGE, 5}
+    };
 }
 
-void World::attemptSpawnStructure() {
-    // Based on random chance or step count, spawn a new structure
-    int roll = Utilities::getRandomInt(1, 100);
-    if (roll < 30) {
-        // 30% chance we find a building
-        // e.g., determine structure type
-        StructureType type = static_cast<StructureType>(Utilities::getRandomInt(0, 2));
-        int minRooms = 1 + currentLandIndex_; 
-        int maxRooms = 2 + currentLandIndex_ * 2; 
-        Structure structure(type, minRooms, maxRooms);
-        structure.generateRooms();
-        std::cout << "You come across a " 
-                  << (type == StructureType::CAVE ? "cave" : 
-                      type == StructureType::CASTLE ? "castle" : "village")
-                  << " with " << structure.getRoomCount() << " rooms.\n";
-        // We could store this structure as an "active" structure to explore
+bool World::attemptSpawnStructure() {
+    if (currentLandIndex_ >= 3) {
+        justSpawned_ = false;
+        return false;
     }
+    // If we've already used up the 3 structures in this land, can't spawn more
+    if (landStructurePool_[currentLandIndex_].empty()) {
+        justSpawned_ = false;
+        return false;
+    }
+
+    int roll = std::rand() % 100;
+    if (roll < 40) {
+        // pick a random index from the pool for this land
+        auto &pool = landStructurePool_[currentLandIndex_];
+        int pickIndex = std::rand() % pool.size();
+        auto stype = pool[pickIndex].first;
+        int rooms = pool[pickIndex].second;
+
+        // create a new structure
+        static Structure temp(stype, rooms); 
+        // Warning: be careful with static, maybe better store in a pointer or container 
+        // But for demonstration, let's just store it in a static. 
+        // Alternatively, you can store a unique_ptr or vector of structures in the world.
+        // We'll do the simplest approach for the example.
+
+        activeStructure_ = &temp;
+
+        // remove that structure type from the pool so we can't spawn it again
+        pool.erase(pool.begin() + pickIndex);
+
+        justSpawned_ = true;
+        return true;
+    }
+    justSpawned_ = false;
+    return false;
 }
 
-bool World::canProgress(int artifactsCollected) const {
-    // For example, if each land requires 1 artifact, or total 5 by the end
-    // Adjust logic as needed
-    return artifactsCollected >= (currentLandIndex_ + 1);
+bool World::canProgress(int artifactsCollected) {
+    // land 0 => need 3 artifacts
+    // land 1 => need 6
+    // land 2 => need 9
+    int required = (currentLandIndex_ + 1) * 3;
+    return (artifactsCollected >= required);
 }
 
-void World::advanceLand() {
+bool World::advanceLand() {
     currentLandIndex_++;
-    if (currentLandIndex_ >= 5) {
-        std::cout << "You have explored all lands!\n";
-    } else {
-        std::cout << "You travel to land " << currentLandIndex_ + 1 << ".\n";
+    if (currentLandIndex_ >= 3) {
+        return false;
     }
+    activeStructure_ = nullptr;
+    return true;
+}
+
+std::string World::getLastSpawnedStructureType() const {
+    if (!justSpawned_ || !activeStructure_) {
+        return "nothing";
+    }
+    return activeStructure_->getTypeString();
+}
+
+Structure& World::getCurrentStructure() {
+    return *activeStructure_;
 }

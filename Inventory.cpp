@@ -17,15 +17,30 @@ bool Inventory::removeItem(const std::string &itemName) {
 }
 
 bool Inventory::hasItem(const std::string &itemName) const {
-    for (const auto &i : items_) {
-        if (i.getName() == itemName) return true;
+    for (const auto &itm : items_) {
+        if (itm.getName() == itemName) {
+            return true;
+        }
     }
     return false;
 }
 
 void Inventory::listItems() const {
-    std::cout << "Inventory:\n";
-    for (const auto &i : items_) {
-        std::cout << "- " << i.getName() << "\n";
+    if (items_.empty()) {
+        std::cout << "Your inventory is empty.\n";
+        return;
     }
+    std::cout << "Inventory:\n";
+    for (const auto &itm : items_) {
+        std::cout << " - " << itm.getName() 
+                  << " (" << itm.getTypeString() << ")\n";
+    }
+}
+
+bool Inventory::empty() const {
+    return items_.empty();
+}
+
+std::vector<Item>& Inventory::getItems() {
+    return items_;
 }
