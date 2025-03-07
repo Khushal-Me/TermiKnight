@@ -8,10 +8,12 @@ public:
     bool isAlive() const;
     void takeDamage(int dmg);
     int getAttack() const;
+    int getHealth() const;
     std::string getType() const;
 
 private:
     std::string type_;
     int health_;
     int attack_;
+    
 };

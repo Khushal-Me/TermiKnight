@@ -21,3 +21,7 @@ int Enemy::getAttack() const {
 std::string Enemy::getType() const {
     return type_;
 }
+
+int Enemy::getHealth() const {
+    return health_;
+}

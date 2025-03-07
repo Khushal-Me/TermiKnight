@@ -25,7 +25,7 @@ public:
     void setHealth(int h) { health_ = h; }
     void takeDamage(int dmg);
     void heal(int amount);
-    void useSkill(); // triggers class skill
+    int useSkill(); // triggers class skill
 
     void showInventory() const { inventory_.listItems(); }
     Inventory& getInventory() { return inventory_; }
