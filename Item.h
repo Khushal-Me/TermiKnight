@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "external/json/json.hpp"
+
 
 enum class ItemType {
     WEAPON,
@@ -18,6 +20,9 @@ public:
     ItemType getType() const;
     int getValue() const;
     std::string getTypeString() const;
+
+    nlohmann::json toJSON() const;
+    static Item fromJSON(const nlohmann::json& jsonData);
 
 private:
     std::string name_;

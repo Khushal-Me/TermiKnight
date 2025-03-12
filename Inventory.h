@@ -11,8 +11,11 @@ public:
     bool hasItem(const std::string &itemName) const;
     void listItems() const;
 
-    bool empty() const; // newly added
-    std::vector<Item>& getItems(); // newly added
+    bool empty() const; 
+    std::vector<Item>& getItems(); 
+
+    nlohmann::json toJSON() const;
+    void fromJSON(const nlohmann::json& jsonData);
 
 private:
     std::vector<Item> items_;

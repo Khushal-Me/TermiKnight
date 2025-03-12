@@ -3,12 +3,18 @@
 #include <iostream>
 #include <limits>
 #include <cstdlib>
+#include "SaveManager.h"
+#include <csignal>
 
 Game::Game()
     : isRunning_(true), hasActiveStructure_(false)
 {}
 
 void Game::run() {
+    
+    signal(SIGINT, SaveManager::handleExitSignal); 
+    SaveManager::startAutoSave(player_, world_);
+
     initGame();
     mainMenu();
 }
@@ -43,9 +49,12 @@ void Game::mainMenu() {
             gameLoop(); 
             break;      
         } else if (choice == 2) {
-            handleLoadGame();
-            gameLoop(); 
-            break;
+            if (SaveManager::loadGame(player_, world_)) {
+                std::cout << "Game loaded!\n";
+                gameLoop();
+            } else {
+                std::cout << "Failed to load game. Returning to menu.\n";
+            }
         } else if (choice == 3) {
             std::cout << "Goodbye!\n";
             isRunning_ = false;
@@ -67,13 +76,21 @@ void Game::gameLoop() {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         switch(input) {
-            case 1: handleMoveForward();    break; // Move 
-            case 2: handleExplore();        break; // Explore current structure/room
-            case 3: handleInventory();      break; // Show inv
-            case 4: handleUseItem();        break; // Use item from inventory
-            case 5: handleSaveGame();       break;
-            case 6: handleLoadGame();       break;
-            case 7: isRunning_ = false;     break; // Quit
+            case 1: handleMoveForward(); break;
+            case 2: handleExplore(); break;
+            case 3: handleInventory(); break;
+            case 4: handleUseItem(); break;
+            case 5: handleSaveGame(); break;
+            case 6: handleLoadGame(); break;
+            case 7: 
+                std::cout << "Would you like to save before quitting? (y/n): ";
+                char choice;
+                std::cin >> choice;
+                if (choice == 'y' || choice == 'Y') {
+                    handleSaveGame();
+                }
+                isRunning_ = false;
+                break;
             default:
                 std::cout << "Invalid selection.\n";
                 break;
@@ -236,13 +253,17 @@ void Game::handleUseItem() {
 
 // 5) Save
 void Game::handleSaveGame() {
-    std::cout << "[DEBUG] Game saved. (placeholder)\n";
+    SaveManager::saveGame(player_, world_);
 }
 
 // 6) Load
 void Game::handleLoadGame() {
-    std::cout << "[DEBUG] Game loaded. (placeholder)\n";
-    isRunning_ = true;
+    if (SaveManager::loadGame(player_, world_)) {
+        std::cout << "Game loaded successfully!\n";
+        isRunning_ = true;
+    } else {
+        std::cout << "Failed to load game.\n";
+    }
 }
 
 // Check if we can move to next land
