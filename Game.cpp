@@ -124,9 +124,24 @@ void Game::badInputPrompt() {
 
 // 1) Move Forward
 void Game::handleMoveForward() {
-    // If we are in the middle of exploring a structure, don't allow
+    // 1. If the player can progress to next land, do that first
+    if (world_.canProgress(player_.getArtifactsCollected())) {
+        bool moved = world_.advanceLand();
+        if (!moved) {
+            // No more lands
+            std::cout << "*** You have all artifacts ***\n";
+            // Possibly end game or do something
+        } else {
+            hasActiveStructure_ = false;
+            std::cout << "You travel to the next land...\n";
+        }
+        // Because we advanced land, skip spawning a structure in this same step
+        return;
+    }
+
+    // 2. If we do not advance, attempt to spawn
     if (hasActiveStructure_) {
-        std::cout << "You are currently inside a structure. Finish exploring it first.\n";
+        std::cout << "You're still in a structure. Finish exploring first.\n";
         return;
     }
 
@@ -158,8 +173,21 @@ void Game::handleExplore() {
         std::cout << "No structure is currently available to explore.\n";
         return;
     }
+    // Double-check the pointer we are about to use
+    Structure* sPtr = nullptr;
 
-    Structure &currentStruct = world_.getCurrentStructure();
+    // So let's create a safe getter in World if needed:
+    sPtr = world_.getActiveStructurePtr(); 
+    if (!sPtr) {
+        // If the pointer is null, we forcibly reset hasActiveStructure_
+        hasActiveStructure_ = false;
+        std::cout << "Structure pointer is null (possibly advanced land?).\n";
+        return;
+    }
+    // Now we can safely use *sPtr
+    Structure &currentStruct = *sPtr;
+
+    // Structure &currentStruct = world_.getCurrentStructure();
     if (currentStruct.isFullyExplored()) {
         std::cout << "You've finished exploring this " 
                   << currentStruct.getTypeString() << "!\n"

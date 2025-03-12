@@ -13,12 +13,18 @@ public:
     bool advanceLand(); // returns false if no more lands
     std::string getLastSpawnedStructureType() const;
     Structure& getCurrentStructure();
+    std::vector<Structure> structures_;
+
 
     std::vector<std::string> getExploredStructures() const;
     void markStructureExplored(const std::string& name);
 
     nlohmann::json toJSON() const;
     void fromJSON(const nlohmann::json& jsonData);
+
+    Structure* getActiveStructurePtr() const {
+        return activeStructure_;
+    }
 
 private:
     int currentLandIndex_; // 0..2 for 3 lands

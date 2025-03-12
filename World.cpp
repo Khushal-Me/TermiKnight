@@ -59,20 +59,14 @@ bool World::attemptSpawnStructure() {
         auto stype = pool[pickIndex].first;
         int rooms = pool[pickIndex].second;
 
-        // create a new structure
-        static Structure temp(stype, rooms); 
-        // Warning: be careful with static, maybe better store in a pointer or container 
-        // But for demonstration, let's just store it in a static. 
-        // Alternatively, you can store a unique_ptr or vector of structures in the world.
-        // We'll do the simplest approach for the example.
+        // create a new structure on the heap or in a vector
+        structures_.push_back(Structure(stype, rooms)); // e.g. push_back
+        activeStructure_ = &structures_.back();         // pointer to newly added item
 
-        activeStructure_ = &temp;
-
-        // remove that structure type from the pool so we can't spawn it again
         pool.erase(pool.begin() + pickIndex);
-
         justSpawned_ = true;
         return true;
+        
     }
     justSpawned_ = false;
     return false;
@@ -89,6 +83,7 @@ bool World::canProgress(int artifactsCollected) {
 bool World::advanceLand() {
     currentLandIndex_++;
     if (currentLandIndex_ >= 3) {
+        activeStructure_ = nullptr;  // For absolute safety
         return false;
     }
     activeStructure_ = nullptr;
