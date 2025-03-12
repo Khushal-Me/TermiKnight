@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include "external/json/json.hpp"
 
 World::World()
   : currentLandIndex_(0),
@@ -103,4 +104,18 @@ std::string World::getLastSpawnedStructureType() const {
 
 Structure& World::getCurrentStructure() {
     return *activeStructure_;
+}
+
+// Convert World object to JSON
+nlohmann::json World::toJSON() const {
+    return {
+        {"current_land", currentLandIndex_},
+        {"explored_structures", exploredStructures_}
+    };
+}
+
+// Load World object from JSON
+void World::fromJSON(const nlohmann::json& jsonData) {
+    currentLandIndex_ = jsonData["current_land"].get<int>();
+    exploredStructures_ = jsonData["explored_structures"].get<std::vector<std::string>>();
 }

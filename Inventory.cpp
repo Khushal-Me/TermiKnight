@@ -44,3 +44,20 @@ bool Inventory::empty() const {
 std::vector<Item>& Inventory::getItems() {
     return items_;
 }
+
+// Convert to JSON
+nlohmann::json Inventory::toJSON() const {
+    nlohmann::json jsonData;
+    for (const auto& item : items_) {
+        jsonData.push_back(item.toJSON());
+    }
+    return jsonData;
+}
+
+// Convert from JSON
+void Inventory::fromJSON(const nlohmann::json& jsonData) {
+    items_.clear();
+    for (const auto& itemJson : jsonData) {
+        items_.push_back(Item::fromJSON(itemJson));
+    }
+}

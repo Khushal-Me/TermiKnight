@@ -33,6 +33,9 @@ public:
     void addArtifact() { artifactsCollected_++; }
     int  getArtifactsCollected() const { return artifactsCollected_; }
 
+    nlohmann::json toJSON() const;
+    void fromJSON(const nlohmann::json& data);
+
 private:
     ClassType classType_;
     int health_;

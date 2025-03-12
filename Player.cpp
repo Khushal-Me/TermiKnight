@@ -68,3 +68,23 @@ void Player::applyClassBonuses(ClassType type) {
         }
     }
 }
+
+nlohmann::json Player::toJSON() const {
+    return {
+        {"class", static_cast<int>(classType_)},
+        {"health", health_},
+        {"attack", attack_},
+        {"luck", luck_},
+        {"artifacts_collected", artifactsCollected_},
+        {"inventory", inventory_.toJSON()}
+    };
+}
+
+void Player::fromJSON(const nlohmann::json& data) {
+    classType_ = static_cast<ClassType>(data["class"].get<int>());
+    health_ = data["health"];
+    attack_ = data["attack"];
+    luck_ = data["luck"];
+    artifactsCollected_ = data["artifacts_collected"];
+    inventory_.fromJSON(data["inventory"]);
+}
