@@ -15,7 +15,6 @@ enum class ClassType {
 class Player {
 public:
     Player();
-
     void setClassType(ClassType type);
     ClassType getClassType() const { return classType_; }
 
@@ -33,6 +32,8 @@ public:
     void addArtifact() { artifactsCollected_++; }
     int  getArtifactsCollected() const { return artifactsCollected_; }
 
+    void equipWeapon(int bonus);
+
     nlohmann::json toJSON() const;
     void fromJSON(const nlohmann::json& data);
 
@@ -43,7 +44,14 @@ private:
     int attack_;
     int luck_;
     int artifactsCollected_;
+
+    int baseAttack_; 
+    int weaponBonus_; // track a separate bonus
+
     Inventory inventory_;
+
+    //Helper method to recalc final attack after changes
+    void updateAttack();
 
     void applyClassBonuses(ClassType type);
 };

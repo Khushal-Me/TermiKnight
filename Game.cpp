@@ -238,44 +238,72 @@ void Game::handleUseItem() {
         return;
     }
 
-    std::cout << "\nWhich item do you want to use?\n";
-    inv.listItems(); 
-    std::cout << "(Type the exact name of the item, or 'cancel')\n> ";
+    // Display items as a numbered list
+    std::vector<Item> &items = inv.getItems();
+    std::cout << "\nWhich item do you want to use? Enter the number:\n";
+    for (size_t i = 0; i < items.size(); i++) {
+        std::cout << (i+1) << ") " << items[i].getName()
+                  << " (" << items[i].getTypeString() << ")\n";
+    }
+    std::cout << (items.size() + 1) << ") Cancel\n> ";
 
-    std::string itemName;
-    std::getline(std::cin, itemName);
-    if (itemName == "cancel") {
-        std::cout << "No item used.\n";
+    int choice;
+    if (!(std::cin >> choice)) {
+        // handle bad input
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Invalid input. No item used.\n";
         return;
     }
-    if (!inv.hasItem(itemName)) {
-        std::cout << "You do not have " << itemName << ".\n";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    if (choice == static_cast<int>(items.size() + 1)) {
+        std::cout << "Canceled item use.\n";
         return;
     }
 
-    // Basic logic: if it's a "Healing" potion, we heal
-    if (itemName.find("Healing") != std::string::npos) {
-        bool found = false;
-        int healValue = 0;
+    // Validate choice range
+    if (choice < 1 || static_cast<size_t>(choice) > items.size()) {
+        std::cout << "Invalid choice.\n";
+        return;
+    }
 
-        // Let's find the item in inventory to get its .getValue()
-        for (auto &itm : inv.getItems()) {
-            if (itm.getName() == itemName) {
-                healValue = itm.getValue();
-                inv.removeItem(itemName);
-                found = true;
-                break;
-            }
-        }
-        if (found) {
+    // We have a valid item index
+    size_t idx = choice - 1;
+    Item &chosenItem = items[idx];
+    ItemType type = chosenItem.getType();
+
+    switch(type) {
+        case ItemType::HEALTH_POTION:
+        {
+            int healValue = chosenItem.getValue();
             player_.heal(healValue);
-            std::cout << "You drink " << itemName << " and recover " 
-                      << healValue << " HP. Your health is now " 
+            std::cout << "You drink " << chosenItem.getName() 
+                      << " and recover " << healValue 
+                      << " HP. Your health is now " 
                       << player_.getHealth() << ".\n";
+            // remove the item from inventory
+            inv.removeIndex(idx);
+            break;
         }
-    } else {
-        std::cout << "You attempt to use " << itemName 
-                  << ", but nothing special happens.\n";
+        case ItemType::WEAPON:
+        {
+            // Let’s equip the weapon and increase Attack
+            std::cout << "You equip " << chosenItem.getName() 
+                      << " (+ " << chosenItem.getValue() << " Attack).\n";
+            // Then call some method in Player to handle equipping logic
+            player_.equipWeapon(chosenItem.getValue());
+            // We might keep it in inventory or remove it. 
+            // Typically you do not remove the weapon from inventory if it's “equipped,” 
+            // but that’s up to your design.
+            break;
+        }
+        default:
+        {
+            std::cout << "You attempt to use " << chosenItem.getName()
+                      << ", but nothing special happens.\n";
+            break;
+        }
     }
 }
 

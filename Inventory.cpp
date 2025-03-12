@@ -44,6 +44,11 @@ bool Inventory::empty() const {
 std::vector<Item>& Inventory::getItems() {
     return items_;
 }
+bool Inventory::removeIndex(size_t index) {
+    if (index >= items_.size()) return false;
+    items_.erase(items_.begin() + index);
+    return true;
+}
 
 // Convert to JSON
 nlohmann::json Inventory::toJSON() const {

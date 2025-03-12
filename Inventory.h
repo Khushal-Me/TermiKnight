@@ -10,6 +10,7 @@ public:
     bool removeItem(const std::string &itemName);
     bool hasItem(const std::string &itemName) const;
     void listItems() const;
+    bool removeIndex(size_t index);
 
     bool empty() const; 
     std::vector<Item>& getItems(); 

@@ -1,20 +1,10 @@
 {
     "player": {
-        "artifacts_collected": 7,
-        "attack": 8,
+        "artifacts_collected": 8,
+        "attack": 12,
         "class": 0,
-        "health": 85,
+        "health": 100,
         "inventory": [
-            {
-                "name": "Small Healing Potion",
-                "type": 1,
-                "value": 20
-            },
-            {
-                "name": "Small Healing Potion",
-                "type": 1,
-                "value": 20
-            },
             {
                 "name": "Rusted Sword",
                 "type": 0,
@@ -41,11 +31,6 @@
                 "value": 0
             },
             {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
                 "name": "Rusted Sword",
                 "type": 0,
                 "value": 2
@@ -71,16 +56,6 @@
                 "value": 0
             },
             {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
                 "name": "Sacred Artifact",
                 "type": 3,
                 "value": 0
@@ -96,16 +71,6 @@
                 "value": 2
             },
             {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
                 "name": "Sacred Artifact",
                 "type": 3,
                 "value": 0
@@ -114,6 +79,16 @@
                 "name": "Rusted Sword",
                 "type": 0,
                 "value": 2
+            },
+            {
+                "name": "Rusted Sword",
+                "type": 0,
+                "value": 2
+            },
+            {
+                "name": "Sacred Artifact",
+                "type": 3,
+                "value": 0
             }
         ],
         "luck": 15

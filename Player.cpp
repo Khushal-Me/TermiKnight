@@ -7,8 +7,20 @@ Player::Player()
     : classType_(ClassType::CIVILIAN),
       health_(100), maxHealth_(100),
       attack_(10), luck_(10),
+      baseAttack_(10),
+      weaponBonus_(0),
       artifactsCollected_(0)
 {
+}
+
+void Player::equipWeapon(int bonus) {
+    std::cout << "Equipping weapon with bonus: " << bonus << "\n";
+    weaponBonus_ = bonus;
+    updateAttack();
+}
+
+void Player::updateAttack() {
+    attack_ = baseAttack_ + weaponBonus_;
 }
 
 void Player::setClassType(ClassType type) {
@@ -55,18 +67,20 @@ int Player::useSkill() {
 void Player::applyClassBonuses(ClassType type) {
     switch (type) {
         case ClassType::CIVILIAN: {
-            maxHealth_ = 100; health_ = 100; attack_ = 8;  luck_ = 15; break;
+            maxHealth_ = 100; health_ = 100; baseAttack_ = 8;  luck_ = 15; break;
         }
         case ClassType::BANDIT:{
-            maxHealth_ = 100; health_ = 100; attack_ = 14; luck_ = 10;  break;
+            maxHealth_ = 100; health_ = 100; baseAttack_ = 14; luck_ = 10;  break;
         }
         case ClassType::MAGE: {
-            maxHealth_ = 80;  health_ = 80;  attack_ = 18; luck_ = 10; break;
+            maxHealth_ = 80;  health_ = 80;  baseAttack_ = 18; luck_ = 10; break;
         }
         case ClassType::SOLDIER: {
-            maxHealth_ = 120; health_ = 120; attack_ = 16; luck_ = 3;  break;
+            maxHealth_ = 120; health_ = 120; baseAttack_ = 16; luck_ = 3;  break;
         }
     }
+    weaponBonus_ = 0;
+    updateAttack(); 
 }
 
 nlohmann::json Player::toJSON() const {
