@@ -3,7 +3,7 @@
         "artifacts_collected": 7,
         "attack": 8,
         "class": 0,
-        "health": 82,
+        "health": 85,
         "inventory": [
             {
                 "name": "Small Healing Potion",
@@ -109,6 +109,11 @@
                 "name": "Sacred Artifact",
                 "type": 3,
                 "value": 0
+            },
+            {
+                "name": "Rusted Sword",
+                "type": 0,
+                "value": 2
             }
         ],
         "luck": 15
