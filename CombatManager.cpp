@@ -1,17 +1,42 @@
-// CombatManager.cpp
+/**
+ * @file CombatManager.cpp
+ * @brief This file implements the CombatManager class, which handles combat encounters between the player and enemies.
+ */
 #include "CombatManager.h"
 #include <iostream>
 #include <cstdlib>
 
+/**
+ * @brief Flag indicating if the bandit's skill has been applied in the current combat.
+ */
 bool CombatManager::banditSkillApplied = false;
+/**
+ * @brief Flag indicating if the soldier's skill has been applied in the current combat.
+ */
 bool CombatManager::soldierSkillApplied = false;
+/**
+ * @brief Flag indicating if the player is currently blocking.
+ */
 bool CombatManager::blocking = false;
 
-CombatManager::CombatManager() { 
-    banditSkillApplied = false; 
+/**
+ * @brief Constructs a new CombatManager object.
+ *
+ * Initializes the skill application flags and blocking status to false.
+ */
+CombatManager::CombatManager() {
+    banditSkillApplied = false;
     soldierSkillApplied = false;
     blocking = false;
 }
+/**
+ * @brief Initiates a combat encounter between the player and a group of enemies.
+ *
+ * This function manages the turn-based combat loop until either all enemies are defeated or the player's health reaches zero.
+ *
+ * @param player The player participating in the combat.
+ * @param enemies A vector of enemies the player is fighting against.
+ */
 void CombatManager::startCombat(Player &player, std::vector<Enemy> &enemies) {
     std::cout << "Combat begins!\n";
 
@@ -23,13 +48,21 @@ void CombatManager::startCombat(Player &player, std::vector<Enemy> &enemies) {
 
     if (player.getHealth() <= 0) {
         std::cout << "You have been defeated...\n";
-    } 
+    }
     else {
         std::cout << "All enemies have been vanquished!\n";
         // Potentially reward XP, items, etc.
     }
 }
 
+/**
+ * @brief Handles the player's turn during combat.
+ *
+ * Allows the player to choose an action such as attacking, blocking, fleeing, or using a skill.
+ *
+ * @param player The player whose turn it is.
+ * @param enemies A vector of the enemies currently engaged in combat.
+ */
 void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
     if (enemies.empty()) return;
 
@@ -72,7 +105,7 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
                 // Show updated HP
                 for (auto &enemy : enemies) {
                     if (enemy.isAlive()) {
-                        std::cout << "[" << enemy.getType() << " HP: " 
+                        std::cout << "[" << enemy.getType() << " HP: "
                                   << enemy.getHealth() << "]\n";
                     }
                 }
@@ -101,8 +134,8 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
         break;
     case 4: // Use Skill
         {
-            int skillResult = player.useSkill(); 
-            // skillResult might indicate which skill was used. 
+            int skillResult = player.useSkill();
+            // skillResult might indicate which skill was used.
             // For example, if it's a soldier skill, set soldierSkillApplied = true, etc.
             if (skillResult == 2) { // Bandit
                 banditSkillApplied = true;
@@ -126,21 +159,36 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
         break;
     }
 }
+/**
+ * @brief Handles the enemies' turn during combat.
+ *
+ * Each alive enemy in the combat takes its turn to attack the player.
+ *
+ * @param player The player being attacked by the enemies.
+ * @param enemies A vector of the enemies currently engaged in combat.
+ */
 void CombatManager::enemyTurn(Player &player, std::vector<Enemy> &enemies) {
     for (auto &enemy : enemies) {
         if (enemy.isAlive()) {
             int damage = enemy.getAttack();
             if (blocking){
                 damage = damage/2;
+                blocking = false; // Reset blocking after enemy turn
             }
             player.takeDamage(damage);
             std::cout << enemy.getType() << " hits you for "
-                      << damage << " damage! [Player HP: " 
+                      << damage << " damage! [Player HP: "
                       << player.getHealth() << "]\n";
         }
     }
 }
 
+/**
+ * @brief Checks if all enemies in the combat have been defeated.
+ *
+ * @param enemies A constant reference to the vector of enemies.
+ * @return True if all enemies are not alive, false otherwise.
+ */
 bool CombatManager::allEnemiesDefeated(const std::vector<Enemy> &enemies) {
     for (auto &e : enemies) {
         if (e.isAlive()) return false;
