@@ -14,7 +14,8 @@ const std::string SAVE_DIR = "./saves";
 const std::string SAVE_FILE = SAVE_DIR + "/save_game.json";
 
 /**
- * Saves the current game state (player and world) to a JSON file.
+ * @brief Saves the current game state (player and world) to a JSON file.
+ * 
  * @param player - The Player object to save
  * @param world - The World object to save
  */
@@ -31,7 +32,7 @@ void SaveManager::saveGame(const Player& player, const World& world) {
     // Open the save file for writing
     std::ofstream file(SAVE_FILE);
     if (file.is_open()) {
-        file << saveData.dump(4); // Pretty-print with indentation
+        file << saveData.dump(4); 
         file.close();
         std::cout << "Game saved successfully.\n";
     } else {
@@ -40,7 +41,10 @@ void SaveManager::saveGame(const Player& player, const World& world) {
 }
 
 /**
- * Loads a saved game from the JSON file.
+ * @brief Loads a saved game from the JSON file.
+ * 
+ * Reads the save file and restores player and world data.
+ * 
  * @param player - The Player object to restore
  * @param world - The World object to restore
  * @return true if loading was successful, false otherwise
@@ -81,9 +85,12 @@ bool SaveManager::loadGame(Player& player, World& world) {
 }
 
 /**
- * Starts an auto-save thread that periodically saves the game every 45 seconds.
- * @param player - Reference to the Player object
- * @param world - Reference to the World object
+ * @brief Starts an auto-save thread that periodically saves the game every 45 seconds.
+ * 
+ * Launches background thread that auto saves game every 45 seconds.
+ * 
+ * @param player Reference to the Player object
+ * @param world Reference to the World object
  */
 void SaveManager::startAutoSave(Player& player, World& world) {
     std::thread([&player, &world]() {
@@ -91,12 +98,16 @@ void SaveManager::startAutoSave(Player& player, World& world) {
             std::this_thread::sleep_for(std::chrono::seconds(45));
             saveGame(player, world); // Automatically saves the game every 45 seconds
         }
-    }).detach(); // Detach the thread so it runs independently
+    }).detach(); // Detach thread so it runs independently
 }
 
 /**
- * Handles the SIGINT (Ctrl+C) signal and prompts the user to save the game before quitting.
- * @param signal - The signal number (not used in this implementation)
+ * @brief Handles the SIGINT (Ctrl+C) signal for safe game exit.
+ * 
+ * When user attempts to exit using Ctrl+C, they are prompted to save game
+ * before quitting.
+ * 
+ * @param signal The signal number
  */
 void SaveManager::handleExitSignal(int signal) {
     std::cout << "\nBefore you quit, would you like to save the game? (y/n): ";
