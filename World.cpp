@@ -1,9 +1,16 @@
+/**
+ * @file World.cpp
+ * @brief Implements the World class for managing game world progression and structures.
+ */
+
 #include "World.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include "external/json/json.hpp"
 
+/**
+ * @brief Constructs a World instance, initializing state variables.
+ */
 World::World()
   : currentLandIndex_(0),
     justSpawned_(false),
@@ -11,85 +18,71 @@ World::World()
 {
 }
 
+/**
+ * @brief Initializes the world by setting up land structure pools.
+ */
 void World::createWorld() {
     std::srand((unsigned)time(nullptr));
 
-    // For each land, store 3 different structure types
-    // Land 0 => each structure has 2 rooms
-    // Land 1 => 3 rooms
-    // Land 2 => 5 rooms
-
+    // Set up structure pools for three lands
     landStructurePool_.resize(3);
-    // land 0 (index=0)
-    landStructurePool_[0] = {
-        {StructureType::CAVE, 2},
-        {StructureType::CASTLE, 2},
-        {StructureType::VILLAGE, 2}
-    };
-    // land 1 (index=1)
-    landStructurePool_[1] = {
-        {StructureType::CAVE, 3},
-        {StructureType::CASTLE, 3},
-        {StructureType::VILLAGE, 3}
-    };
-    // land 2 (index=2)
-    landStructurePool_[2] = {
-        {StructureType::CAVE, 5},
-        {StructureType::CASTLE, 5},
-        {StructureType::VILLAGE, 5}
-    };
+    landStructurePool_[0] = { {StructureType::CAVE, 2}, {StructureType::CASTLE, 2}, {StructureType::VILLAGE, 2} };
+    landStructurePool_[1] = { {StructureType::CAVE, 3}, {StructureType::CASTLE, 3}, {StructureType::VILLAGE, 3} };
+    landStructurePool_[2] = { {StructureType::CAVE, 5}, {StructureType::CASTLE, 5}, {StructureType::VILLAGE, 5} };
 }
 
+/**
+ * @brief Attempts to spawn a structure in the current land.
+ * @return True if a structure is successfully spawned, otherwise false.
+ */
 bool World::attemptSpawnStructure() {
-    if (currentLandIndex_ >= 3) {
-        justSpawned_ = false;
-        return false;
-    }
-    // If we've already used up the 3 structures in this land, can't spawn more
-    if (landStructurePool_[currentLandIndex_].empty()) {
+    if (currentLandIndex_ >= 3 || landStructurePool_[currentLandIndex_].empty()) {
         justSpawned_ = false;
         return false;
     }
 
     int roll = std::rand() % 100;
     if (roll < 40) {
-        // pick a random index from the pool for this land
         auto &pool = landStructurePool_[currentLandIndex_];
         int pickIndex = std::rand() % pool.size();
         auto stype = pool[pickIndex].first;
         int rooms = pool[pickIndex].second;
 
-        // create a new structure on the heap or in a vector
-        structures_.push_back(Structure(stype, rooms)); // e.g. push_back
-        activeStructure_ = &structures_.back();         // pointer to newly added item
+        structures_.push_back(Structure(stype, rooms));
+        activeStructure_ = &structures_.back();
 
         pool.erase(pool.begin() + pickIndex);
         justSpawned_ = true;
         return true;
-        
     }
+
     justSpawned_ = false;
     return false;
 }
 
+/**
+ * @brief Checks if the player has collected enough artifacts to progress.
+ * @param artifactsCollected The number of artifacts collected.
+ * @return True if progression is allowed, otherwise false.
+ */
 bool World::canProgress(int artifactsCollected) {
-    // land 0 => need 3 artifacts
-    // land 1 => need 6
-    // land 2 => need 9
-    int required = (currentLandIndex_ + 1) * 3;
-    return (artifactsCollected >= required);
+    return artifactsCollected >= ((currentLandIndex_ + 1) * 3);
 }
 
+/**
+ * @brief Advances the player to the next land if possible.
+ * @return False if there are no more lands to explore, otherwise true.
+ */
 bool World::advanceLand() {
     currentLandIndex_++;
-    if (currentLandIndex_ >= 3) {
-        activeStructure_ = nullptr;  // For absolute safety
-        return false;
-    }
     activeStructure_ = nullptr;
-    return true;
+    return currentLandIndex_ < 3;
 }
 
+/**
+ * @brief Retrieves the type of the last spawned structure.
+ * @return The name of the last spawned structure, or "nothing" if none was spawned.
+ */
 std::string World::getLastSpawnedStructureType() const {
     if (!justSpawned_ || !activeStructure_) {
         return "nothing";
@@ -97,11 +90,18 @@ std::string World::getLastSpawnedStructureType() const {
     return activeStructure_->getTypeString();
 }
 
+/**
+ * @brief Retrieves the currently active structure.
+ * @return A reference to the currently active Structure.
+ */
 Structure& World::getCurrentStructure() {
     return *activeStructure_;
 }
 
-// Convert World object to JSON
+/**
+ * @brief Serializes the World object to JSON.
+ * @return A JSON object representing the world state.
+ */
 nlohmann::json World::toJSON() const {
     return {
         {"current_land", currentLandIndex_},
@@ -109,7 +109,10 @@ nlohmann::json World::toJSON() const {
     };
 }
 
-// Load World object from JSON
+/**
+ * @brief Loads the World object from a JSON representation.
+ * @param jsonData The JSON object containing world state information.
+ */
 void World::fromJSON(const nlohmann::json& jsonData) {
     currentLandIndex_ = jsonData["current_land"].get<int>();
     exploredStructures_ = jsonData["explored_structures"].get<std::vector<std::string>>();

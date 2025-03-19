@@ -1,49 +1,19 @@
 {
     "player": {
-        "artifacts_collected": 8,
-        "attack": 12,
-        "class": 0,
-        "health": 100,
+        "artifacts_collected": 1,
+        "attack": 14,
+        "class": 1,
+        "health": 80,
         "inventory": [
             {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
-            },
-            {
-                "name": "Sacred ArtifactTESTTTT",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
-            },
-            {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
-            },
-            {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Medium Healing Potion",
+                "name": "Small Healing Potion",
                 "type": 1,
-                "value": 30
+                "value": 20
+            },
+            {
+                "name": "Small Healing Potion",
+                "type": 1,
+                "value": 20
             },
             {
                 "name": "Medium Healing Potion",
@@ -56,45 +26,15 @@
                 "value": 0
             },
             {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
                 "name": "Rusted Sword",
                 "type": 0,
                 "value": 2
-            },
-            {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
-            },
-            {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
-            },
-            {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
             }
         ],
-        "luck": 15
+        "luck": 10
     },
     "world": {
-        "current_land": 2,
+        "current_land": 0,
         "explored_structures": []
     }
 }
