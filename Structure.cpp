@@ -128,3 +128,81 @@ void Structure::handleChest(Player &player) {
         player.getInventory().addItem(Item("Rusted Sword", ItemType::WEAPON, 2));
     }
 }
+
+/**
+ * @brief Initializes the riddle pool for the structure.
+ *
+ * You can push back various riddles into riddlePool_.
+ */
+void Structure::initRiddles() {
+    // Example riddles
+    Riddle r1;
+    r1.question = "What has to be broken before you can use it?";
+    r1.options = {"An egg", "A promise", "A rule", "A code"};
+    r1.correctIndex = 0; // "An egg"
+    r1.hints = {"Often found in kitchens", "White or brown shell"};
+    riddlePool_.push_back(r1);
+
+    Riddle r2;
+    r2.question = "I'm tall when I'm young, and short when I'm old. What am I?";
+    r2.options = {"A tree", "A candle", "A mountain", "A building"};
+    r2.correctIndex = 1; 
+    r2.hints = {"It melts over time", "It provides light"};
+    riddlePool_.push_back(r2);
+
+    // Add as many as you like
+}
+
+/**
+ * @brief Handles a riddle event in the final room.
+ * @param player The player attempting to solve the riddle.
+ * @return True if the riddle is solved, otherwise false.
+ */
+bool Structure::doRiddle(Player &player) {
+    std::cout << "\nMultiple-Choice Riddle:\n" 
+              << riddleToAsk_.question << "\n";
+
+    // Show 4 options
+    for (int i = 0; i < (int)riddleToAsk_.options.size(); i++) {
+        std::cout << (i+1) << ") " << riddleToAsk_.options[i] << "\n";
+    }
+
+    int tries = 5;
+    while (tries > 0) {
+        std::cout << "Enter your choice (1-4). You have " 
+                  << tries << " tries left.\n> ";
+        int choice;
+        if (!(std::cin >> choice)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input.\n";
+            tries--;
+            continue;
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        if (choice < 1 || choice > 4) {
+            std::cout << "Choice must be 1-4!\n";
+            tries--;
+            continue;
+        }
+
+        if (riddleToAsk_.correctIndex == (choice - 1)) {
+            std::cout << "Correct!\n";
+            return true;
+        } else {
+            tries--;
+            if (tries > 0) {
+                // Provide a hint if available
+                size_t hintIndex = riddleToAsk_.hints.size() - tries;
+                if (hintIndex < riddleToAsk_.hints.size()) {
+                    std::cout << "Hint: " 
+                              << riddleToAsk_.hints[hintIndex] << "\n";
+                } else {
+                    std::cout << "No more hints!\n";
+                }
+            }
+        }
+    }
+    return false;
+}
