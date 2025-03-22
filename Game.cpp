@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include "SaveManager.h"
 #include <csignal>
+#include "Utilities.h"
+
 
 /**
  * @brief Constructs a Game object.
@@ -39,7 +41,7 @@ void Game::run() {
  * Prints the intro story, creates the game world, and gives the player starting items.
  */
 void Game::initGame() {
-    printIntroStory();
+    //printIntroStory();
     world_.createWorld();
     // Give the player some starting items (two potions)
     Item potion1("Small Healing Potion", ItemType::HEALTH_POTION, 20);
@@ -55,6 +57,7 @@ void Game::initGame() {
  */
 void Game::mainMenu() {
     while (true) {
+        Utilities::clearScreen();
         std::cout << "\n=== Main Menu ===\n";
         std::cout << "1) New Game\n";
         std::cout << "2) Load Game\n";
@@ -96,6 +99,7 @@ void Game::mainMenu() {
  */
 void Game::gameLoop() {
     while (isRunning_) {
+        Utilities::clearScreen();
         printGameMenu();
         int input;
         if (!(std::cin >> input)) {
@@ -175,12 +179,14 @@ void Game::handleMoveForward() {
             std::cout << "You travel to the next land...\n";
         }
         // Because we advanced land, skip spawning a structure in this same step
+        Utilities::waitForEnter();
         return;
     }
 
     // 2. If we do not advance, attempt to spawn
     if (hasActiveStructure_) {
         std::cout << "You're still in a structure. Finish exploring first.\n";
+        Utilities::waitForEnter();
         return;
     }
 
@@ -204,6 +210,7 @@ void Game::handleMoveForward() {
     }
     // Check if we can progress to next land
     handleCheckArtifacts();
+    Utilities::waitForEnter();
 }
 
 /**
@@ -214,6 +221,7 @@ void Game::handleMoveForward() {
 void Game::handleExplore() {
     if (!hasActiveStructure_) {
         std::cout << "No structure is currently available to explore.\n";
+        Utilities::waitForEnter();
         return;
     }
     // Double-check the pointer we are about to use
@@ -225,6 +233,7 @@ void Game::handleExplore() {
         // If the pointer is null, we forcibly reset hasActiveStructure_
         hasActiveStructure_ = false;
         std::cout << "Structure pointer is null (possibly advanced land?).\n";
+        Utilities::waitForEnter();
         return;
     }
     // Now we can safely use *sPtr
@@ -236,6 +245,7 @@ void Game::handleExplore() {
                   << currentStruct.getTypeString() << "!\n"
                   << "Leaving the structure...\n";
         hasActiveStructure_ = false;
+        Utilities::waitForEnter();
         return;
     }
 
@@ -248,6 +258,7 @@ void Game::handleExplore() {
                       << "Leaving now...\n";
             hasActiveStructure_ = false;
         }
+        Utilities::waitForEnter();
         return;
     }
 
@@ -266,6 +277,8 @@ void Game::handleExplore() {
                   << "Leaving the structure...\n";
         hasActiveStructure_ = false;
     }
+
+    Utilities::waitForEnter();
 }
 
 /**
@@ -274,7 +287,14 @@ void Game::handleExplore() {
  * Displays the items currently in the player's inventory.
  */
 void Game::handleInventory() {
-    player_.showInventory();
+    //player_.showInventory();
+    Utilities::clearScreen(); 
+    std::cout << "Health: " 
+          << player_.getHealth() << " / " 
+          << player_.getMaxHealth() << "\n\n";
+
+    player_.showInventorySideBySideWithMenu(); 
+    Utilities::waitForEnter();
 }
 
 /**
@@ -283,14 +303,19 @@ void Game::handleInventory() {
  * Allows the player to select and use an item from their inventory.
  */
 void Game::handleUseItem() {
+    Utilities::clearScreen();
+
     Inventory &inv = player_.getInventory();
     if (inv.empty()) {
         std::cout << "Your inventory is empty.\n";
         return;
     }
 
+    std::cout << "Health: " 
+          << player_.getHealth() << " / " 
+          << player_.getMaxHealth() << "\n\n";
     // Display items as a numbered list
-    std::vector<Item> &items = inv.getItems();
+    const std::vector<Item>& items = inv.getItems();
     std::cout << "\nWhich item do you want to use? Enter the number:\n";
     for (size_t i = 0; i < items.size(); i++) {
         std::cout << (i+1) << ") " << items[i].getName()
@@ -321,7 +346,7 @@ void Game::handleUseItem() {
 
     // We have a valid item index
     size_t idx = choice - 1;
-    Item &chosenItem = items[idx];
+    const Item &chosenItem = items[idx];
     ItemType type = chosenItem.getType();
 
     switch(type) {
@@ -332,7 +357,8 @@ void Game::handleUseItem() {
             std::cout << "You drink " << chosenItem.getName()
                       << " and recover " << healValue
                       << " HP. Your health is now "
-                      << player_.getHealth() << ".\n";
+                      << player_.getHealth() << ".\n"; 
+             Utilities::waitForEnter();
             // remove the item from inventory
             inv.removeIndex(idx);
             break;
@@ -345,14 +371,15 @@ void Game::handleUseItem() {
             // Then call some method in Player to handle equipping logic
             player_.equipWeapon(chosenItem.getValue());
             // We might keep it in inventory or remove it.
-            // Typically you do not remove the weapon from inventory if it's “equipped,”
-            // but that’s up to your design.
+            // Typically you do not remove the weapon from inventory if it's “equipped”
+            Utilities::waitForEnter();
             break;
         }
         default:
         {
             std::cout << "You attempt to use " << chosenItem.getName()
                       << ", but nothing special happens.\n";
+            Utilities::waitForEnter();
             break;
         }
     }
@@ -432,6 +459,10 @@ void Game::displayClassSelection() {
  * @brief Starts a new game, prompting the player for class selection.
  */
 void Game::startNewGame() {
+    Utilities::clearScreen();
+    printIntroStory();
+    Utilities::waitForEnter();
+    Utilities::clearScreen();  
     std::cout << "Starting a new game...\n";
     displayClassSelection();
     std::cout << "Your quest begins!\n";

@@ -4,6 +4,8 @@
  */
 #include "Inventory.h"
 #include <iostream>
+#include <sstream>
+
 
 /**
  * @brief Adds an item to the inventory.
@@ -66,7 +68,7 @@ void Inventory::listItems() const {
 
 /**
  * @brief Checks if the inventory is empty.
- *
+ *xx
  * @return True if the inventory contains no items, false otherwise.
  */
 bool Inventory::empty() const {
@@ -80,9 +82,10 @@ bool Inventory::empty() const {
  *
  * @return A reference to the vector of Item objects.
  */
-std::vector<Item>& Inventory::getItems() {
+const std::vector<Item>& Inventory::getItems() const {
     return items_;
 }
+
 
 /**
  * @brief Removes an item from the inventory at a specific index.
@@ -123,4 +126,30 @@ void Inventory::fromJSON(const nlohmann::json& jsonData) {
     for (const auto& itemJson : jsonData) {
         items_.push_back(Item::fromJSON(itemJson));
     }
+}
+
+
+/**
+ * @brief Generates a list of formatted strings representing the inventory contents.
+ *
+ * The first line is a header ("=== Inventory ===").
+ * If the inventory is empty, the next line will say "Empty".
+ * Otherwise, each item is listed on its own line with a number and its name.
+ *
+ * @return A vector of strings, each representing one line of formatted inventory output.
+ */
+std::vector<std::string> Inventory::getFormattedLines() const {
+    std::vector<std::string> lines;
+    lines.push_back("=== Inventory ===");
+    const std::vector<Item>& items = getItems();
+    if (items.empty()) {
+        lines.push_back("Empty");
+    } else {
+        for (size_t i = 0; i < items.size(); ++i) {
+            std::ostringstream oss;
+            oss << (i+1) << ") " << items[i].getName();
+            lines.push_back(oss.str());
+        }
+    }
+    return lines;
 }

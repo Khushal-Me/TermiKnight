@@ -54,7 +54,8 @@
       * @brief Returns a reference to the underlying vector of items.
       * @return A reference to the vector of Item objects in the inventory.
       */
-     std::vector<Item>& getItems();
+     const std::vector<Item>& getItems() const;
+
  
      /**
       * @brief Converts the inventory to a JSON object.
@@ -67,6 +68,19 @@
       * @param jsonData The nlohmann::json object to load the inventory from.
       */
      void fromJSON(const nlohmann::json& jsonData);
+
+
+
+    /**
+    * @brief Returns the inventory items as formatted strings.
+    *
+    * Each item in the inventory is converted into a neatly formatted string.
+    * This is useful for aligned or side-by-side display.
+    *
+    * @return A vector of strings, each representing a formatted item line.
+    */
+     std::vector<std::string> getFormattedLines() const;
+
  
  private:
      /**

@@ -59,6 +59,16 @@ public:
     int getHealth() const { return health_; }
 
     /**
+    * @brief Gets the player's maximum health.
+    *
+    * This represents the upper limit for the player's health,
+    * determined by their class (e.g., Soldier has more than Mage).
+    *
+    * @return The maximum health value.
+    */
+    int getMaxHealth() const { return maxHealth_; }
+
+    /**
      * @brief Gets the player's current attack value.
      *
      * This is the final attack after combining baseAttack_ and any weapon bonuses.
@@ -138,6 +148,8 @@ public:
      */
     void fromJSON(const nlohmann::json& data);
 
+    void showInventorySideBySideWithMenu() const;
+
 private:
     ClassType classType_;        ///< The player's class type
     int health_;                 ///< The player's current health
@@ -163,3 +175,6 @@ private:
      */
     void applyClassBonuses(ClassType type);
 };
+
+
+
