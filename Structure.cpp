@@ -150,7 +150,64 @@ void Structure::initRiddles() {
     r2.hints = {"It melts over time", "It provides light"};
     riddlePool_.push_back(r2);
 
-    // Add as many as you like
+    Riddle r3;
+    r3.question = "What month of the year has 28 days?";
+    r3.options = {"February", "April", "All of them", "None"};
+    r3.correctIndex = 2; // "All of them"
+    r3.hints = {"Trick question!", "They all have at least 28 days"};
+    riddlePool_.push_back(r3);
+
+    Riddle r4;
+    r4.question = "What gets wet while drying?";
+    r4.options = {"A sponge", "A tissue", "A towel", "Your hair"};
+    r4.correctIndex = 2; // "A towel"
+    r4.hints = {"Usually found in bathrooms", "You hold it after a shower"};
+    riddlePool_.push_back(r4);
+
+    
+    Riddle r5;
+    r5.question = "I am not alive, but I can grow. I do not have lungs, but I need air. I don't have a mouth, yet water kills me. What am I?";
+    r5.options = {"A plant", "A fire", "A fish", "A robot"};
+    r5.correctIndex = 1; // "A fire"
+    r5.hints = {"Used for cooking or warmth", "Flame involved"};
+    riddlePool_.push_back(r5);
+
+    Riddle r6;
+    r6.question = "What is full of holes but still holds water?";
+    r6.options = {"A sponge", "A bucket", "A net", "A colander"};
+    r6.correctIndex = 0; // "A sponge"
+    r6.hints = {"Found near the sink", "Often used to wash dishes"};
+    riddlePool_.push_back(r6);
+
+
+    Riddle r7;
+    r7.question = "I shave every day, but my beard stays the same. What am I?";
+    r7.options = {"A father", "A barber", "A monk", "A hairdresser"};
+    r7.correctIndex = 1; // "A barber"
+    r7.hints = {"Professional job involves hair", "Cuts other people's hair daily"};
+    riddlePool_.push_back(r7);
+
+
+    Riddle r8;
+    r8.question = "What has a head and a tail but no body?";
+    r8.options = {"A coin", "A snake", "A cat", "A comet"};
+    r8.correctIndex = 0; // "A coin"
+    r8.hints = {"It's small and round", "Often used as currency"};
+    riddlePool_.push_back(r8);
+
+    Riddle r9;
+    r9.question = "What can run but never walks, has a mouth but never talks, has a bed but never sleeps?";
+    r9.options = {"A river", "A baby", "A computer", "A clock"};
+    r9.correctIndex = 0; // "A river"
+    r9.hints = {"Flows in one direction","Found in nature"};
+    riddlePool_.push_back(r9);
+
+    Riddle r10;
+    r10.question = "The more of this there is, the less you see. What is it?";
+    r10.options = {"Darkness", "Fog", "Shadow", "Light"};
+    r10.correctIndex = 0; // "Darkness"
+    r10.hints = {"Opposite of light", "Often associated with night"};
+    riddlePool_.push_back(r10);
 }
 
 /**
