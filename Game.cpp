@@ -99,7 +99,7 @@ void Game::mainMenu() {
  */
 void Game::gameLoop() {
     while (isRunning_) {
-        Utilities::clearScreen();
+        
         printGameMenu();
         int input;
         if (!(std::cin >> input)) {
@@ -107,6 +107,8 @@ void Game::gameLoop() {
             continue;
         }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        Utilities::clearScreen();
 
         switch(input) {
             case 1: handleMoveForward(); break;
@@ -179,14 +181,14 @@ void Game::handleMoveForward() {
             std::cout << "You travel to the next land...\n";
         }
         // Because we advanced land, skip spawning a structure in this same step
-        Utilities::waitForEnter();
+        
         return;
     }
 
     // 2. If we do not advance, attempt to spawn
     if (hasActiveStructure_) {
         std::cout << "You're still in a structure. Finish exploring first.\n";
-        Utilities::waitForEnter();
+        
         return;
     }
 
@@ -210,7 +212,7 @@ void Game::handleMoveForward() {
     }
     // Check if we can progress to next land
     handleCheckArtifacts();
-    Utilities::waitForEnter();
+    //Utilities::waitForEnter();
 }
 
 /**
@@ -221,7 +223,7 @@ void Game::handleMoveForward() {
 void Game::handleExplore() {
     if (!hasActiveStructure_) {
         std::cout << "No structure is currently available to explore.\n";
-        Utilities::waitForEnter();
+        //Utilities::waitForEnter();
         return;
     }
     // Double-check the pointer we are about to use
@@ -233,7 +235,7 @@ void Game::handleExplore() {
         // If the pointer is null, we forcibly reset hasActiveStructure_
         hasActiveStructure_ = false;
         std::cout << "Structure pointer is null (possibly advanced land?).\n";
-        Utilities::waitForEnter();
+        //Utilities::waitForEnter();
         return;
     }
     // Now we can safely use *sPtr
@@ -245,7 +247,7 @@ void Game::handleExplore() {
                   << currentStruct.getTypeString() << "!\n"
                   << "Leaving the structure...\n";
         hasActiveStructure_ = false;
-        Utilities::waitForEnter();
+        //Utilities::waitForEnter();
         return;
     }
 
@@ -258,7 +260,7 @@ void Game::handleExplore() {
                       << "Leaving now...\n";
             hasActiveStructure_ = false;
         }
-        Utilities::waitForEnter();
+        //Utilities::waitForEnter();
         return;
     }
 
@@ -278,7 +280,7 @@ void Game::handleExplore() {
         hasActiveStructure_ = false;
     }
 
-    Utilities::waitForEnter();
+    //Utilities::waitForEnter();
 }
 
 /**
