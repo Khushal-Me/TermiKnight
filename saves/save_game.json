@@ -1,7 +1,7 @@
 {
     "player": {
         "artifacts_collected": 1,
-        "attack": 14,
+        "attack": 12,
         "class": 1,
         "health": 80,
         "inventory": [
@@ -24,6 +24,11 @@
                 "name": "Sacred Artifact",
                 "type": 3,
                 "value": 0
+            },
+            {
+                "name": "Rusted Sword",
+                "type": 0,
+                "value": 2
             },
             {
                 "name": "Rusted Sword",
