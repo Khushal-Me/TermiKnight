@@ -175,7 +175,8 @@ void Game::handleMoveForward() {
         if (!moved) {
             // No more lands
             std::cout << "*** You have all artifacts ***\n";
-            // Possibly end game or do something
+            printEndStory();
+            isRunning_ = false; 
         } else {
             hasActiveStructure_ = false;
             std::cout << "You travel to the next land...\n";
