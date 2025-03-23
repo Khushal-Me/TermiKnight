@@ -21,5 +21,27 @@ namespace Utilities {
      */
     int getRandomInt(int minVal, int maxVal);
 
-    // Additional utility functions like trim, toLower, etc. can be added here.
+
+    /**
+     * @brief Clears the terminal screen, cross-platform.
+     */
+    void clearScreen();
+
+    /**
+     * @brief Gets the current terminal width (in characters).
+     * 
+     * @return Number of columns of the terminal.
+     */
+    int getTerminalWidth();
+
+    
+    /**
+    * @brief Prompts the player to press Enter to continue.
+    *
+    * This function pauses execution and waits for the user to press Enter.
+    * It's useful for allowing players to read important output before the screen is cleared.
+    */
+    void waitForEnter();
 }
+
+

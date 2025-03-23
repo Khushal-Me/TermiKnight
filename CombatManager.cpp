@@ -5,6 +5,7 @@
 #include "CombatManager.h"
 #include <iostream>
 #include <cstdlib>
+#include "Utilities.h"
 
 /**
  * @brief Flag indicating if the bandit's skill has been applied in the current combat.
@@ -38,7 +39,9 @@ CombatManager::CombatManager() {
  * @param enemies A vector of enemies the player is fighting against.
  */
 void CombatManager::startCombat(Player &player, std::vector<Enemy> &enemies) {
+    //Utilities::clearScreen();
     std::cout << "Combat begins!\n";
+    Utilities::waitForEnter();
 
     while (!allEnemiesDefeated(enemies) && player.getHealth() > 0) {
         playerTurn(player, enemies);
@@ -53,6 +56,9 @@ void CombatManager::startCombat(Player &player, std::vector<Enemy> &enemies) {
         std::cout << "All enemies have been vanquished!\n";
         // Potentially reward XP, items, etc.
     }
+
+    Utilities::waitForEnter();
+    //Utilities::clearScreen();
 }
 
 /**
@@ -67,6 +73,7 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
     if (enemies.empty()) return;
 
     // Display a numeric menu instead of waiting for typed input
+    Utilities::clearScreen();
     std::cout << "\n--- Player's Turn ---\n";
     std::cout << "1) Attack\n"
               << "2) Block\n"
@@ -158,6 +165,9 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
         std::cout << "Invalid choice, turn skipped.\n";
         break;
     }
+
+    // Utilities::waitForEnter();
+    // Utilities::clearScreen();
 }
 /**
  * @brief Handles the enemies' turn during combat.
@@ -168,6 +178,9 @@ void CombatManager::playerTurn(Player &player, std::vector<Enemy> &enemies) {
  * @param enemies A vector of the enemies currently engaged in combat.
  */
 void CombatManager::enemyTurn(Player &player, std::vector<Enemy> &enemies) {
+
+    //Utilities::clearScreen();
+
     for (auto &enemy : enemies) {
         if (enemy.isAlive()) {
             int damage = enemy.getAttack();
@@ -176,11 +189,17 @@ void CombatManager::enemyTurn(Player &player, std::vector<Enemy> &enemies) {
                 blocking = false; // Reset blocking after enemy turn
             }
             player.takeDamage(damage);
+           
             std::cout << enemy.getType() << " hits you for "
                       << damage << " damage! [Player HP: "
                       << player.getHealth() << "]\n";
+                      
+                      
         }
     }
+
+    Utilities::waitForEnter();
+    // Utilities::clearScreen();
 }
 
 /**

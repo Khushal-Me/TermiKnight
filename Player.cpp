@@ -5,6 +5,9 @@
 
 #include "Player.h"
 #include <iostream>
+#include <iomanip> // for setw
+#include <vector>
+#include "Utilities.h"
 
 using namespace std;
 
@@ -177,4 +180,46 @@ void Player::fromJSON(const nlohmann::json& data) {
     luck_ = data["luck"];
     artifactsCollected_ = data["artifacts_collected"];
     inventory_.fromJSON(data["inventory"]);
+}
+
+/**
+ * @brief Displays the game menu and inventory side by side.
+ *
+ * This function calculates the terminal width and prints the game menu
+ * on the left, with the inventory items aligned to the right.
+ */
+void Player::showInventorySideBySideWithMenu() const {
+    //Utilities::clearScreen();
+    int termWidth = Utilities::getTerminalWidth();
+    int leftWidth = 40;
+    int padding = 4;
+
+    const std::vector<std::string> menuLines = {
+        "=== Game Menu ===",
+        "1) Move Forward",
+        "2) Explore Next Room",
+        "3) Check Inventory",
+        "4) Use an Item",
+        "5) Save Game",
+        "6) Load Game",
+        "7) Quit"
+    };
+
+    std::vector<std::string> inventoryLines = inventory_.getFormattedLines();
+
+    size_t maxLines = std::max(menuLines.size(), inventoryLines.size());
+    for (size_t i = 0; i < maxLines; ++i) {
+        // Left: game menu
+        if (i < menuLines.size()) {
+            std::cout << std::left << std::setw(leftWidth) << menuLines[i];
+        } else {
+            std::cout << std::setw(leftWidth) << " ";
+        }
+
+        // Right: inventory (aligned with padding)
+        if (i < inventoryLines.size()) {
+            std::cout << std::setw(padding) << " " << inventoryLines[i];
+        }
+        std::cout << "\n";
+    }
 }
