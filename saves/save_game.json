@@ -1,8 +1,8 @@
 {
     "player": {
-        "artifacts_collected": 1,
-        "attack": 12,
-        "class": 1,
+        "artifacts_collected": 0,
+        "attack": 18,
+        "class": 2,
         "health": 80,
         "inventory": [
             {
@@ -14,26 +14,6 @@
                 "name": "Small Healing Potion",
                 "type": 1,
                 "value": 20
-            },
-            {
-                "name": "Medium Healing Potion",
-                "type": 1,
-                "value": 30
-            },
-            {
-                "name": "Sacred Artifact",
-                "type": 3,
-                "value": 0
-            },
-            {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
-            },
-            {
-                "name": "Rusted Sword",
-                "type": 0,
-                "value": 2
             }
         ],
         "luck": 10
