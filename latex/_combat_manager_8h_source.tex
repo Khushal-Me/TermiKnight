@@ -1,0 +1,32 @@
+\doxysection{Combat\+Manager.\+h}
+\hypertarget{_combat_manager_8h_source}{}\label{_combat_manager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ CombatManager.h}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_8h}{Player.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_enemy_8h}{Enemy.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_combat_manager_a9b1029b2beffeabcdd6d44f587e88baf}{CombatManager}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_combat_manager_a9b1029b2beffeabcdd6d44f587e88baf}{CombatManager}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_combat_manager_a716e76bf940828c784f20caeae8e41e1}{startCombat}}(\mbox{\hyperlink{class_player}{Player}}\ \&player,\ std::vector<Enemy>\ \&enemies);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_combat_manager_afecc1b39f39dc29858125876e4015187}{playerTurn}}(\mbox{\hyperlink{class_player}{Player}}\ \&player,\ std::vector<Enemy>\ \&enemies);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_combat_manager_a051eccea441436bc2923705981c95285}{enemyTurn}}(\mbox{\hyperlink{class_player}{Player}}\ \&player,\ std::vector<Enemy>\ \&enemies);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_combat_manager_a0e0e68928e3c81f6dd803d07b1c28656}{allEnemiesDefeated}}(\textcolor{keyword}{const}\ std::vector<Enemy>\ \&enemies);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_combat_manager_a5edb221dd93def37311b7163177bbf56}{banditSkillApplied}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_combat_manager_a6c0e118433c7379ab12cf5f8934c19f8}{soldierSkillApplied}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_combat_manager_aea320eab8a17426608f0f96b4b77cc85}{blocking}};}
+\DoxyCodeLine{00097\ \};}
+
+\end{DoxyCode}

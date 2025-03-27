@@ -1,0 +1,92 @@
+\doxysection{Utilities Namespace Reference}
+\hypertarget{namespace_utilities}{}\label{namespace_utilities}\index{Utilities@{Utilities}}
+
+
+A collection of helper functions for common operations.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespace_utilities_a02ef8655aeb4e85d165bb360b5ab644d}{get\+Random\+Int}} (int min\+Val, int max\+Val)
+\begin{DoxyCompactList}\small\item\em Generates a random integer within a given range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_utilities_ac21e7976ed7d58d5f01512860bf8294b}{clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Clears the terminal screen, cross-\/platform. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespace_utilities_a300dd3a0219aa74d8fd25ccb830acd6f}{get\+Terminal\+Width}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current terminal width (in characters). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_utilities_aaaf525087875aed217b8e910c5e752da}{wait\+For\+Enter}} ()
+\begin{DoxyCompactList}\small\item\em Prompts the player to press Enter to continue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A collection of helper functions for common operations. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_utilities_ac21e7976ed7d58d5f01512860bf8294b}\index{Utilities@{Utilities}!clearScreen@{clearScreen}}
+\index{clearScreen@{clearScreen}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{clearScreen()}{clearScreen()}}
+{\footnotesize\ttfamily \label{namespace_utilities_ac21e7976ed7d58d5f01512860bf8294b} 
+void Utilities\+::clear\+Screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears the terminal screen, cross-\/platform. 
+
+Clears the terminal screen.
+
+On Windows, this uses the {\ttfamily cls} system command. ~\newline
+ On UNIX-\/like systems (Linux, mac\+OS), it uses ANSI escape codes to clear the screen. \Hypertarget{namespace_utilities_a02ef8655aeb4e85d165bb360b5ab644d}\index{Utilities@{Utilities}!getRandomInt@{getRandomInt}}
+\index{getRandomInt@{getRandomInt}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{getRandomInt()}{getRandomInt()}}
+{\footnotesize\ttfamily \label{namespace_utilities_a02ef8655aeb4e85d165bb360b5ab644d} 
+int Utilities\+::get\+Random\+Int (\begin{DoxyParamCaption}\item[{int}]{min\+Val}{, }\item[{int}]{max\+Val}{}\end{DoxyParamCaption})}
+
+
+
+Generates a random integer within a given range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Val} & The minimum value of the range (inclusive). \\
+\hline
+{\em max\+Val} & The maximum value of the range (inclusive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random integer between min\+Val and max\+Val. 
+\end{DoxyReturn}
+\Hypertarget{namespace_utilities_a300dd3a0219aa74d8fd25ccb830acd6f}\index{Utilities@{Utilities}!getTerminalWidth@{getTerminalWidth}}
+\index{getTerminalWidth@{getTerminalWidth}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{getTerminalWidth()}{getTerminalWidth()}}
+{\footnotesize\ttfamily \label{namespace_utilities_a300dd3a0219aa74d8fd25ccb830acd6f} 
+int Utilities\+::get\+Terminal\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current terminal width (in characters). 
+
+Retrieves the width of the terminal in columns.
+
+\begin{DoxyReturn}{Returns}
+Number of columns of the terminal.
+\end{DoxyReturn}
+This is used to help with layout calculations, such as centering or aligning text.
+
+\begin{DoxyReturn}{Returns}
+The width of the terminal in number of columns. 
+\end{DoxyReturn}
+\Hypertarget{namespace_utilities_aaaf525087875aed217b8e910c5e752da}\index{Utilities@{Utilities}!waitForEnter@{waitForEnter}}
+\index{waitForEnter@{waitForEnter}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{waitForEnter()}{waitForEnter()}}
+{\footnotesize\ttfamily \label{namespace_utilities_aaaf525087875aed217b8e910c5e752da} 
+void Utilities\+::wait\+For\+Enter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prompts the player to press Enter to continue. 
+
+Prompts the user to press Enter to continue.
+
+This function pauses execution and waits for the user to press Enter. It\textquotesingle{}s useful for allowing players to read important output before the screen is cleared.
+
+This is used to pause the game so the player can read output before the next screen is shown. 

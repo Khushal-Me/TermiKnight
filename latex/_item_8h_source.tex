@@ -1,0 +1,41 @@
+\doxysection{Item.\+h}
+\hypertarget{_item_8h_source}{}\label{_item_8h_source}\mbox{\hyperlink{_item_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}external/json/json.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{ItemType}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ WEAPON,}
+\DoxyCodeLine{00024\ \ \ \ \ HEALTH\_POTION,}
+\DoxyCodeLine{00025\ \ \ \ \ CHARM,}
+\DoxyCodeLine{00026\ \ \ \ \ ARTIFACT,}
+\DoxyCodeLine{00027\ \ \ \ \ MISC}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_item_a3d108310f0b206c8a87e19785253615a}{Item}}\ \{}
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_item_a3d108310f0b206c8a87e19785253615a}{Item}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{ItemType}}\ type,\ \textcolor{keywordtype}{int}\ value\ =\ 0);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::string\ \mbox{\hyperlink{class_item_a5e4095868ead0c681bc2e18b8507f735}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{ItemType}}\ \mbox{\hyperlink{class_item_afaaef88ed00da21815eb04565994054b}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_a17de078fe546a196b519dcb846ca87d5}{getValue}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ std::string\ \mbox{\hyperlink{class_item_ac2fa6170208899ced1405ffc556b13e1}{getTypeString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ nlohmann::json\ \mbox{\hyperlink{class_item_a022fc580b213cf547616a3dd5bc91e5f}{toJSON}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_item_a3d108310f0b206c8a87e19785253615a}{Item}}\ \mbox{\hyperlink{class_item_a8a690d6d8e75fb39d1a75c0bbdefcb5d}{fromJSON}}(\textcolor{keyword}{const}\ nlohmann::json\&\ jsonData);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00090\ \ \ \ \ std::string\ \mbox{\hyperlink{class_item_a5ea323338976e43c1b0e6030f641c9d2}{name\_}};\ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{ItemType}}\ \mbox{\hyperlink{class_item_ab5ae887d8f5f82f7ec87bdad2442791a}{type\_}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_item_aab4eafdc2cc91135a58cd5451af637b3}{value\_}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \};\ \ \ \ \ \ \ \ \ \ }
+
+\end{DoxyCode}

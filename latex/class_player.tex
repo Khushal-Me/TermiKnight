@@ -1,0 +1,419 @@
+\doxysection{Player Class Reference}
+\hypertarget{class_player}{}\label{class_player}\index{Player@{Player}}
+
+
+Represents the player\textquotesingle{}s character, storing health, attack, luck, inventory, and class-\/specific logic.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}{Player}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_player}{Player} with default (CIVILIAN) stats and initial values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_af66cf0b2caffcecdd5ecab0e36ee6f3a}{set\+Class\+Type}} (\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Changes the player\textquotesingle{}s class and applies relevant stat changes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}} \mbox{\hyperlink{class_player_aa02b9ba38a323a95aaadd4e5b998104b}{get\+Class\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the player\textquotesingle{}s current class type. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a518eb6e16ed51238b7c1511ccfe6572f}{get\+Health}} () const
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s current health. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a24a0506d7271d24c9c9a54e47646bb6b}{get\+Max\+Health}} () const
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s maximum health. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_adf1312f7e19e42113297e0c8a35a4b71}{get\+Attack}} () const
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s current attack value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a5a95d993a935d0b26bedf96d7e8515c8}{get\+Luck}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the player\textquotesingle{}s luck stat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_ab5f485fe076e2e29b84c83e143011ab3}{set\+Health}} (int h)
+\begin{DoxyCompactList}\small\item\em Manually sets the player\textquotesingle{}s health. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_adba22cf52ce633a3e1ebc0c2fbcd296a}{take\+Damage}} (int dmg)
+\begin{DoxyCompactList}\small\item\em Decreases the player\textquotesingle{}s health by the given damage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_aa7eae982673d2d8027ac5f45e6b5b4f7}{heal}} (int amount)
+\begin{DoxyCompactList}\small\item\em Heals the player by a specified amount, not exceeding max\+Health\+\_\+. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_aff0e2bbcdbf517da3a57bc2fecda9dfa}{use\+Skill}} ()
+\begin{DoxyCompactList}\small\item\em Activates the player\textquotesingle{}s class-\/specific skill. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a55e71b9979e57ebf80ba12edcca307ea}\label{class_player_a55e71b9979e57ebf80ba12edcca307ea} 
+void {\bfseries show\+Inventory} () const
+\begin{DoxyCompactList}\small\item\em Displays all items in the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_inventory}{Inventory}} \& \mbox{\hyperlink{class_player_a49b27ca90a7ea2924de7dda7ec6f1d8f}{get\+Inventory}} ()
+\begin{DoxyCompactList}\small\item\em Provides access to the player\textquotesingle{}s \doxylink{class_inventory}{Inventory} object for further manipulation. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a6dc5fb2eafbdb7e12433ea450ccd8906}\label{class_player_a6dc5fb2eafbdb7e12433ea450ccd8906} 
+void {\bfseries add\+Artifact} ()
+\begin{DoxyCompactList}\small\item\em Increments the count of artifacts collected by the player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_a35a240dd7a51210839470968cd4ae47d}{get\+Artifacts\+Collected}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the total number of artifacts the player has collected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_aa34eaa3122ee655e372e492f39d3f97f}{equip\+Weapon}} (int bonus)
+\begin{DoxyCompactList}\small\item\em Equips a weapon, adding its bonus to the player\textquotesingle{}s attack. \end{DoxyCompactList}\item 
+nlohmann\+::json \mbox{\hyperlink{class_player_a48f92e7dacbccd9bb7975d28c7852abc}{to\+JSON}} () const
+\begin{DoxyCompactList}\small\item\em Serializes the player\textquotesingle{}s data into a JSON object for saving. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a1cd1ea6ababf5c3fe8ea50908c2ef3e7}{from\+JSON}} (const nlohmann\+::json \&data)
+\begin{DoxyCompactList}\small\item\em Deserializes a JSON object into the player\textquotesingle{}s data for loading. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_ae1de653a347c3795bab48f272020f787}{show\+Inventory\+Side\+By\+Side\+With\+Menu}} () const
+\begin{DoxyCompactList}\small\item\em Displays the game menu and inventory side by side. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_aeb5a083f19a16e8fb89b7c869db0f72c}{update\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em Recalculates the player\textquotesingle{}s final Attack after changes to base\+Attack\+\_\+ or weapon\+Bonus\+\_\+. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a87d3df38d2a62d26ae418002063b68fc}{apply\+Class\+Bonuses}} (\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Applies stat bonuses and maximum health adjustments based on the player\textquotesingle{}s class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_player_af5d6e2bdfabef541a6409ac4a6db33dc}\label{class_player_af5d6e2bdfabef541a6409ac4a6db33dc} 
+\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}} {\bfseries class\+Type\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s class type. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_aa4d2576eb37f193574753fb2a9f84db7}\label{class_player_aa4d2576eb37f193574753fb2a9f84db7} 
+int {\bfseries health\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s current health. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a68b648d950d36d24ce00ba223f1cb2e6}\label{class_player_a68b648d950d36d24ce00ba223f1cb2e6} 
+int {\bfseries max\+Health\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s maximum health. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a7edc94909b47f80e0f4314c242b2105d}\label{class_player_a7edc94909b47f80e0f4314c242b2105d} 
+int {\bfseries attack\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s final attack value (base + weapon) \end{DoxyCompactList}\item 
+\Hypertarget{class_player_ab29abf14ead1df7d996ab7bbf7e5f3d1}\label{class_player_ab29abf14ead1df7d996ab7bbf7e5f3d1} 
+int {\bfseries luck\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s luck stat (influences certain actions) \end{DoxyCompactList}\item 
+\Hypertarget{class_player_aa9ff296833df102ce39cb815ef6c501b}\label{class_player_aa9ff296833df102ce39cb815ef6c501b} 
+int {\bfseries artifacts\+Collected\+\_\+}
+\begin{DoxyCompactList}\small\item\em The number of quest artifacts collected. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a69a8adb470885304652da3b07bb1e484}\label{class_player_a69a8adb470885304652da3b07bb1e484} 
+int {\bfseries base\+Attack\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s base attack value. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_a024b6f117c43e5ac16916ce2a076621a}\label{class_player_a024b6f117c43e5ac16916ce2a076621a} 
+int {\bfseries weapon\+Bonus\+\_\+}
+\begin{DoxyCompactList}\small\item\em The bonus attack from equipped weapons. \end{DoxyCompactList}\item 
+\Hypertarget{class_player_ad744e82f7dc9979e1f66b2e668bd207d}\label{class_player_ad744e82f7dc9979e1f66b2e668bd207d} 
+\mbox{\hyperlink{class_inventory}{Inventory}} {\bfseries inventory\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player\textquotesingle{}s inventory of items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the player\textquotesingle{}s character, storing health, attack, luck, inventory, and class-\/specific logic. 
+
+The \doxylink{class_player}{Player} can equip weapons (increasing Attack), use potions, and activate class-\/specific skills during combat. The class also manages saving/loading of the player\textquotesingle{}s data via JSON. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8}\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily \label{class_player_affe0cc3cb714f6deb4e62f0c0d3f1fd8} 
+Player\+::\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_player}{Player} with default (CIVILIAN) stats and initial values. 
+
+Constructs a default \doxylink{class_player}{Player} with CIVILIAN class stats and initial values.
+
+Initializes health, max\+Health, attack, luck, base\+Attack, weapon\+Bonus, and artifacts\+Collected to default values. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_a87d3df38d2a62d26ae418002063b68fc}\index{Player@{Player}!applyClassBonuses@{applyClassBonuses}}
+\index{applyClassBonuses@{applyClassBonuses}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{applyClassBonuses()}{applyClassBonuses()}}
+{\footnotesize\ttfamily \label{class_player_a87d3df38d2a62d26ae418002063b68fc} 
+void Player\+::apply\+Class\+Bonuses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Applies stat bonuses and maximum health adjustments based on the player\textquotesingle{}s class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The new \doxylink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type} being applied.\\
+\hline
+\end{DoxyParams}
+This method is called when the player\textquotesingle{}s class type is changed. It resets the weapon bonus to 0 and recalculates the final attack using \doxylink{class_player_aeb5a083f19a16e8fb89b7c869db0f72c}{update\+Attack()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The new \doxylink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type} being applied. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_aa34eaa3122ee655e372e492f39d3f97f}\index{Player@{Player}!equipWeapon@{equipWeapon}}
+\index{equipWeapon@{equipWeapon}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{equipWeapon()}{equipWeapon()}}
+{\footnotesize\ttfamily \label{class_player_aa34eaa3122ee655e372e492f39d3f97f} 
+void Player\+::equip\+Weapon (\begin{DoxyParamCaption}\item[{int}]{bonus}{}\end{DoxyParamCaption})}
+
+
+
+Equips a weapon, adding its bonus to the player\textquotesingle{}s attack. 
+
+Equips a weapon that increases the player\textquotesingle{}s Attack by a specified bonus.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bonus} & The bonus attack value to add.\\
+\hline
+\end{DoxyParams}
+This method sets the player\textquotesingle{}s weapon\+Bonus\+\_\+ to the given bonus and recalculates the final attack value via \doxylink{class_player_aeb5a083f19a16e8fb89b7c869db0f72c}{update\+Attack()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bonus} & An integer representing the weapon\textquotesingle{}s attack bonus. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a1cd1ea6ababf5c3fe8ea50908c2ef3e7}\index{Player@{Player}!fromJSON@{fromJSON}}
+\index{fromJSON@{fromJSON}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{fromJSON()}{fromJSON()}}
+{\footnotesize\ttfamily \label{class_player_a1cd1ea6ababf5c3fe8ea50908c2ef3e7} 
+void Player\+::from\+JSON (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Deserializes a JSON object into the player\textquotesingle{}s data for loading. 
+
+Restores the player\textquotesingle{}s state from a JSON object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The JSON object to read from.\\
+\hline
+\end{DoxyParams}
+This updates class\+Type\+\_\+, health, attack, luck, artifacts\+Collected, and the player\textquotesingle{}s inventory based on the provided JSON data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A nlohmann\+::json object previously generated by \doxylink{class_player_a48f92e7dacbccd9bb7975d28c7852abc}{Player\+::to\+JSON()}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a35a240dd7a51210839470968cd4ae47d}\index{Player@{Player}!getArtifactsCollected@{getArtifactsCollected}}
+\index{getArtifactsCollected@{getArtifactsCollected}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getArtifactsCollected()}{getArtifactsCollected()}}
+{\footnotesize\ttfamily \label{class_player_a35a240dd7a51210839470968cd4ae47d} 
+int Player\+::get\+Artifacts\+Collected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the total number of artifacts the player has collected. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing how many artifacts the player holds. 
+\end{DoxyReturn}
+\Hypertarget{class_player_adf1312f7e19e42113297e0c8a35a4b71}\index{Player@{Player}!getAttack@{getAttack}}
+\index{getAttack@{getAttack}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getAttack()}{getAttack()}}
+{\footnotesize\ttfamily \label{class_player_adf1312f7e19e42113297e0c8a35a4b71} 
+int Player\+::get\+Attack (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the player\textquotesingle{}s current attack value. 
+
+This is the final attack after combining base\+Attack\+\_\+ and any weapon bonuses. \begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s final attack stat. 
+\end{DoxyReturn}
+\Hypertarget{class_player_aa02b9ba38a323a95aaadd4e5b998104b}\index{Player@{Player}!getClassType@{getClassType}}
+\index{getClassType@{getClassType}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getClassType()}{getClassType()}}
+{\footnotesize\ttfamily \label{class_player_aa02b9ba38a323a95aaadd4e5b998104b} 
+\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}} Player\+::get\+Class\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the player\textquotesingle{}s current class type. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type} enum representing the player\textquotesingle{}s class. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a518eb6e16ed51238b7c1511ccfe6572f}\index{Player@{Player}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily \label{class_player_a518eb6e16ed51238b7c1511ccfe6572f} 
+int Player\+::get\+Health (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the player\textquotesingle{}s current health. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing HP. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a49b27ca90a7ea2924de7dda7ec6f1d8f}\index{Player@{Player}!getInventory@{getInventory}}
+\index{getInventory@{getInventory}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getInventory()}{getInventory()}}
+{\footnotesize\ttfamily \label{class_player_a49b27ca90a7ea2924de7dda7ec6f1d8f} 
+\mbox{\hyperlink{class_inventory}{Inventory}} \& Player\+::get\+Inventory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Provides access to the player\textquotesingle{}s \doxylink{class_inventory}{Inventory} object for further manipulation. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the player\textquotesingle{}s \doxylink{class_inventory}{Inventory}. 
+\end{DoxyReturn}
+\Hypertarget{class_player_a5a95d993a935d0b26bedf96d7e8515c8}\index{Player@{Player}!getLuck@{getLuck}}
+\index{getLuck@{getLuck}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getLuck()}{getLuck()}}
+{\footnotesize\ttfamily \label{class_player_a5a95d993a935d0b26bedf96d7e8515c8} 
+int Player\+::get\+Luck (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the player\textquotesingle{}s luck stat. 
+
+\begin{DoxyReturn}{Returns}
+An integer representing how luck influences certain actions (like fleeing). 
+\end{DoxyReturn}
+\Hypertarget{class_player_a24a0506d7271d24c9c9a54e47646bb6b}\index{Player@{Player}!getMaxHealth@{getMaxHealth}}
+\index{getMaxHealth@{getMaxHealth}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getMaxHealth()}{getMaxHealth()}}
+{\footnotesize\ttfamily \label{class_player_a24a0506d7271d24c9c9a54e47646bb6b} 
+int Player\+::get\+Max\+Health (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the player\textquotesingle{}s maximum health. 
+
+This represents the upper limit for the player\textquotesingle{}s health, determined by their class (e.\+g., Soldier has more than Mage).
+
+\begin{DoxyReturn}{Returns}
+The maximum health value. 
+\end{DoxyReturn}
+\Hypertarget{class_player_aa7eae982673d2d8027ac5f45e6b5b4f7}\index{Player@{Player}!heal@{heal}}
+\index{heal@{heal}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{heal()}{heal()}}
+{\footnotesize\ttfamily \label{class_player_aa7eae982673d2d8027ac5f45e6b5b4f7} 
+void Player\+::heal (\begin{DoxyParamCaption}\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Heals the player by a specified amount, not exceeding max\+Health\+\_\+. 
+
+Restores the player\textquotesingle{}s health by a given amount, not exceeding max\+Health.
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The HP to restore.\\
+\hline
+{\em amount} & The amount of health to restore. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_af66cf0b2caffcecdd5ecab0e36ee6f3a}\index{Player@{Player}!setClassType@{setClassType}}
+\index{setClassType@{setClassType}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setClassType()}{setClassType()}}
+{\footnotesize\ttfamily \label{class_player_af66cf0b2caffcecdd5ecab0e36ee6f3a} 
+void Player\+::set\+Class\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Changes the player\textquotesingle{}s class and applies relevant stat changes. 
+
+Assigns a new class type to the player and applies corresponding stat bonuses.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The \doxylink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type} to switch to (CIVILIAN, BANDIT, MAGE, SOLDIER).\\
+\hline
+{\em type} & The new \doxylink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type} (e.\+g., CIVILIAN, BANDIT, MAGE, SOLDIER). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_ab5f485fe076e2e29b84c83e143011ab3}\index{Player@{Player}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setHealth()}{setHealth()}}
+{\footnotesize\ttfamily \label{class_player_ab5f485fe076e2e29b84c83e143011ab3} 
+void Player\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Manually sets the player\textquotesingle{}s health. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & The new health value. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_ae1de653a347c3795bab48f272020f787}\index{Player@{Player}!showInventorySideBySideWithMenu@{showInventorySideBySideWithMenu}}
+\index{showInventorySideBySideWithMenu@{showInventorySideBySideWithMenu}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{showInventorySideBySideWithMenu()}{showInventorySideBySideWithMenu()}}
+{\footnotesize\ttfamily \label{class_player_ae1de653a347c3795bab48f272020f787} 
+void Player\+::show\+Inventory\+Side\+By\+Side\+With\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Displays the game menu and inventory side by side. 
+
+This function calculates the terminal width and prints the game menu on the left, with the inventory items aligned to the right. \Hypertarget{class_player_adba22cf52ce633a3e1ebc0c2fbcd296a}\index{Player@{Player}!takeDamage@{takeDamage}}
+\index{takeDamage@{takeDamage}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{takeDamage()}{takeDamage()}}
+{\footnotesize\ttfamily \label{class_player_adba22cf52ce633a3e1ebc0c2fbcd296a} 
+void Player\+::take\+Damage (\begin{DoxyParamCaption}\item[{int}]{dmg}{}\end{DoxyParamCaption})}
+
+
+
+Decreases the player\textquotesingle{}s health by the given damage. 
+
+Reduces the player\textquotesingle{}s health by a given amount of damage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dmg} & The amount of damage to apply.\\
+\hline
+{\em dmg} & The amount of damage the player takes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_player_a48f92e7dacbccd9bb7975d28c7852abc}\index{Player@{Player}!toJSON@{toJSON}}
+\index{toJSON@{toJSON}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{toJSON()}{toJSON()}}
+{\footnotesize\ttfamily \label{class_player_a48f92e7dacbccd9bb7975d28c7852abc} 
+nlohmann\+::json Player\+::to\+JSON (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Serializes the player\textquotesingle{}s data into a JSON object for saving. 
+
+\begin{DoxyReturn}{Returns}
+A nlohmann\+::json object representing the player\textquotesingle{}s current state.
+\end{DoxyReturn}
+This includes the player\textquotesingle{}s class, current health, attack, luck, collected artifacts, and inventory contents.
+
+\begin{DoxyReturn}{Returns}
+A nlohmann\+::json object representing the player\textquotesingle{}s current state. 
+\end{DoxyReturn}
+\Hypertarget{class_player_aeb5a083f19a16e8fb89b7c869db0f72c}\index{Player@{Player}!updateAttack@{updateAttack}}
+\index{updateAttack@{updateAttack}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{updateAttack()}{updateAttack()}}
+{\footnotesize\ttfamily \label{class_player_aeb5a083f19a16e8fb89b7c869db0f72c} 
+void Player\+::update\+Attack (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Recalculates the player\textquotesingle{}s final Attack after changes to base\+Attack\+\_\+ or weapon\+Bonus\+\_\+. 
+
+Updates the player\textquotesingle{}s final Attack value by adding base\+Attack\+\_\+ and weapon\+Bonus\+\_\+.
+
+This is called whenever the player\textquotesingle{}s class or equipped weapon changes. The final attack\+\_\+ is set to (base\+Attack\+\_\+ + weapon\+Bonus\+\_\+). \Hypertarget{class_player_aff0e2bbcdbf517da3a57bc2fecda9dfa}\index{Player@{Player}!useSkill@{useSkill}}
+\index{useSkill@{useSkill}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{useSkill()}{useSkill()}}
+{\footnotesize\ttfamily \label{class_player_aff0e2bbcdbf517da3a57bc2fecda9dfa} 
+int Player\+::use\+Skill (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Activates the player\textquotesingle{}s class-\/specific skill. 
+
+\begin{DoxyReturn}{Returns}
+An integer code (1=CIVILIAN, 2=BANDIT, 3=MAGE, 4=SOLDIER) indicating which skill was used.
+\end{DoxyReturn}
+Skills vary by class\+:
+\begin{DoxyItemize}
+\item CIVILIAN heals 50\% of max health.
+\item BANDIT improves next flee chance.
+\item MAGE has a 50\% chance to instantly defeat an enemy.
+\item SOLDIER doubles the damage on the next attack.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+An integer code indicating which skill was used\+: 1 = CIVILIAN, 2 = BANDIT, 3 = MAGE, 4 = SOLDIER. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_player_8h}{Player.\+h}}\item 
+\mbox{\hyperlink{_player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

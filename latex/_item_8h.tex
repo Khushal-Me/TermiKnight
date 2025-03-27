@@ -1,0 +1,52 @@
+\doxysection{Item.\+h File Reference}
+\hypertarget{_item_8h}{}\label{_item_8h}\index{Item.h@{Item.h}}
+
+
+Defines the \doxylink{class_item}{Item} class and its related enumerations, representing various objects (weapons, potions, artifacts, etc.) within the game.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}external/json/json.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_item}{Item}}
+\begin{DoxyCompactList}\small\item\em Represents a single in-\/game object that can be carried or used by the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} \{ \newline
+{\bfseries WEAPON}
+, {\bfseries HEALTH\+\_\+\+POTION}
+, {\bfseries CHARM}
+, {\bfseries ARTIFACT}
+, \newline
+{\bfseries MISC}
+ \}
+\begin{DoxyCompactList}\small\item\em An enumeration of possible item categories within the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{class_item}{Item} class and its related enumerations, representing various objects (weapons, potions, artifacts, etc.) within the game. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_item_8h_a443f647757dde85043b49343f5cbe66b}\index{Item.h@{Item.h}!ItemType@{ItemType}}
+\index{ItemType@{ItemType}!Item.h@{Item.h}}
+\doxysubsubsection{\texorpdfstring{ItemType}{ItemType}}
+{\footnotesize\ttfamily \label{_item_8h_a443f647757dde85043b49343f5cbe66b} 
+enum class \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+An enumeration of possible item categories within the game. 
+
+Each \doxylink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type} indicates how the item behaves or is used\+:
+\begin{DoxyItemize}
+\item WEAPON\+: Increases player Attack when equipped.
+\item HEALTH\+\_\+\+POTION\+: Restores player HP when consumed.
+\item CHARM\+: Could grant extra luck or other stat boosts.
+\item ARTIFACT\+: Main quest items typically used to progress the story.
+\item MISC\+: Any other items not fitting the above categories. 
+\end{DoxyItemize}

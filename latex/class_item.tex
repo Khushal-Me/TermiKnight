@@ -1,0 +1,200 @@
+\doxysection{Item Class Reference}
+\hypertarget{class_item}{}\label{class_item}\index{Item@{Item}}
+
+
+Represents a single in-\/game object that can be carried or used by the player.  
+
+
+
+
+{\ttfamily \#include $<$Item.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_item_a3d108310f0b206c8a87e19785253615a}{Item}} (const std\+::string \&name, \mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} type, int value=0)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_item}{Item} with a specified name, type, and value. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_item_a5e4095868ead0c681bc2e18b8507f735}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the name of this item. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} \mbox{\hyperlink{class_item_afaaef88ed00da21815eb04565994054b}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type/category of this item. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_item_a17de078fe546a196b519dcb846ca87d5}{get\+Value}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the numeric value associated with this item. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_item_ac2fa6170208899ced1405ffc556b13e1}{get\+Type\+String}} () const
+\begin{DoxyCompactList}\small\item\em Provides a human-\/readable label for the item\textquotesingle{}s type. \end{DoxyCompactList}\item 
+nlohmann\+::json \mbox{\hyperlink{class_item_a022fc580b213cf547616a3dd5bc91e5f}{to\+JSON}} () const
+\begin{DoxyCompactList}\small\item\em Serializes this \doxylink{class_item}{Item} to a JSON object for saving or data transfer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_item}{Item}} \mbox{\hyperlink{class_item_a8a690d6d8e75fb39d1a75c0bbdefcb5d}{from\+JSON}} (const nlohmann\+::json \&json\+Data)
+\begin{DoxyCompactList}\small\item\em Creates an \doxylink{class_item}{Item} instance from a JSON object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_item_a5ea323338976e43c1b0e6030f641c9d2}\label{class_item_a5ea323338976e43c1b0e6030f641c9d2} 
+std\+::string {\bfseries name\+\_\+}
+\begin{DoxyCompactList}\small\item\em The item\textquotesingle{}s display name. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_ab5ae887d8f5f82f7ec87bdad2442791a}\label{class_item_ab5ae887d8f5f82f7ec87bdad2442791a} 
+\mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} {\bfseries type\+\_\+}
+\begin{DoxyCompactList}\small\item\em The category/type of the item. \end{DoxyCompactList}\item 
+\Hypertarget{class_item_aab4eafdc2cc91135a58cd5451af637b3}\label{class_item_aab4eafdc2cc91135a58cd5451af637b3} 
+int {\bfseries value\+\_\+}
+\begin{DoxyCompactList}\small\item\em The integer value representing damage, healing, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single in-\/game object that can be carried or used by the player. 
+
+Items can be consumables (like potions) or equipable (like weapons). Each \doxylink{class_item}{Item} has a name, a type, and an integer value that typically denotes how much it heals for (if a potion) or how much attack bonus it provides (if a weapon). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_item_a3d108310f0b206c8a87e19785253615a}\index{Item@{Item}!Item@{Item}}
+\index{Item@{Item}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{Item()}{Item()}}
+{\footnotesize\ttfamily \label{class_item_a3d108310f0b206c8a87e19785253615a} 
+Item\+::\+Item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{, }\item[{\mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}}}]{type}{, }\item[{int}]{value}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructs an \doxylink{class_item}{Item} with a specified name, type, and value. 
+
+Constructs a new \doxylink{class_item}{Item} with a given name, type, and value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & A display name for the item (e.\+g., "{}\+Rusted Sword"{}). \\
+\hline
+{\em type} & The category (\doxylink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}) of this item. \\
+\hline
+{\em value} & The numeric value associated with the item. For example, weapon bonus damage, potion healing amount, etc.\\
+\hline
+{\em name} & The display name of the item (e.\+g., "{}\+Rusted Sword"{}). \\
+\hline
+{\em type} & The category of the item (Weapon, Health Potion, etc.). \\
+\hline
+{\em value} & An integer that may represent attack bonus (for weapons), healing amount (for potions), etc. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_item_a8a690d6d8e75fb39d1a75c0bbdefcb5d}\index{Item@{Item}!fromJSON@{fromJSON}}
+\index{fromJSON@{fromJSON}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{fromJSON()}{fromJSON()}}
+{\footnotesize\ttfamily \label{class_item_a8a690d6d8e75fb39d1a75c0bbdefcb5d} 
+\mbox{\hyperlink{class_item}{Item}} Item\+::from\+JSON (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates an \doxylink{class_item}{Item} instance from a JSON object. 
+
+Constructs an \doxylink{class_item}{Item} from a JSON object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Data} & A nlohmann\+::json structure containing "{}name"{}, "{}type"{}, and "{}value"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A fully constructed \doxylink{class_item}{Item} based on the data in json\+Data.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Data} & A nlohmann\+::json object containing "{}name"{}, "{}type"{}, and "{}value"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A fully initialized \doxylink{class_item}{Item} instance. 
+\end{DoxyReturn}
+\Hypertarget{class_item_a5e4095868ead0c681bc2e18b8507f735}\index{Item@{Item}!getName@{getName}}
+\index{getName@{getName}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_item_a5e4095868ead0c681bc2e18b8507f735} 
+std\+::string Item\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the name of this item. 
+
+Retrieves the name of this \doxylink{class_item}{Item}.
+
+\begin{DoxyReturn}{Returns}
+A std\+::string representing the item\textquotesingle{}s name.
+
+A string representing the item\textquotesingle{}s name. 
+\end{DoxyReturn}
+\Hypertarget{class_item_afaaef88ed00da21815eb04565994054b}\index{Item@{Item}!getType@{getType}}
+\index{getType@{getType}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_item_afaaef88ed00da21815eb04565994054b} 
+\mbox{\hyperlink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} Item\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the type/category of this item. 
+
+Retrieves the type (category) of this \doxylink{class_item}{Item}.
+
+\begin{DoxyReturn}{Returns}
+An \doxylink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type} enum, indicating whether it\textquotesingle{}s a WEAPON, HEALTH\+\_\+\+POTION, etc.
+
+An \doxylink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type} enum indicating whether it\textquotesingle{}s a weapon, potion, etc. 
+\end{DoxyReturn}
+\Hypertarget{class_item_ac2fa6170208899ced1405ffc556b13e1}\index{Item@{Item}!getTypeString@{getTypeString}}
+\index{getTypeString@{getTypeString}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getTypeString()}{getTypeString()}}
+{\footnotesize\ttfamily \label{class_item_ac2fa6170208899ced1405ffc556b13e1} 
+std\+::string Item\+::get\+Type\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Provides a human-\/readable label for the item\textquotesingle{}s type. 
+
+Converts the \doxylink{_item_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type} enum to a readable string.
+
+\begin{DoxyReturn}{Returns}
+A std\+::string such as "{}\+Weapon"{}, "{}\+Health Potion"{}, etc.
+
+A human-\/readable string indicating the item\textquotesingle{}s category (e.\+g., "{}\+Weapon"{}, "{}\+Health Potion"{}). 
+\end{DoxyReturn}
+\Hypertarget{class_item_a17de078fe546a196b519dcb846ca87d5}\index{Item@{Item}!getValue@{getValue}}
+\index{getValue@{getValue}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily \label{class_item_a17de078fe546a196b519dcb846ca87d5} 
+int Item\+::get\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the numeric value associated with this item. 
+
+Retrieves the integral value for this \doxylink{class_item}{Item}.
+
+\begin{DoxyReturn}{Returns}
+An integer, often representing damage bonus or healing amount.
+
+An integer representing damage bonus, healing amount, or other stat effect. 
+\end{DoxyReturn}
+\Hypertarget{class_item_a022fc580b213cf547616a3dd5bc91e5f}\index{Item@{Item}!toJSON@{toJSON}}
+\index{toJSON@{toJSON}!Item@{Item}}
+\doxysubsubsection{\texorpdfstring{toJSON()}{toJSON()}}
+{\footnotesize\ttfamily \label{class_item_a022fc580b213cf547616a3dd5bc91e5f} 
+nlohmann\+::json Item\+::to\+JSON (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Serializes this \doxylink{class_item}{Item} to a JSON object for saving or data transfer. 
+
+Serializes this \doxylink{class_item}{Item} to a JSON object.
+
+\begin{DoxyReturn}{Returns}
+A nlohmann\+::json object containing the item\textquotesingle{}s fields.
+
+A nlohmann\+::json representation, containing the item\textquotesingle{}s name, type (as int), and value. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_item_8h}{Item.\+h}}\item 
+\mbox{\hyperlink{_item_8cpp}{Item.\+cpp}}\end{DoxyCompactItemize}

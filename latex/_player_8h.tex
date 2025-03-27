@@ -1,0 +1,49 @@
+\doxysection{Player.\+h File Reference}
+\hypertarget{_player_8h}{}\label{_player_8h}\index{Player.h@{Player.h}}
+
+
+Declares the \doxylink{class_player}{Player} class, representing the main character and their stats, inventory, and abilities.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Inventory.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_player}{Player}}
+\begin{DoxyCompactList}\small\item\em Represents the player\textquotesingle{}s character, storing health, attack, luck, inventory, and class-\/specific logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}} \{ {\bfseries CIVILIAN}
+, {\bfseries BANDIT}
+, {\bfseries MAGE}
+, {\bfseries SOLDIER}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates the possible classes a player can choose. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares the \doxylink{class_player}{Player} class, representing the main character and their stats, inventory, and abilities. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}\index{Player.h@{Player.h}!ClassType@{ClassType}}
+\index{ClassType@{ClassType}!Player.h@{Player.h}}
+\doxysubsubsection{\texorpdfstring{ClassType}{ClassType}}
+{\footnotesize\ttfamily \label{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415} 
+enum class \mbox{\hyperlink{_player_8h_a92f93237c843e4b3fff7b7cc4c80f415}{Class\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumerates the possible classes a player can choose. 
+
+Classes affect base stats and grant unique skills\+:
+\begin{DoxyItemize}
+\item CIVILIAN\+: Higher luck, moderate stats, can heal 50\%.
+\item BANDIT\+: Higher damage, improved flee chances.
+\item MAGE\+: High damage but lower health, 50\% chance to one-\/shot.
+\item SOLDIER\+: High health and damage, next attack can be doubled. 
+\end{DoxyItemize}

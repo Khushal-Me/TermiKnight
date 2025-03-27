@@ -1,0 +1,51 @@
+\doxysection{World.\+h}
+\hypertarget{_world_8h_source}{}\label{_world_8h_source}\mbox{\hyperlink{_world_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_structure_8h}{Structure.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}external/json/json.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_world_afa39d4e6f714a7a3691ac0c656f5e8a8}{World}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_world_afa39d4e6f714a7a3691ac0c656f5e8a8}{World}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_a7f790475fc1492b7a418d3a2d4436516}{createWorld}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_world_ad8200d1eacdf77d579c1048fda9e3116}{attemptSpawnStructure}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_world_afdf3d8f0837c959d69bc91bce3066c22}{canProgress}}(\textcolor{keywordtype}{int}\ artifactsCollected);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_world_a720c8e59cdad1ba0779e24844b46a5a8}{advanceLand}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ std::string\ \mbox{\hyperlink{class_world_aba1ae1bb458113a3a3f09e2db2675c83}{getLastSpawnedStructureType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_structure}{Structure}}\&\ \mbox{\hyperlink{class_world_a138b5dbc89bcf0035fbc247855b19a6e}{getCurrentStructure}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_world_a7771fb9245894fd956895d1d10292cc1}{getExploredStructures}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_a1d19133352df63ab4f2773eb7e0b2316}{markStructureExplored}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ nlohmann::json\ \mbox{\hyperlink{class_world_a4487904819d550e346adc07cbe05c358}{toJSON}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_world_aac493002cf0c1351221598b7f8b48ee0}{fromJSON}}(\textcolor{keyword}{const}\ nlohmann::json\&\ jsonData);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_structure}{Structure}}*\ \mbox{\hyperlink{class_world_a2f10fb9a33e9f3792aeb9eebdeda55ee}{getActiveStructurePtr}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_world_af6c8b4ce4700aae0527bc1e4c46d9271}{activeStructure\_}};}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_world_ad8f0a7f2bf318eed527fa668bfba9df3}{currentLandIndex\_}};\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_world_acd3c30a3b721cfb173c0626df6deba51}{justSpawned\_}};\ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_structure}{Structure}}*\ \mbox{\hyperlink{class_world_af6c8b4ce4700aae0527bc1e4c46d9271}{activeStructure\_}};\ }
+\DoxyCodeLine{00098\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_world_a4d295ef260553e6adbd29cc3ea5a88f1}{exploredStructures\_}};\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00106\ \ \ \ \ std::vector<std::vector<std::pair<StructureType,int>>>\ \mbox{\hyperlink{class_world_a0acc680d1ba99a4a013d77527a7b5226}{landStructurePool\_}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<Structure>\ \mbox{\hyperlink{class_world_ac7bbb2537b4f4ccf1c9b7ad78623e4e7}{structures\_}};\ }
+\DoxyCodeLine{00109\ \};}
+
+\end{DoxyCode}

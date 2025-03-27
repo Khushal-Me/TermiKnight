@@ -1,0 +1,22 @@
+\doxysection{Save\+Manager.\+h}
+\hypertarget{_save_manager_8h_source}{}\label{_save_manager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_game_8h}{Game.h}}"{}}\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_8h}{Player.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_world_8h}{World.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}external/json/json.hpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_save_manager}{SaveManager}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_manager_a6b15df994775fbda88481131c4f7822d}{saveGame}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_player}{Player}}\&\ player,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_world}{World}}\&\ world);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_save_manager_a01950685d2a72c9d1ab00ee47dd65e13}{loadGame}}(\mbox{\hyperlink{class_player}{Player}}\&\ player,\ \mbox{\hyperlink{class_world}{World}}\&\ world);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_manager_a335680ccdfed4d19899122bead8db455}{startAutoSave}}(\mbox{\hyperlink{class_player}{Player}}\&\ player,\ \mbox{\hyperlink{class_world}{World}}\&\ world);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_manager_ad0ff5e205583a901c9703f2cf55dd249}{handleExitSignal}}(\textcolor{keywordtype}{int}\ signal);}
+\DoxyCodeLine{00059\ \};}
+
+\end{DoxyCode}

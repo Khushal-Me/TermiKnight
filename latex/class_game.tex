@@ -1,0 +1,260 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+The main class responsible for running the game.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_game}{Game} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}} ()
+\begin{DoxyCompactList}\small\item\em Runs the main game loop, including the menu and gameplay. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_ab684b380c7d3f3577e2fb80006415297}{init\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the core game components. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a5ed7fc5be77080f7f6dd5363f7f007a1}{main\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays and handles the main menu of the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aede5f46c8c7bbbaf8459eeec397a11e7}{game\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em The main loop of the game, handling player actions and game updates. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_abef44323c6eedba94bedf4c44edb57f9}\label{class_game_abef44323c6eedba94bedf4c44edb57f9} 
+void {\bfseries print\+Game\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Prints the in-\/game menu options to the console. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ab24242177326f527c54db6082e331994}{bad\+Input\+Prompt}} ()
+\begin{DoxyCompactList}\small\item\em Handles invalid input from the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a96937304a3a1d9249bdd07e39af2389c}{handle\+Move\+Forward}} ()
+\begin{DoxyCompactList}\small\item\em Handles the action of moving forward in the game world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a73a2aec31202a440b8aeb3c1858fe0e3}{handle\+Explore}} ()
+\begin{DoxyCompactList}\small\item\em Handles the action of exploring the next room in a structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a77a29aeaa6daa9e4ab8bbc35b71e721c}{handle\+Inventory}} ()
+\begin{DoxyCompactList}\small\item\em Handles the action of checking the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ab5cd97a749e3927688adcbcb03ac1cdf}{handle\+Use\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Handles the action of using an item from the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a99ac4d1222e469103cecca489024179d}{handle\+Save\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Handles the action of saving the current game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_af776dd842f1046a406726a9d5732eff1}{handle\+Load\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Handles the action of loading a previously saved game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ae25abea3b7f2a2a6b8b5f5ee4e9c43b8}{handle\+Check\+Artifacts}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the player has collected enough artifacts to progress. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a5a0591dd13b43370efbdcb45e967be7d}{display\+Class\+Selection}} ()
+\begin{DoxyCompactList}\small\item\em Displays the class selection menu at the start of a new game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_abf0598736d0752b99711691b0ef8203a}{start\+New\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Starts a new game, initializing player and world states. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a59638f275d8f06d9a3b1d0f5697c4b84}\label{class_game_a59638f275d8f06d9a3b1d0f5697c4b84} 
+void {\bfseries print\+Intro\+Story} ()
+\begin{DoxyCompactList}\small\item\em Prints the introductory story of the game. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a183a1c2d79c2e8d721a17a2bf46f62c2}\label{class_game_a183a1c2d79c2e8d721a17a2bf46f62c2} 
+void {\bfseries print\+End\+Story} ()
+\begin{DoxyCompactList}\small\item\em Prints the ending story of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_ae152cbdfd498d72b27aaa01a2ed5fe9b}\label{class_game_ae152cbdfd498d72b27aaa01a2ed5fe9b} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries player\+\_\+}
+\begin{DoxyCompactList}\small\item\em The player character in the game. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a41d6c097013af90dc89e470f4c7b6051}\label{class_game_a41d6c097013af90dc89e470f4c7b6051} 
+\mbox{\hyperlink{class_world}{World}} {\bfseries world\+\_\+}
+\begin{DoxyCompactList}\small\item\em The game world containing lands and structures. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a898478f35c3a8bcff1e3bcb4e5e760eb}\label{class_game_a898478f35c3a8bcff1e3bcb4e5e760eb} 
+bool {\bfseries is\+Running\+\_\+}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the game is currently running. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_a2d820bfc8dedc45887ef00ec6f035e85}\label{class_game_a2d820bfc8dedc45887ef00ec6f035e85} 
+bool {\bfseries has\+Active\+Structure\+\_\+}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the player is currently inside an explorable structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main class responsible for running the game. 
+
+Manages the game loop, player input, world interactions, and overall game flow. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily \label{class_game_ad59df6562a58a614fda24622d3715b65} 
+Game\+::\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_game}{Game} object. 
+
+Initializes the game state, setting is\+Running\+\_\+ to true and has\+Active\+Structure\+\_\+ to false. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_ab24242177326f527c54db6082e331994}\index{Game@{Game}!badInputPrompt@{badInputPrompt}}
+\index{badInputPrompt@{badInputPrompt}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{badInputPrompt()}{badInputPrompt()}}
+{\footnotesize\ttfamily \label{class_game_ab24242177326f527c54db6082e331994} 
+void Game\+::bad\+Input\+Prompt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles invalid input from the player. 
+
+Handles invalid input from the player, prompting them to try again. \Hypertarget{class_game_a5a0591dd13b43370efbdcb45e967be7d}\index{Game@{Game}!displayClassSelection@{displayClassSelection}}
+\index{displayClassSelection@{displayClassSelection}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{displayClassSelection()}{displayClassSelection()}}
+{\footnotesize\ttfamily \label{class_game_a5a0591dd13b43370efbdcb45e967be7d} 
+void Game\+::display\+Class\+Selection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Displays the class selection menu at the start of a new game. 
+
+Displays the class selection menu and allows the player to choose their class. \Hypertarget{class_game_aede5f46c8c7bbbaf8459eeec397a11e7}\index{Game@{Game}!gameLoop@{gameLoop}}
+\index{gameLoop@{gameLoop}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{gameLoop()}{gameLoop()}}
+{\footnotesize\ttfamily \label{class_game_aede5f46c8c7bbbaf8459eeec397a11e7} 
+void Game\+::game\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The main loop of the game, handling player actions and game updates. 
+
+Runs the main game loop after the game has started or loaded.
+
+Handles player input and calls the appropriate game actions until the player quits. \Hypertarget{class_game_ae25abea3b7f2a2a6b8b5f5ee4e9c43b8}\index{Game@{Game}!handleCheckArtifacts@{handleCheckArtifacts}}
+\index{handleCheckArtifacts@{handleCheckArtifacts}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleCheckArtifacts()}{handleCheckArtifacts()}}
+{\footnotesize\ttfamily \label{class_game_ae25abea3b7f2a2a6b8b5f5ee4e9c43b8} 
+void Game\+::handle\+Check\+Artifacts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if the player has collected enough artifacts to progress. 
+
+Checks if the player has collected enough artifacts to progress to the next land.
+
+If so, it advances the land or ends the game if all artifacts are collected. \Hypertarget{class_game_a73a2aec31202a440b8aeb3c1858fe0e3}\index{Game@{Game}!handleExplore@{handleExplore}}
+\index{handleExplore@{handleExplore}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleExplore()}{handleExplore()}}
+{\footnotesize\ttfamily \label{class_game_a73a2aec31202a440b8aeb3c1858fe0e3} 
+void Game\+::handle\+Explore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles the action of exploring the next room in a structure. 
+
+Handles the "{}\+Explore Next Room"{} action in the game.
+
+Allows the player to explore the next room in the currently active structure. \Hypertarget{class_game_a77a29aeaa6daa9e4ab8bbc35b71e721c}\index{Game@{Game}!handleInventory@{handleInventory}}
+\index{handleInventory@{handleInventory}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleInventory()}{handleInventory()}}
+{\footnotesize\ttfamily \label{class_game_a77a29aeaa6daa9e4ab8bbc35b71e721c} 
+void Game\+::handle\+Inventory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles the action of checking the player\textquotesingle{}s inventory. 
+
+Handles the "{}\+Check Inventory"{} action in the game.
+
+Displays the items currently in the player\textquotesingle{}s inventory. \Hypertarget{class_game_af776dd842f1046a406726a9d5732eff1}\index{Game@{Game}!handleLoadGame@{handleLoadGame}}
+\index{handleLoadGame@{handleLoadGame}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleLoadGame()}{handleLoadGame()}}
+{\footnotesize\ttfamily \label{class_game_af776dd842f1046a406726a9d5732eff1} 
+void Game\+::handle\+Load\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles the action of loading a previously saved game state. 
+
+Handles the "{}\+Load Game"{} action in the game.
+
+Calls the \doxylink{class_save_manager}{Save\+Manager} to load a previously saved game state. \Hypertarget{class_game_a96937304a3a1d9249bdd07e39af2389c}\index{Game@{Game}!handleMoveForward@{handleMoveForward}}
+\index{handleMoveForward@{handleMoveForward}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleMoveForward()}{handleMoveForward()}}
+{\footnotesize\ttfamily \label{class_game_a96937304a3a1d9249bdd07e39af2389c} 
+void Game\+::handle\+Move\+Forward (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles the action of moving forward in the game world. 
+
+Handles the "{}\+Move Forward"{} action in the game.
+
+Allows the player to progress to the next land if all artifacts are collected, or attempts to spawn a new structure to explore. \Hypertarget{class_game_a99ac4d1222e469103cecca489024179d}\index{Game@{Game}!handleSaveGame@{handleSaveGame}}
+\index{handleSaveGame@{handleSaveGame}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleSaveGame()}{handleSaveGame()}}
+{\footnotesize\ttfamily \label{class_game_a99ac4d1222e469103cecca489024179d} 
+void Game\+::handle\+Save\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles the action of saving the current game state. 
+
+Handles the "{}\+Save Game"{} action in the game.
+
+Calls the \doxylink{class_save_manager}{Save\+Manager} to save the current game state. \Hypertarget{class_game_ab5cd97a749e3927688adcbcb03ac1cdf}\index{Game@{Game}!handleUseItem@{handleUseItem}}
+\index{handleUseItem@{handleUseItem}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{handleUseItem()}{handleUseItem()}}
+{\footnotesize\ttfamily \label{class_game_ab5cd97a749e3927688adcbcb03ac1cdf} 
+void Game\+::handle\+Use\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles the action of using an item from the player\textquotesingle{}s inventory. 
+
+Handles the "{}\+Use an Item"{} action in the game.
+
+Allows the player to select and use an item from their inventory. \Hypertarget{class_game_ab684b380c7d3f3577e2fb80006415297}\index{Game@{Game}!initGame@{initGame}}
+\index{initGame@{initGame}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily \label{class_game_ab684b380c7d3f3577e2fb80006415297} 
+void Game\+::init\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initializes the core game components. 
+
+Initializes the game state.
+
+Prints the intro story, creates the game world, and gives the player starting items. \Hypertarget{class_game_a5ed7fc5be77080f7f6dd5363f7f007a1}\index{Game@{Game}!mainMenu@{mainMenu}}
+\index{mainMenu@{mainMenu}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{mainMenu()}{mainMenu()}}
+{\footnotesize\ttfamily \label{class_game_a5ed7fc5be77080f7f6dd5363f7f007a1} 
+void Game\+::main\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Displays and handles the main menu of the game. 
+
+Displays the main menu and handles player choices.
+
+Allows the player to start a new game, load a game, or quit. \Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa} 
+void Game\+::run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Runs the main game loop, including the menu and gameplay. 
+
+Runs the main game loop.
+
+Initializes the game, displays the main menu, and handles the game loop until the player quits. \Hypertarget{class_game_abf0598736d0752b99711691b0ef8203a}\index{Game@{Game}!startNewGame@{startNewGame}}
+\index{startNewGame@{startNewGame}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{startNewGame()}{startNewGame()}}
+{\footnotesize\ttfamily \label{class_game_abf0598736d0752b99711691b0ef8203a} 
+void Game\+::start\+New\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Starts a new game, initializing player and world states. 
+
+Starts a new game, prompting the player for class selection. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_8h}{Game.\+h}}\item 
+\mbox{\hyperlink{_game_8cpp}{Game.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,220 @@
+\doxysection{Structure Class Reference}
+\hypertarget{class_structure}{}\label{class_structure}\index{Structure@{Structure}}
+
+
+Represents a structure in the game that can contain rooms, enemies, and riddles.  
+
+
+
+
+{\ttfamily \#include $<$Structure.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_structure_a590eb6f24b8a1cbe420a2350d4b53e77}{Structure}} (\mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}} type, int total\+Rooms)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_structure}{Structure} with a specific type and number of rooms. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_structure_a11f4087ae0deb277dee7f2a38e41d515}{get\+Type\+String}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the structure\textquotesingle{}s type as a string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_structure_aa4e765ccb2373a1ce6144fe6540de7e1}{is\+Fully\+Explored}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the structure has been fully explored. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_structure_a526ce4e995ccaac3ced2416d89b47650}{explore\+Next\+Room}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Explores the next room in the structure. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_structure_a102af29a8c26b4ba401e999888a45426}{has\+Found\+Artifact\+This\+Room}} () const
+\begin{DoxyCompactList}\small\item\em Checks if an artifact was found in the current room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_structure_a5fcf3b9b21366da885fa38f6a5d451e9}{init\+Riddles}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the riddle pool for the structure. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_structure_aadd6efaa4ad31a6e5c05a0919f7dfce7}{do\+Riddle}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Handles a riddle event in the structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_structure_af8541edc4bbe97ef9f46c18fcbfa59e0}{handle\+Room}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Handles interactions when entering a room. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_structure_a83532ceea8a2a436399b8ee9dedec9c3}{handle\+Chest}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Handles interactions when discovering a chest in a room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_structure_a7f6255b2d06e9753fdd0bbe9f6f46f35}\label{class_structure_a7f6255b2d06e9753fdd0bbe9f6f46f35} 
+\mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}} {\bfseries type\+\_\+}
+\begin{DoxyCompactList}\small\item\em The type of the structure. \end{DoxyCompactList}\item 
+\Hypertarget{class_structure_ac2945b75512e42b3c5a871bb17f86aac}\label{class_structure_ac2945b75512e42b3c5a871bb17f86aac} 
+int {\bfseries total\+Rooms\+\_\+}
+\begin{DoxyCompactList}\small\item\em The total number of rooms in the structure. \end{DoxyCompactList}\item 
+\Hypertarget{class_structure_a8986ce9cb681f9f92ab5a82049be75d5}\label{class_structure_a8986ce9cb681f9f92ab5a82049be75d5} 
+int {\bfseries current\+Room\+Index\+\_\+}
+\begin{DoxyCompactList}\small\item\em The current room index during exploration. \end{DoxyCompactList}\item 
+\Hypertarget{class_structure_a9fc4c510cac97276e2eb72b3a5f4948a}\label{class_structure_a9fc4c510cac97276e2eb72b3a5f4948a} 
+bool {\bfseries fully\+Explored\+\_\+}
+\begin{DoxyCompactList}\small\item\em Indicates if the structure has been fully explored. \end{DoxyCompactList}\item 
+\Hypertarget{class_structure_a054e9283701cd92e9c80b74dbd99e1c7}\label{class_structure_a054e9283701cd92e9c80b74dbd99e1c7} 
+bool {\bfseries found\+Artifact\+This\+Room\+\_\+}
+\begin{DoxyCompactList}\small\item\em Indicates if an artifact was found in the current room. \end{DoxyCompactList}\item 
+\Hypertarget{class_structure_a077487d1cc0154da0f11e98781f271ed}\label{class_structure_a077487d1cc0154da0f11e98781f271ed} 
+std\+::vector$<$ \mbox{\hyperlink{struct_riddle}{Riddle}} $>$ {\bfseries riddle\+Pool\+\_\+}
+\begin{DoxyCompactList}\small\item\em Pool of riddles available for this structure. \end{DoxyCompactList}\item 
+\Hypertarget{class_structure_ac28f12a81b01f1774fdfb1aa0f6001ed}\label{class_structure_ac28f12a81b01f1774fdfb1aa0f6001ed} 
+\mbox{\hyperlink{struct_riddle}{Riddle}} {\bfseries riddle\+To\+Ask\+\_\+}
+\begin{DoxyCompactList}\small\item\em The selected riddle for the final room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a structure in the game that can contain rooms, enemies, and riddles. 
+
+The \doxylink{class_structure}{Structure} class handles the exploration of rooms, managing riddles, spawning enemies, and rewarding the player with artifacts or items. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_structure_a590eb6f24b8a1cbe420a2350d4b53e77}\index{Structure@{Structure}!Structure@{Structure}}
+\index{Structure@{Structure}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{Structure()}{Structure()}}
+{\footnotesize\ttfamily \label{class_structure_a590eb6f24b8a1cbe420a2350d4b53e77} 
+Structure\+::\+Structure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}}}]{type}{, }\item[{int}]{total\+Rooms}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_structure}{Structure} with a specific type and number of rooms. 
+
+Constructs a \doxylink{class_structure}{Structure} with a specified type and number of rooms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the structure. \\
+\hline
+{\em total\+Rooms} & The total number of rooms in the structure. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_structure_aadd6efaa4ad31a6e5c05a0919f7dfce7}\index{Structure@{Structure}!doRiddle@{doRiddle}}
+\index{doRiddle@{doRiddle}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{doRiddle()}{doRiddle()}}
+{\footnotesize\ttfamily \label{class_structure_aadd6efaa4ad31a6e5c05a0919f7dfce7} 
+bool Structure\+::do\+Riddle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles a riddle event in the structure. 
+
+Handles a riddle event in the final room.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player attempting to solve the riddle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the player solves the riddle, otherwise false.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player attempting to solve the riddle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the riddle is solved, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_structure_a526ce4e995ccaac3ced2416d89b47650}\index{Structure@{Structure}!exploreNextRoom@{exploreNextRoom}}
+\index{exploreNextRoom@{exploreNextRoom}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{exploreNextRoom()}{exploreNextRoom()}}
+{\footnotesize\ttfamily \label{class_structure_a526ce4e995ccaac3ced2416d89b47650} 
+bool Structure\+::explore\+Next\+Room (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Explores the next room in the structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player exploring the room. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there are more rooms to explore, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_structure_a11f4087ae0deb277dee7f2a38e41d515}\index{Structure@{Structure}!getTypeString@{getTypeString}}
+\index{getTypeString@{getTypeString}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{getTypeString()}{getTypeString()}}
+{\footnotesize\ttfamily \label{class_structure_a11f4087ae0deb277dee7f2a38e41d515} 
+std\+::string Structure\+::get\+Type\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the structure\textquotesingle{}s type as a string. 
+
+\begin{DoxyReturn}{Returns}
+The type of the structure as a string. 
+\end{DoxyReturn}
+\Hypertarget{class_structure_a83532ceea8a2a436399b8ee9dedec9c3}\index{Structure@{Structure}!handleChest@{handleChest}}
+\index{handleChest@{handleChest}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{handleChest()}{handleChest()}}
+{\footnotesize\ttfamily \label{class_structure_a83532ceea8a2a436399b8ee9dedec9c3} 
+void Structure\+::handle\+Chest (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles interactions when discovering a chest in a room. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player interacting with the chest. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_structure_af8541edc4bbe97ef9f46c18fcbfa59e0}\index{Structure@{Structure}!handleRoom@{handleRoom}}
+\index{handleRoom@{handleRoom}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{handleRoom()}{handleRoom()}}
+{\footnotesize\ttfamily \label{class_structure_af8541edc4bbe97ef9f46c18fcbfa59e0} 
+void Structure\+::handle\+Room (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles interactions when entering a room. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player exploring the room. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_structure_a102af29a8c26b4ba401e999888a45426}\index{Structure@{Structure}!hasFoundArtifactThisRoom@{hasFoundArtifactThisRoom}}
+\index{hasFoundArtifactThisRoom@{hasFoundArtifactThisRoom}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{hasFoundArtifactThisRoom()}{hasFoundArtifactThisRoom()}}
+{\footnotesize\ttfamily \label{class_structure_a102af29a8c26b4ba401e999888a45426} 
+bool Structure\+::has\+Found\+Artifact\+This\+Room (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if an artifact was found in the current room. 
+
+\begin{DoxyReturn}{Returns}
+True if an artifact was found, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_structure_a5fcf3b9b21366da885fa38f6a5d451e9}\index{Structure@{Structure}!initRiddles@{initRiddles}}
+\index{initRiddles@{initRiddles}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{initRiddles()}{initRiddles()}}
+{\footnotesize\ttfamily \label{class_structure_a5fcf3b9b21366da885fa38f6a5d451e9} 
+void Structure\+::init\+Riddles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initializes the riddle pool for the structure. 
+
+You can push back various riddles into riddle\+Pool\+\_\+. \Hypertarget{class_structure_aa4e765ccb2373a1ce6144fe6540de7e1}\index{Structure@{Structure}!isFullyExplored@{isFullyExplored}}
+\index{isFullyExplored@{isFullyExplored}!Structure@{Structure}}
+\doxysubsubsection{\texorpdfstring{isFullyExplored()}{isFullyExplored()}}
+{\footnotesize\ttfamily \label{class_structure_aa4e765ccb2373a1ce6144fe6540de7e1} 
+bool Structure\+::is\+Fully\+Explored (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the structure has been fully explored. 
+
+\begin{DoxyReturn}{Returns}
+True if all rooms have been explored, otherwise false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_structure_8h}{Structure.\+h}}\item 
+\mbox{\hyperlink{_structure_8cpp}{Structure.\+cpp}}\end{DoxyCompactItemize}

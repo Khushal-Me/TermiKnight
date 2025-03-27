@@ -1,0 +1,268 @@
+\doxysection{Inventory Class Reference}
+\hypertarget{class_inventory}{}\label{class_inventory}\index{Inventory@{Inventory}}
+
+
+Represents the inventory of a character, capable of storing multiple items.  
+
+
+
+
+{\ttfamily \#include $<$Inventory.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_inventory_a7ad369d622883d75899ffc90973fc80b}{add\+Item}} (const \mbox{\hyperlink{class_item}{Item}} \&item)
+\begin{DoxyCompactList}\small\item\em Adds an item to the inventory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_inventory_a978518822d659eaa99e0b9e0704f8532}{remove\+Item}} (const std\+::string \&item\+Name)
+\begin{DoxyCompactList}\small\item\em Removes the first occurrence of an item with the given name from the inventory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_inventory_a70c33580235db8e022f5d1817e00f4e4}{has\+Item}} (const std\+::string \&item\+Name) const
+\begin{DoxyCompactList}\small\item\em Checks if the inventory contains at least one item with the given name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_inventory_a0a0b6e277b980232324036e00abc66a4}{list\+Items}} () const
+\begin{DoxyCompactList}\small\item\em Lists all items currently in the inventory to the standard output. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_inventory_ad842567cc89e188cb3239c6f251713f6}{remove\+Index}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes the item at the specified index from the inventory. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_inventory_a992232e22d1b840181a82c452ed21c17}{empty}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the inventory is empty. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \& \mbox{\hyperlink{class_inventory_a4036112ef4b9dd49aaa5be65ba238e16}{get\+Items}} () const
+\begin{DoxyCompactList}\small\item\em Returns a reference to the underlying vector of items. \end{DoxyCompactList}\item 
+nlohmann\+::json \mbox{\hyperlink{class_inventory_acc0c0da235e3c924db0924a82fd8f6f7}{to\+JSON}} () const
+\begin{DoxyCompactList}\small\item\em Converts the inventory to a JSON object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_inventory_a56280df827cb2e581292967c234ac608}{from\+JSON}} (const nlohmann\+::json \&json\+Data)
+\begin{DoxyCompactList}\small\item\em Populates the inventory from a JSON object. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_inventory_ab392899b0caabce14df6bcbf58838212}{get\+Formatted\+Lines}} () const
+\begin{DoxyCompactList}\small\item\em Returns the inventory items as formatted strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_inventory_a3853c4ef1d5a83c9f2486918945227a0}\label{class_inventory_a3853c4ef1d5a83c9f2486918945227a0} 
+std\+::vector$<$ \mbox{\hyperlink{class_item}{Item}} $>$ {\bfseries items\+\_\+}
+\begin{DoxyCompactList}\small\item\em The vector storing the items in the inventory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the inventory of a character, capable of storing multiple items. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_inventory_a7ad369d622883d75899ffc90973fc80b}\index{Inventory@{Inventory}!addItem@{addItem}}
+\index{addItem@{addItem}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{addItem()}{addItem()}}
+{\footnotesize\ttfamily \label{class_inventory_a7ad369d622883d75899ffc90973fc80b} 
+void Inventory\+::add\+Item (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_item}{Item}} \&}]{item}{}\end{DoxyParamCaption})}
+
+
+
+Adds an item to the inventory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The item to add.\\
+\hline
+{\em item} & The item to add to the inventory. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_inventory_a992232e22d1b840181a82c452ed21c17}\index{Inventory@{Inventory}!empty@{empty}}
+\index{empty@{empty}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily \label{class_inventory_a992232e22d1b840181a82c452ed21c17} 
+bool Inventory\+::empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the inventory is empty. 
+
+Checks if the inventory is empty. xx.
+
+\begin{DoxyReturn}{Returns}
+True if the inventory contains no items, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a56280df827cb2e581292967c234ac608}\index{Inventory@{Inventory}!fromJSON@{fromJSON}}
+\index{fromJSON@{fromJSON}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{fromJSON()}{fromJSON()}}
+{\footnotesize\ttfamily \label{class_inventory_a56280df827cb2e581292967c234ac608} 
+void Inventory\+::from\+JSON (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Data}{}\end{DoxyParamCaption})}
+
+
+
+Populates the inventory from a JSON object. 
+
+Populates the inventory from a JSON representation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Data} & The nlohmann\+::json object to load the inventory from.\\
+\hline
+\end{DoxyParams}
+Clears the current inventory and then creates \doxylink{class_item}{Item} objects from each JSON object in the input array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Data} & A constant reference to the nlohmann\+::json object representing the inventory. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_inventory_ab392899b0caabce14df6bcbf58838212}\index{Inventory@{Inventory}!getFormattedLines@{getFormattedLines}}
+\index{getFormattedLines@{getFormattedLines}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{getFormattedLines()}{getFormattedLines()}}
+{\footnotesize\ttfamily \label{class_inventory_ab392899b0caabce14df6bcbf58838212} 
+std\+::vector$<$ std\+::string $>$ Inventory\+::get\+Formatted\+Lines (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns the inventory items as formatted strings. 
+
+Generates a list of formatted strings representing the inventory contents.
+
+Each item in the inventory is converted into a neatly formatted string. This is useful for aligned or side-\/by-\/side display.
+
+\begin{DoxyReturn}{Returns}
+A vector of strings, each representing a formatted item line.
+\end{DoxyReturn}
+The first line is a header ("{}=== Inventory ==="{}). If the inventory is empty, the next line will say "{}\+Empty"{}. Otherwise, each item is listed on its own line with a number and its name.
+
+\begin{DoxyReturn}{Returns}
+A vector of strings, each representing one line of formatted inventory output. 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a4036112ef4b9dd49aaa5be65ba238e16}\index{Inventory@{Inventory}!getItems@{getItems}}
+\index{getItems@{getItems}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{getItems()}{getItems()}}
+{\footnotesize\ttfamily \label{class_inventory_a4036112ef4b9dd49aaa5be65ba238e16} 
+const std\+::vector$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \& Inventory\+::get\+Items (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns a reference to the underlying vector of items. 
+
+Gets a reference to the vector of items in the inventory.
+
+\begin{DoxyReturn}{Returns}
+A reference to the vector of \doxylink{class_item}{Item} objects in the inventory.
+\end{DoxyReturn}
+This allows direct access to the underlying item storage.
+
+\begin{DoxyReturn}{Returns}
+A reference to the vector of \doxylink{class_item}{Item} objects. 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a70c33580235db8e022f5d1817e00f4e4}\index{Inventory@{Inventory}!hasItem@{hasItem}}
+\index{hasItem@{hasItem}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{hasItem()}{hasItem()}}
+{\footnotesize\ttfamily \label{class_inventory_a70c33580235db8e022f5d1817e00f4e4} 
+bool Inventory\+::has\+Item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{item\+Name}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the inventory contains at least one item with the given name. 
+
+Checks if the inventory contains an item with the given name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Name} & The name of the item to check for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an item with the given name exists in the inventory, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Name} & The name of the item to check for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an item with the given name is in the inventory, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a0a0b6e277b980232324036e00abc66a4}\index{Inventory@{Inventory}!listItems@{listItems}}
+\index{listItems@{listItems}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{listItems()}{listItems()}}
+{\footnotesize\ttfamily \label{class_inventory_a0a0b6e277b980232324036e00abc66a4} 
+void Inventory\+::list\+Items (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Lists all items currently in the inventory to the standard output. 
+
+Lists all items currently in the inventory to the console.
+
+If the inventory is empty, it prints a message indicating that. \Hypertarget{class_inventory_ad842567cc89e188cb3239c6f251713f6}\index{Inventory@{Inventory}!removeIndex@{removeIndex}}
+\index{removeIndex@{removeIndex}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{removeIndex()}{removeIndex()}}
+{\footnotesize\ttfamily \label{class_inventory_ad842567cc89e188cb3239c6f251713f6} 
+bool Inventory\+::remove\+Index (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes the item at the specified index from the inventory. 
+
+Removes an item from the inventory at a specific index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the item to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the index was valid and the item was removed, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the item to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the index is valid and the item was removed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_a978518822d659eaa99e0b9e0704f8532}\index{Inventory@{Inventory}!removeItem@{removeItem}}
+\index{removeItem@{removeItem}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{removeItem()}{removeItem()}}
+{\footnotesize\ttfamily \label{class_inventory_a978518822d659eaa99e0b9e0704f8532} 
+bool Inventory\+::remove\+Item (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{item\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Removes the first occurrence of an item with the given name from the inventory. 
+
+Removes an item from the inventory by its name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Name} & The name of the item to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an item was found and removed, false otherwise.
+\end{DoxyReturn}
+Iterates through the inventory and removes the first item with the matching name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Name} & The name of the item to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if an item with the given name was found and removed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_inventory_acc0c0da235e3c924db0924a82fd8f6f7}\index{Inventory@{Inventory}!toJSON@{toJSON}}
+\index{toJSON@{toJSON}!Inventory@{Inventory}}
+\doxysubsubsection{\texorpdfstring{toJSON()}{toJSON()}}
+{\footnotesize\ttfamily \label{class_inventory_acc0c0da235e3c924db0924a82fd8f6f7} 
+nlohmann\+::json Inventory\+::to\+JSON (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Converts the inventory to a JSON object. 
+
+Converts the inventory to a JSON representation.
+
+\begin{DoxyReturn}{Returns}
+A nlohmann\+::json object representing the inventory.
+\end{DoxyReturn}
+Each item in the inventory is converted to its JSON form and added to a JSON array.
+
+\begin{DoxyReturn}{Returns}
+A nlohmann\+::json object representing the inventory. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_inventory_8h}{Inventory.\+h}}\item 
+\mbox{\hyperlink{_inventory_8cpp}{Inventory.\+cpp}}\end{DoxyCompactItemize}

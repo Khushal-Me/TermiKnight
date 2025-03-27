@@ -1,0 +1,153 @@
+\doxysection{Save\+Manager Class Reference}
+\hypertarget{class_save_manager}{}\label{class_save_manager}\index{SaveManager@{SaveManager}}
+
+
+Manages saving and loading game data.  
+
+
+
+
+{\ttfamily \#include $<$Save\+Manager.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_save_manager_a6b15df994775fbda88481131c4f7822d}{save\+Game}} (const \mbox{\hyperlink{class_player}{Player}} \&player, const \mbox{\hyperlink{class_world}{World}} \&world)
+\begin{DoxyCompactList}\small\item\em Saves current game state to a JSON file. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_save_manager_a01950685d2a72c9d1ab00ee47dd65e13}{load\+Game}} (\mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_world}{World}} \&world)
+\begin{DoxyCompactList}\small\item\em Loads a saved game from a JSON file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_save_manager_a335680ccdfed4d19899122bead8db455}{start\+Auto\+Save}} (\mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_world}{World}} \&world)
+\begin{DoxyCompactList}\small\item\em Starts an auto-\/save thread. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_save_manager_ad0ff5e205583a901c9703f2cf55dd249}{handle\+Exit\+Signal}} (int signal)
+\begin{DoxyCompactList}\small\item\em Handles the SIGINT (Ctrl+C) signal for game exit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages saving and loading game data. 
+
+The \doxylink{class_save_manager}{Save\+Manager} class handles game state persitence by saving and loading player and world data to and from a save JSON file. It also includes a feature that will auto save and sabe before game termination. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_save_manager_ad0ff5e205583a901c9703f2cf55dd249}\index{SaveManager@{SaveManager}!handleExitSignal@{handleExitSignal}}
+\index{handleExitSignal@{handleExitSignal}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{handleExitSignal()}{handleExitSignal()}}
+{\footnotesize\ttfamily \label{class_save_manager_ad0ff5e205583a901c9703f2cf55dd249} 
+void Save\+Manager\+::handle\+Exit\+Signal (\begin{DoxyParamCaption}\item[{int}]{signal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handles the SIGINT (Ctrl+C) signal for game exit. 
+
+Handles the SIGINT (Ctrl+C) signal for safe game exit.
+
+When user attempts to exit with Ctrl+C, they are prompted if they want to save.
+
+
+\begin{DoxyParams}{Parameters}
+{\em signal} & The Signal number.\\
+\hline
+\end{DoxyParams}
+When user attempts to exit using Ctrl+C, they are prompted to save game before quitting.
+
+
+\begin{DoxyParams}{Parameters}
+{\em signal} & The signal number \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_save_manager_a01950685d2a72c9d1ab00ee47dd65e13}\index{SaveManager@{SaveManager}!loadGame@{loadGame}}
+\index{loadGame@{loadGame}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{loadGame()}{loadGame()}}
+{\footnotesize\ttfamily \label{class_save_manager_a01950685d2a72c9d1ab00ee47dd65e13} 
+bool Save\+Manager\+::load\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Loads a saved game from a JSON file. 
+
+Loads a saved game from the JSON file.
+
+Reads the save file and restores the player and world data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \doxylink{class_player}{Player} object to restore. \\
+\hline
+{\em world} & The \doxylink{class_world}{World} object to restore. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the game was successfully loaded, false otherwise.
+\end{DoxyReturn}
+Reads the save file and restores player and world data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & -\/ The \doxylink{class_player}{Player} object to restore \\
+\hline
+{\em world} & -\/ The \doxylink{class_world}{World} object to restore \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if loading was successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_save_manager_a6b15df994775fbda88481131c4f7822d}\index{SaveManager@{SaveManager}!saveGame@{saveGame}}
+\index{saveGame@{saveGame}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{saveGame()}{saveGame()}}
+{\footnotesize\ttfamily \label{class_save_manager_a6b15df994775fbda88481131c4f7822d} 
+void Save\+Manager\+::save\+Game (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{const \mbox{\hyperlink{class_world}{World}} \&}]{world}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Saves current game state to a JSON file. 
+
+Saves the current game state (player and world) to a JSON file.
+
+Serializes the player and world data into JSON format and writes to a save file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \doxylink{class_player}{Player} object to save. \\
+\hline
+{\em world} & The \doxylink{class_world}{World} object to save.\\
+\hline
+{\em player} & -\/ The \doxylink{class_player}{Player} object to save \\
+\hline
+{\em world} & -\/ The \doxylink{class_world}{World} object to save \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_save_manager_a335680ccdfed4d19899122bead8db455}\index{SaveManager@{SaveManager}!startAutoSave@{startAutoSave}}
+\index{startAutoSave@{startAutoSave}!SaveManager@{SaveManager}}
+\doxysubsubsection{\texorpdfstring{startAutoSave()}{startAutoSave()}}
+{\footnotesize\ttfamily \label{class_save_manager_a335680ccdfed4d19899122bead8db455} 
+void Save\+Manager\+::start\+Auto\+Save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Starts an auto-\/save thread. 
+
+Starts an auto-\/save thread that periodically saves the game every 45 seconds.
+
+Launches a background thread that auto saves the game every 45 sec.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Reference to the \doxylink{class_player}{Player} object. \\
+\hline
+{\em world} & Reference to the \doxylink{class_world}{World} object.\\
+\hline
+\end{DoxyParams}
+Launches background thread that auto saves game every 45 seconds.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Reference to the \doxylink{class_player}{Player} object \\
+\hline
+{\em world} & Reference to the \doxylink{class_world}{World} object \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Save\+Manager.\+h\item 
+Save\+Manager.\+cpp\end{DoxyCompactItemize}

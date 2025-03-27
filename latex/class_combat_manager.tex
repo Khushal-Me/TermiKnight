@@ -1,0 +1,227 @@
+\doxysection{Combat\+Manager Class Reference}
+\hypertarget{class_combat_manager}{}\label{class_combat_manager}\index{CombatManager@{CombatManager}}
+
+
+Manages turn-\/based combat sequences between a \doxylink{class_player}{Player} and one or more Enemies.  
+
+
+
+
+{\ttfamily \#include $<$Combat\+Manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_combat_manager_a9b1029b2beffeabcdd6d44f587e88baf}{Combat\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_combat_manager_a716e76bf940828c784f20caeae8e41e1}{start\+Combat}} (\mbox{\hyperlink{class_player}{Player}} \&player, std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&enemies)
+\begin{DoxyCompactList}\small\item\em Starts the combat loop between a player and a list of enemies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_combat_manager_afecc1b39f39dc29858125876e4015187}{player\+Turn}} (\mbox{\hyperlink{class_player}{Player}} \&player, std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&enemies)
+\begin{DoxyCompactList}\small\item\em Handles the player\textquotesingle{}s turn in combat. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_combat_manager_a051eccea441436bc2923705981c95285}{enemy\+Turn}} (\mbox{\hyperlink{class_player}{Player}} \&player, std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&enemies)
+\begin{DoxyCompactList}\small\item\em Handles the enemies\textquotesingle{} turns in combat. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_combat_manager_a0e0e68928e3c81f6dd803d07b1c28656}{all\+Enemies\+Defeated}} (const std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&enemies)
+\begin{DoxyCompactList}\small\item\em Checks whether all enemies in a given list are defeated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_combat_manager_a5edb221dd93def37311b7163177bbf56}{bandit\+Skill\+Applied}} = false
+\begin{DoxyCompactList}\small\item\em Tracks whether the Bandit\textquotesingle{}s special flee skill is applied. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_combat_manager_a6c0e118433c7379ab12cf5f8934c19f8}{soldier\+Skill\+Applied}} = false
+\begin{DoxyCompactList}\small\item\em Tracks whether the Soldier\textquotesingle{}s double damage skill is active. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_combat_manager_aea320eab8a17426608f0f96b4b77cc85}{blocking}} = false
+\begin{DoxyCompactList}\small\item\em Indicates if the player is blocking during the current enemy turn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages turn-\/based combat sequences between a \doxylink{class_player}{Player} and one or more Enemies. 
+
+The \doxylink{class_combat_manager}{Combat\+Manager} class provides static methods to initiate, run, and resolve combat interactions. It tracks special conditions (like blocking, class-\/specific skill usage) and determines when all enemies are defeated or when the player has fallen in battle. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_combat_manager_a9b1029b2beffeabcdd6d44f587e88baf}\index{CombatManager@{CombatManager}!CombatManager@{CombatManager}}
+\index{CombatManager@{CombatManager}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{CombatManager()}{CombatManager()}}
+{\footnotesize\ttfamily \label{class_combat_manager_a9b1029b2beffeabcdd6d44f587e88baf} 
+Combat\+Manager\+::\+Combat\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+Constructs a new \doxylink{class_combat_manager}{Combat\+Manager} object.
+
+Although \doxylink{class_combat_manager}{Combat\+Manager} primarily uses static methods, a default constructor is provided. Typically, no instance of this class is created in normal usage.
+
+Initializes the skill application flags and blocking status to false. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_combat_manager_a0e0e68928e3c81f6dd803d07b1c28656}\index{CombatManager@{CombatManager}!allEnemiesDefeated@{allEnemiesDefeated}}
+\index{allEnemiesDefeated@{allEnemiesDefeated}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{allEnemiesDefeated()}{allEnemiesDefeated()}}
+{\footnotesize\ttfamily \label{class_combat_manager_a0e0e68928e3c81f6dd803d07b1c28656} 
+bool Combat\+Manager\+::all\+Enemies\+Defeated (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&}]{enemies}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Checks whether all enemies in a given list are defeated. 
+
+Checks if all enemies in the combat have been defeated.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemies} & A vector of Enemies to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if no Enemies remain alive, otherwise false.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em enemies} & A constant reference to the vector of enemies. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if all enemies are not alive, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_combat_manager_a051eccea441436bc2923705981c95285}\index{CombatManager@{CombatManager}!enemyTurn@{enemyTurn}}
+\index{enemyTurn@{enemyTurn}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{enemyTurn()}{enemyTurn()}}
+{\footnotesize\ttfamily \label{class_combat_manager_a051eccea441436bc2923705981c95285} 
+void Combat\+Manager\+::enemy\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&}]{enemies}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Handles the enemies\textquotesingle{} turns in combat. 
+
+Handles the enemies\textquotesingle{} turn during combat.
+
+Each \doxylink{class_enemy}{Enemy} attempts to attack if it is still alive. Damage calculations consider whether the player is blocking. If the player is reduced to 0 HP, the combat loop ends.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \doxylink{class_player}{Player} defending against enemy attacks. \\
+\hline
+{\em enemies} & A vector of current Enemies in the encounter.\\
+\hline
+\end{DoxyParams}
+Each alive enemy in the combat takes its turn to attack the player.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player being attacked by the enemies. \\
+\hline
+{\em enemies} & A vector of the enemies currently engaged in combat. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_combat_manager_afecc1b39f39dc29858125876e4015187}\index{CombatManager@{CombatManager}!playerTurn@{playerTurn}}
+\index{playerTurn@{playerTurn}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{playerTurn()}{playerTurn()}}
+{\footnotesize\ttfamily \label{class_combat_manager_afecc1b39f39dc29858125876e4015187} 
+void Combat\+Manager\+::player\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&}]{enemies}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Handles the player\textquotesingle{}s turn in combat. 
+
+Handles the player\textquotesingle{}s turn during combat.
+
+During the player\textquotesingle{}s turn, the player may choose to Attack, Block, Flee, or Use a special Skill. Depending on the choice, this method updates enemy HP or applies relevant status changes (like blocking).
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \doxylink{class_player}{Player} engaged in combat. \\
+\hline
+{\em enemies} & A vector of current Enemies in the encounter.\\
+\hline
+\end{DoxyParams}
+Allows the player to choose an action such as attacking, blocking, fleeing, or using a skill.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player whose turn it is. \\
+\hline
+{\em enemies} & A vector of the enemies currently engaged in combat. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_combat_manager_a716e76bf940828c784f20caeae8e41e1}\index{CombatManager@{CombatManager}!startCombat@{startCombat}}
+\index{startCombat@{startCombat}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{startCombat()}{startCombat()}}
+{\footnotesize\ttfamily \label{class_combat_manager_a716e76bf940828c784f20caeae8e41e1} 
+void Combat\+Manager\+::start\+Combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ \&}]{enemies}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Starts the combat loop between a player and a list of enemies. 
+
+Initiates a combat encounter between the player and a group of enemies.
+
+This static function orchestrates each round of combat until either the player is defeated or all enemies have been removed. It calls \doxylink{class_combat_manager_afecc1b39f39dc29858125876e4015187}{player\+Turn()} and \doxylink{class_combat_manager_a051eccea441436bc2923705981c95285}{enemy\+Turn()} in succession.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \doxylink{class_player}{Player} initiating combat. \\
+\hline
+{\em enemies} & A vector of Enemies the player must fight.\\
+\hline
+\end{DoxyParams}
+This function manages the turn-\/based combat loop until either all enemies are defeated or the player\textquotesingle{}s health reaches zero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player participating in the combat. \\
+\hline
+{\em enemies} & A vector of enemies the player is fighting against. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_combat_manager_a5edb221dd93def37311b7163177bbf56}\index{CombatManager@{CombatManager}!banditSkillApplied@{banditSkillApplied}}
+\index{banditSkillApplied@{banditSkillApplied}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{banditSkillApplied}{banditSkillApplied}}
+{\footnotesize\ttfamily \label{class_combat_manager_a5edb221dd93def37311b7163177bbf56} 
+bool Combat\+Manager\+::bandit\+Skill\+Applied = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tracks whether the Bandit\textquotesingle{}s special flee skill is applied. 
+
+Flag indicating if the bandit\textquotesingle{}s skill has been applied in the current combat.
+
+If the Bandit skill is used, the chance of fleeing successfully may be higher until reset. This is a simple demonstration field; actual usage may vary in your implementation. \Hypertarget{class_combat_manager_aea320eab8a17426608f0f96b4b77cc85}\index{CombatManager@{CombatManager}!blocking@{blocking}}
+\index{blocking@{blocking}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{blocking}{blocking}}
+{\footnotesize\ttfamily \label{class_combat_manager_aea320eab8a17426608f0f96b4b77cc85} 
+bool Combat\+Manager\+::blocking = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Indicates if the player is blocking during the current enemy turn. 
+
+Flag indicating if the player is currently blocking.
+
+If the player chooses to Block, incoming damage is reduced. This flag resets each turn. \Hypertarget{class_combat_manager_a6c0e118433c7379ab12cf5f8934c19f8}\index{CombatManager@{CombatManager}!soldierSkillApplied@{soldierSkillApplied}}
+\index{soldierSkillApplied@{soldierSkillApplied}!CombatManager@{CombatManager}}
+\doxysubsubsection{\texorpdfstring{soldierSkillApplied}{soldierSkillApplied}}
+{\footnotesize\ttfamily \label{class_combat_manager_a6c0e118433c7379ab12cf5f8934c19f8} 
+bool Combat\+Manager\+::soldier\+Skill\+Applied = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Tracks whether the Soldier\textquotesingle{}s double damage skill is active. 
+
+Flag indicating if the soldier\textquotesingle{}s skill has been applied in the current combat.
+
+If the Soldier skill is used, the next attack deals double damage. Once used, it should be reset to false. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Combat\+Manager.\+h\item 
+\mbox{\hyperlink{_combat_manager_8cpp}{Combat\+Manager.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,58 @@
+\doxysection{Structure.\+h}
+\hypertarget{_structure_8h_source}{}\label{_structure_8h_source}\mbox{\hyperlink{_structure_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_enemy_8h}{Enemy.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_item_8h}{Item.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_8h}{Player.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{StructureType}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea14db90e75f1308d303d0bceb0be66ac1}{CAVE}},\ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea42bfd70b24ee63ec7f92264e3e79da94}{CASTLE}},\ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ead93acf42917c36d1855b99f8632bfa9e}{VILLAGE}},\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea49354b452ec305136a56fe7731834156}{HOUSE}}\ \ \ \ }
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_riddle}{Riddle}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_riddle_af848fbcce44b3175800e188cdd672ac4}{question}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{struct_riddle_a8f3e3c90b3163b822324dee0c5bcfe6b}{options}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_riddle_a868cb930d403702bb59e4f67fd7281a8}{correctIndex}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{struct_riddle_a16b3f450a46fcc6b5e58ae7391e34fa2}{hints}};\ \ \ }
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_structure_a590eb6f24b8a1cbe420a2350d4b53e77}{Structure}}\ \{}
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_structure_a590eb6f24b8a1cbe420a2350d4b53e77}{Structure}}(\mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{StructureType}}\ type,\ \textcolor{keywordtype}{int}\ totalRooms);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::string\ \mbox{\hyperlink{class_structure_a11f4087ae0deb277dee7f2a38e41d515}{getTypeString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_structure_aa4e765ccb2373a1ce6144fe6540de7e1}{isFullyExplored}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_structure_a526ce4e995ccaac3ced2416d89b47650}{exploreNextRoom}}(\mbox{\hyperlink{class_player}{Player}}\ \&player);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_structure_a102af29a8c26b4ba401e999888a45426}{hasFoundArtifactThisRoom}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_structure_a054e9283701cd92e9c80b74dbd99e1c7}{foundArtifactThisRoom\_}};\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{StructureType}}\ \mbox{\hyperlink{class_structure_a7f6255b2d06e9753fdd0bbe9f6f46f35}{type\_}};\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_structure_ac2945b75512e42b3c5a871bb17f86aac}{totalRooms\_}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_structure_a8986ce9cb681f9f92ab5a82049be75d5}{currentRoomIndex\_}};\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_structure_a9fc4c510cac97276e2eb72b3a5f4948a}{fullyExplored\_}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_structure_a054e9283701cd92e9c80b74dbd99e1c7}{foundArtifactThisRoom\_}};\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ std::vector<Riddle>\ \mbox{\hyperlink{class_structure_a077487d1cc0154da0f11e98781f271ed}{riddlePool\_}};\ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{struct_riddle}{Riddle}}\ \mbox{\hyperlink{class_structure_ac28f12a81b01f1774fdfb1aa0f6001ed}{riddleToAsk\_}};\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_structure_a5fcf3b9b21366da885fa38f6a5d451e9}{initRiddles}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_structure_aadd6efaa4ad31a6e5c05a0919f7dfce7}{doRiddle}}(\mbox{\hyperlink{class_player}{Player}}\ \&player);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_structure_af8541edc4bbe97ef9f46c18fcbfa59e0}{handleRoom}}(\mbox{\hyperlink{class_player}{Player}}\ \&player);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_structure_a83532ceea8a2a436399b8ee9dedec9c3}{handleChest}}(\mbox{\hyperlink{class_player}{Player}}\ \&player);}
+\DoxyCodeLine{00109\ \};}
+
+\end{DoxyCode}

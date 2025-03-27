@@ -1,0 +1,220 @@
+\chapter{\texorpdfstring{$<$}{<}strong\texorpdfstring{$>$}{>}Termi\+Knight (Text-\/\+Based RPG)\texorpdfstring{$<$}{<}/strong\texorpdfstring{$>$}{>}}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{$<$strong$>$TermiKnight (Text-\/Based RPG)$<$/strong$>$@{$<$strong$>$TermiKnight (Text-\/Based RPG)$<$/strong$>$}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+{\bfseries{Termi\+Knight}} is a {\bfseries{terminal-\/based}} C++ adventure game set in a {\bfseries{modern-\/day fantasy}} world. Players explore {\bfseries{multiple lands}}, each containing randomly generated structures (caves, castles, or villages) filled with rooms, enemies, and puzzles. The game features {\bfseries{multiple character classes}}, a {\bfseries{turn-\/based combat system}} with {\bfseries{numeric choices}}, {\bfseries{riddle-\/based progression}}, and an {\bfseries{inventory system}} that supports {\bfseries{weapon-\/equipping}} and {\bfseries{potion usage}}. A {\bfseries{\doxylink{class_save_manager}{Save\+Manager}}} automatically persists player progress, ensuring your heroic feats are never lost!\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{{\bfseries{Key Features}}}{{\bfseries{Key Features}}}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Character Classes}} ~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries{Civilian}}\+: Higher luck, base health, lower damage ~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Skill}\+: Heal 50\% of max health during combat ~\newline
+
+\end{DoxyItemize}
+\item {\bfseries{Bandit}}\+: Base health, lower luck, higher damage ~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Skill}\+: Greatly improved flee chance ~\newline
+
+\end{DoxyItemize}
+\item {\bfseries{Mage}}\+: Lower health, high damage, base luck ~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Skill}\+: 50\% chance to instantly defeat an enemy ~\newline
+
+\end{DoxyItemize}
+\item {\bfseries{Soldier}}\+: Higher health, higher damage, lower luck ~\newline
+
+\begin{DoxyItemize}
+\item {\itshape Skill}\+: Double damage on a successful attack ~\newline
+
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item {\bfseries{Stats \& Weapon Equipping}} ~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries{Health (HP)}} – how much damage you can take ~\newline
+
+\item {\bfseries{Attack (ATK)}} – base damage against enemies ~\newline
+
+\item {\bfseries{Luck (LCK)}} – influences random outcomes (flee success, certain skills) ~\newline
+
+\item {\bfseries{Weapon}}\+: Equipping a weapon from your inventory {\bfseries{increases your Attack}} by the weapon’s bonus value.
+\end{DoxyItemize}
+\item {\bfseries{Exploration \& Structures}} ~\newline
+
+\begin{DoxyItemize}
+\item Traverse {\bfseries{multiple lands}}, each offering random buildings (caves, castles, villages). ~\newline
+
+\item Structures contain {\bfseries{1–5 rooms}}, the final locked by a {\bfseries{riddle}} you must solve for an {\bfseries{artifact}}. ~\newline
+
+\item Rooms can have {\bfseries{enemy ambushes}}, {\bfseries{treasure chests}} (loot), or nothing at all.
+\end{DoxyItemize}
+\item {\bfseries{Choice-\/\+Based Turn-\/\+Based Combat}} ~\newline
+
+\begin{DoxyItemize}
+\item Numeric options for {\bfseries{Attack}}, {\bfseries{Block}}, {\bfseries{Flee}}, {\bfseries{Use Skill}}. ~\newline
+
+\item Blocking halves incoming damage for the next enemy turn. ~\newline
+
+\item Certain class skills increase flee chance (Bandit) or allow double damage (Soldier). ~\newline
+
+\item Enemies scale with your current land or your own level (depending on your design).
+\end{DoxyItemize}
+\item {\bfseries{\doxylink{class_inventory}{Inventory} \& Items}} ~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries{Weapons}} (grant bonus Attack), {\bfseries{Health Potions}} (restore HP), {\bfseries{Artifacts}} (quest items). ~\newline
+
+\item {\bfseries{Choice-\/\+Based}} usage\+: you pick an item by its numeric index in your inventory. ~\newline
+
+\item Weapons, once “used,” boost your Attack stat permanently (or until you replace it).
+\end{DoxyItemize}
+\item {\bfseries{Progression}} ~\newline
+
+\begin{DoxyItemize}
+\item Each land demands collecting an {\bfseries{artifact}} from a final riddle-\/locked room. ~\newline
+
+\item Accumulate the required artifacts to unlock the next land. ~\newline
+
+\item Ultimately, gather all artifacts to break the curse and win the game.
+\end{DoxyItemize}
+\item {\bfseries{Save/\+Load}} ~\newline
+
+\begin{DoxyItemize}
+\item A {\bfseries{\doxylink{class_save_manager}{Save\+Manager}}} automatically or manually saves your game state (player stats, land progression, inventory). ~\newline
+
+\item {\bfseries{Load \doxylink{class_game}{Game}}} to restore your progress at any time.
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{{\bfseries{Project Structure}}}{{\bfseries{Project Structure}}}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{TermiKnight/}
+\DoxyCodeLine{├──\ Makefile}
+\DoxyCodeLine{├──\ main.cpp}
+\DoxyCodeLine{├──\ Game.h\ /\ Game.cpp\ \ \ \ \ \ \ \ \#\ High-\/level\ flow,\ menus,\ user\ input}
+\DoxyCodeLine{├──\ Player.h\ /\ Player.cpp\ \ \ \ \#\ Manages\ class,\ stats,\ inventory,\ weapon\ equip}
+\DoxyCodeLine{├──\ Enemy.h\ /\ Enemy.cpp\ \ \ \ \ \ \#\ Defines\ enemy\ attributes\ \&\ behaviors}
+\DoxyCodeLine{├──\ Item.h\ /\ Item.cpp\ \ \ \ \ \ \ \ \#\ Describes\ potions,\ weapons,\ artifacts,\ etc.}
+\DoxyCodeLine{├──\ Inventory.h\ /\ Inventory.cpp}
+\DoxyCodeLine{├──\ World.h\ /\ World.cpp\ \ \ \ \ \ \#\ Tracks\ lands,\ structure\ spawns,\ progression}
+\DoxyCodeLine{├──\ Structure.h\ /\ Structure.cpp}
+\DoxyCodeLine{├──\ CombatManager.h\ /\ CombatManager.cpp\ \ \#\ Choice-\/based\ turn-\/by-\/turn\ battles}
+\DoxyCodeLine{├──\ SaveManager.h\ /\ SaveManager.cpp\ \ \ \ \ \ \#\ No\ longer\ optional;\ auto/manual\ saves}
+\DoxyCodeLine{└──\ Utilities.h\ /\ Utilities.cpp\ \ \ \ \ \ \ \ \ \ \#\ Random\ generation\ or\ other\ helpers}
+
+\end{DoxyCode}
+
+
+{\bfseries{Highlights}}\+:
+\begin{DoxyItemize}
+\item {\bfseries{{\ttfamily \doxylink{class_game}{Game}.\texorpdfstring{$\ast$}{*}}}}\+: Manages the main loop, menus, and transitions between exploration and combat. ~\newline
+
+\item {\bfseries{{\ttfamily \doxylink{class_combat_manager}{Combat\+Manager}.\texorpdfstring{$\ast$}{*}}}}\+: Provides numeric combat menus (1=Attack, 2=Block, etc.). ~\newline
+
+\item {\bfseries{{\ttfamily \doxylink{class_player}{Player}.\texorpdfstring{$\ast$}{*}}}}\+: Splits base attack from {\bfseries{weapon\+Bonus\+\_\+}} so equipping a weapon updates the final Attack. ~\newline
+
+\item {\bfseries{{\ttfamily \doxylink{class_save_manager}{Save\+Manager}.\texorpdfstring{$\ast$}{*}}}}\+: Now a core part of the code, regularly autosaves or loads from file.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{{\bfseries{How to Build}}}{{\bfseries{How to Build}}}}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyEnumerate}
+\item Ensure you have a modern {\bfseries{C++ compiler}} (e.\+g., {\ttfamily g++ -\/std=c++17}). ~\newline
+
+\item In your {\bfseries{Termi\+Knight}} directory, type\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+ to build. This generates an executable named {\bfseries{{\ttfamily My\+RPG}}}.
+\item {\bfseries{Run}} the game\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./MyRPG}
+
+\end{DoxyCode}
+
+\item {\bfseries{Clean}} compiled artifacts\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clean}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysection{\texorpdfstring{{\bfseries{How to Play}}}{{\bfseries{How to Play}}}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Main Menu}} ~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries{New \doxylink{class_game}{Game}}}\+: Pick your class (Civilian, Bandit, Mage, Soldier) and begin the adventure. ~\newline
+
+\item {\bfseries{Load \doxylink{class_game}{Game}}}\+: Load a previously saved file. ~\newline
+
+\item {\bfseries{Quit}}\+: Exit the game.
+\end{DoxyItemize}
+\item {\bfseries{Exploration \& Structures}} ~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries{Move Forward}}\+: You may discover a new building or eventually unlock the next land. ~\newline
+
+\item {\bfseries{Explore}}\+: Enter a structure, revealing multiple rooms – the last one typically locked by a riddle. ~\newline
+
+\item {\bfseries{Check \doxylink{class_inventory}{Inventory}}}\+: Lists items. ~\newline
+
+\item {\bfseries{Use \doxylink{class_item}{Item}}}\+: Numeric-\/based selection – e.\+g., pick a healing potion to restore HP or equip a new weapon. ~\newline
+
+\item {\bfseries{Save}} / {\bfseries{Load}}\+: Manage your progress. ~\newline
+
+\item {\bfseries{Quit}}\+: Return to main menu or confirm exit.
+\end{DoxyItemize}
+\item {\bfseries{Combat}} ~\newline
+
+\begin{DoxyItemize}
+\item On your turn, a {\bfseries{numeric menu}} displays\+:
+\begin{DoxyEnumerate}
+\item {\bfseries{Attack}} (deal damage = base\+Attack + weapon\+Bonus) ~\newline
+
+\item {\bfseries{Block}} (halves incoming damage next turn) ~\newline
+
+\item {\bfseries{Flee}} (chance to escape, higher if Bandit skill is active) ~\newline
+
+\item {\bfseries{Use Skill}} (class-\/specific ability, e.\+g., Mage’s 50\% one-\/shot). ~\newline
+
+\end{DoxyEnumerate}
+\item Enemies each have HP and Attack, decreasing your HP on their turn. ~\newline
+
+\item Win by defeating all enemies or flee if you must.
+\end{DoxyItemize}
+\item {\bfseries{Victory}} ~\newline
+
+\begin{DoxyItemize}
+\item Solve riddles in final rooms to obtain {\bfseries{artifacts}}. ~\newline
+
+\item Collect all required artifacts to end the curse and restore balance.
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{{\bfseries{Future Enhancements}}}{{\bfseries{Future Enhancements}}}}\label{md__r_e_a_d_m_e_autotoc_md9}
+
+\begin{DoxyItemize}
+\item {\bfseries{Advanced Quests / NPCs}}\+: Additional side quests, story branching, or shops for buying advanced weapons. ~\newline
+
+\item {\bfseries{Online Co-\/\+Op}}\+: Partner up with friends, each controlling a different character. ~\newline
+
+\item {\bfseries{Open\+AI Integration}}\+: Real-\/time generated riddles or dynamic NPC conversations.
+\end{DoxyItemize}
+
+{\bfseries{Enjoy}} the deeper, more customizable combat system with numeric prompts for both {\bfseries{battles}} and {\bfseries{item usage}}. Now that {\bfseries{\doxylink{class_save_manager}{Save\+Manager}}} is integrated by default, your progress is always safe—go forth and conquer the lands of {\bfseries{Termi\+Knight}}! 

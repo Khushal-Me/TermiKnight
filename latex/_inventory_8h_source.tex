@@ -1,0 +1,40 @@
+\doxysection{Inventory.\+h}
+\hypertarget{_inventory_8h_source}{}\label{_inventory_8h_source}\mbox{\hyperlink{_inventory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \#include\ "{}\mbox{\hyperlink{_item_8h}{Item.h}}"{}}\ }
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_inventory}{Inventory}}\ \{}
+\DoxyCodeLine{00014\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_a7ad369d622883d75899ffc90973fc80b}{addItem}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_item}{Item}}\ \&item);}
+\DoxyCodeLine{00020\ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_inventory_a978518822d659eaa99e0b9e0704f8532}{removeItem}}(\textcolor{keyword}{const}\ std::string\ \&itemName);}
+\DoxyCodeLine{00027\ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_inventory_a70c33580235db8e022f5d1817e00f4e4}{hasItem}}(\textcolor{keyword}{const}\ std::string\ \&itemName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_a0a0b6e277b980232324036e00abc66a4}{listItems}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_inventory_ad842567cc89e188cb3239c6f251713f6}{removeIndex}}(\textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00046\ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_inventory_a992232e22d1b840181a82c452ed21c17}{empty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Item>\&\ \mbox{\hyperlink{class_inventory_a4036112ef4b9dd49aaa5be65ba238e16}{getItems}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ nlohmann::json\ \mbox{\hyperlink{class_inventory_acc0c0da235e3c924db0924a82fd8f6f7}{toJSON}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_a56280df827cb2e581292967c234ac608}{fromJSON}}(\textcolor{keyword}{const}\ nlohmann::json\&\ jsonData);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_inventory_ab392899b0caabce14df6bcbf58838212}{getFormattedLines}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ }
+\DoxyCodeLine{00085\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ \ \ \ \ \ std::vector<Item>\ \mbox{\hyperlink{class_inventory_a3853c4ef1d5a83c9f2486918945227a0}{items\_}};}
+\DoxyCodeLine{00090\ \ \};}
+
+\end{DoxyCode}

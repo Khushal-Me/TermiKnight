@@ -1,0 +1,146 @@
+\doxysection{Enemy Class Reference}
+\hypertarget{class_enemy}{}\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+Represents an enemy character with a type, health, and attack.  
+
+
+
+
+{\ttfamily \#include $<$Enemy.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_a2b6ebef8f1996a72ec9e864fed720085}{Enemy}} (const std\+::string \&type, int health, int attack)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_enemy}{Enemy} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_enemy_a2801f42818600b19a7381dd2d1635af8}{is\+Alive}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the enemy is still alive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_aa062468f8e151e80be2c181a1903d7c8}{take\+Damage}} (int dmg)
+\begin{DoxyCompactList}\small\item\em Reduces the enemy\textquotesingle{}s health by a given amount. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_enemy_a8206171e0f391e1860ebafb5a5450bf3}{get\+Attack}} () const
+\begin{DoxyCompactList}\small\item\em Gets the attack power of the enemy. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_enemy_a3473f9f24e815aebb44c85943204d31c}{get\+Health}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current health of the enemy. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_enemy_a23409b169d7e1afaac6f76eda2343982}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the type or name of the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_enemy_aa85330fe2fa10542c56804312543e52d}\label{class_enemy_aa85330fe2fa10542c56804312543e52d} 
+std\+::string {\bfseries type\+\_\+}
+\begin{DoxyCompactList}\small\item\em The type or name of the enemy. \end{DoxyCompactList}\item 
+\Hypertarget{class_enemy_a9f453434b8a4c1006e839748abe3d70c}\label{class_enemy_a9f453434b8a4c1006e839748abe3d70c} 
+int {\bfseries health\+\_\+}
+\begin{DoxyCompactList}\small\item\em The current health points of the enemy. \end{DoxyCompactList}\item 
+\Hypertarget{class_enemy_aa18d91942fdfe1056556604a439e6b3c}\label{class_enemy_aa18d91942fdfe1056556604a439e6b3c} 
+int {\bfseries attack\+\_\+}
+\begin{DoxyCompactList}\small\item\em The attack power of the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an enemy character with a type, health, and attack. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_enemy_a2b6ebef8f1996a72ec9e864fed720085}\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily \label{class_enemy_a2b6ebef8f1996a72ec9e864fed720085} 
+Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type}{, }\item[{int}]{health}{, }\item[{int}]{attack}{}\end{DoxyParamCaption})}
+
+
+
+Constructs an \doxylink{class_enemy}{Enemy} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type or name of the enemy. \\
+\hline
+{\em health} & The initial health points of the enemy. \\
+\hline
+{\em attack} & The attack power of the enemy. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_enemy_a8206171e0f391e1860ebafb5a5450bf3}\index{Enemy@{Enemy}!getAttack@{getAttack}}
+\index{getAttack@{getAttack}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{getAttack()}{getAttack()}}
+{\footnotesize\ttfamily \label{class_enemy_a8206171e0f391e1860ebafb5a5450bf3} 
+int Enemy\+::get\+Attack (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the attack power of the enemy. 
+
+\begin{DoxyReturn}{Returns}
+The attack power of the enemy. 
+\end{DoxyReturn}
+\Hypertarget{class_enemy_a3473f9f24e815aebb44c85943204d31c}\index{Enemy@{Enemy}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily \label{class_enemy_a3473f9f24e815aebb44c85943204d31c} 
+int Enemy\+::get\+Health (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the current health of the enemy. 
+
+\begin{DoxyReturn}{Returns}
+The current health points of the enemy. 
+\end{DoxyReturn}
+\Hypertarget{class_enemy_a23409b169d7e1afaac6f76eda2343982}\index{Enemy@{Enemy}!getType@{getType}}
+\index{getType@{getType}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_enemy_a23409b169d7e1afaac6f76eda2343982} 
+std\+::string Enemy\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the type or name of the enemy. 
+
+\begin{DoxyReturn}{Returns}
+The type or name of the enemy. 
+\end{DoxyReturn}
+\Hypertarget{class_enemy_a2801f42818600b19a7381dd2d1635af8}\index{Enemy@{Enemy}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{isAlive()}{isAlive()}}
+{\footnotesize\ttfamily \label{class_enemy_a2801f42818600b19a7381dd2d1635af8} 
+bool Enemy\+::is\+Alive (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the enemy is still alive. 
+
+\begin{DoxyReturn}{Returns}
+True if the enemy\textquotesingle{}s health is greater than 0, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_enemy_aa062468f8e151e80be2c181a1903d7c8}\index{Enemy@{Enemy}!takeDamage@{takeDamage}}
+\index{takeDamage@{takeDamage}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{takeDamage()}{takeDamage()}}
+{\footnotesize\ttfamily \label{class_enemy_aa062468f8e151e80be2c181a1903d7c8} 
+void Enemy\+::take\+Damage (\begin{DoxyParamCaption}\item[{int}]{dmg}{}\end{DoxyParamCaption})}
+
+
+
+Reduces the enemy\textquotesingle{}s health by a given amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dmg} & The amount of damage to take.\\
+\hline
+\end{DoxyParams}
+If the damage reduces the health below zero, the health is set to zero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dmg} & The amount of damage to take. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_enemy_8h}{Enemy.\+h}}\item 
+\mbox{\hyperlink{_enemy_8cpp}{Enemy.\+cpp}}\end{DoxyCompactItemize}

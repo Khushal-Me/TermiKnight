@@ -1,0 +1,64 @@
+\doxysection{Structure.\+h File Reference}
+\hypertarget{_structure_8h}{}\label{_structure_8h}\index{Structure.h@{Structure.h}}
+
+
+Defines the \doxylink{class_structure}{Structure} class, representing various buildings in the game world.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}Enemy.\+h"{}}\newline
+{\ttfamily \#include "{}Item.\+h"{}}\newline
+{\ttfamily \#include "{}Player.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_riddle}{Riddle}}
+\begin{DoxyCompactList}\small\item\em Represents a multiple-\/choice riddle used in the game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_structure}{Structure}}
+\begin{DoxyCompactList}\small\item\em Represents a structure in the game that can contain rooms, enemies, and riddles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}} \{ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea14db90e75f1308d303d0bceb0be66ac1}{CAVE}}
+, \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea42bfd70b24ee63ec7f92264e3e79da94}{CASTLE}}
+, \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ead93acf42917c36d1855b99f8632bfa9e}{VILLAGE}}
+, \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea49354b452ec305136a56fe7731834156}{HOUSE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates the types of structures that can appear in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{class_structure}{Structure} class, representing various buildings in the game world. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}\index{Structure.h@{Structure.h}!StructureType@{StructureType}}
+\index{StructureType@{StructureType}!Structure.h@{Structure.h}}
+\doxysubsubsection{\texorpdfstring{StructureType}{StructureType}}
+{\footnotesize\ttfamily \label{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e} 
+enum class \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumerates the types of structures that can appear in the game. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAVE@{CAVE}!Structure.h@{Structure.h}}\index{Structure.h@{Structure.h}!CAVE@{CAVE}}}\Hypertarget{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea14db90e75f1308d303d0bceb0be66ac1}\label{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea14db90e75f1308d303d0bceb0be66ac1} 
+CAVE&Represents a cave structure. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CASTLE@{CASTLE}!Structure.h@{Structure.h}}\index{Structure.h@{Structure.h}!CASTLE@{CASTLE}}}\Hypertarget{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea42bfd70b24ee63ec7f92264e3e79da94}\label{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea42bfd70b24ee63ec7f92264e3e79da94} 
+CASTLE&Represents a castle structure. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VILLAGE@{VILLAGE}!Structure.h@{Structure.h}}\index{Structure.h@{Structure.h}!VILLAGE@{VILLAGE}}}\Hypertarget{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ead93acf42917c36d1855b99f8632bfa9e}\label{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ead93acf42917c36d1855b99f8632bfa9e} 
+VILLAGE&Represents a village structure. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOUSE@{HOUSE}!Structure.h@{Structure.h}}\index{Structure.h@{Structure.h}!HOUSE@{HOUSE}}}\Hypertarget{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea49354b452ec305136a56fe7731834156}\label{_structure_8h_aff0cb3a143c587463f28ef629d0cd35ea49354b452ec305136a56fe7731834156} 
+HOUSE&Represents a house structure. \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,238 @@
+\doxysection{World Class Reference}
+\hypertarget{class_world}{}\label{class_world}\index{World@{World}}
+
+
+Represents the game world, including lands, structures, and progression mechanics.  
+
+
+
+
+{\ttfamily \#include $<$World.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_afa39d4e6f714a7a3691ac0c656f5e8a8}{World}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_world}{World} instance, initializing land and structure states. \end{DoxyCompactList}\item 
+\Hypertarget{class_world_a7f790475fc1492b7a418d3a2d4436516}\label{class_world_a7f790475fc1492b7a418d3a2d4436516} 
+void {\bfseries create\+World} ()
+\begin{DoxyCompactList}\small\item\em Initializes the world by setting up land structure pools. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_ad8200d1eacdf77d579c1048fda9e3116}{attempt\+Spawn\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Attempts to spawn a structure in the current land. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_afdf3d8f0837c959d69bc91bce3066c22}{can\+Progress}} (int artifacts\+Collected)
+\begin{DoxyCompactList}\small\item\em Checks if the player has collected enough artifacts to progress. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_a720c8e59cdad1ba0779e24844b46a5a8}{advance\+Land}} ()
+\begin{DoxyCompactList}\small\item\em Advances the player to the next land if possible. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_world_aba1ae1bb458113a3a3f09e2db2675c83}{get\+Last\+Spawned\+Structure\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type of the last spawned structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_structure}{Structure}} \& \mbox{\hyperlink{class_world_a138b5dbc89bcf0035fbc247855b19a6e}{get\+Current\+Structure}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the currently active structure. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_world_a7771fb9245894fd956895d1d10292cc1}{get\+Explored\+Structures}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a list of explored structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_a1d19133352df63ab4f2773eb7e0b2316}{mark\+Structure\+Explored}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Marks a structure as explored. \end{DoxyCompactList}\item 
+nlohmann\+::json \mbox{\hyperlink{class_world_a4487904819d550e346adc07cbe05c358}{to\+JSON}} () const
+\begin{DoxyCompactList}\small\item\em Serializes the \doxylink{class_world}{World} object to JSON. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_aac493002cf0c1351221598b7f8b48ee0}{from\+JSON}} (const nlohmann\+::json \&json\+Data)
+\begin{DoxyCompactList}\small\item\em Loads the \doxylink{class_world}{World} object from a JSON representation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_structure}{Structure}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_world_a2f10fb9a33e9f3792aeb9eebdeda55ee}{get\+Active\+Structure\+Ptr}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves a pointer to the currently active structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_world_ad8f0a7f2bf318eed527fa668bfba9df3}\label{class_world_ad8f0a7f2bf318eed527fa668bfba9df3} 
+int {\bfseries current\+Land\+Index\+\_\+}
+\begin{DoxyCompactList}\small\item\em The index of the current land (0 to 2). \end{DoxyCompactList}\item 
+\Hypertarget{class_world_acd3c30a3b721cfb173c0626df6deba51}\label{class_world_acd3c30a3b721cfb173c0626df6deba51} 
+bool {\bfseries just\+Spawned\+\_\+}
+\begin{DoxyCompactList}\small\item\em Indicates whether a structure was just spawned. \end{DoxyCompactList}\item 
+\Hypertarget{class_world_af6c8b4ce4700aae0527bc1e4c46d9271}\label{class_world_af6c8b4ce4700aae0527bc1e4c46d9271} 
+\mbox{\hyperlink{class_structure}{Structure}} \texorpdfstring{$\ast$}{*} {\bfseries active\+Structure\+\_\+}
+\begin{DoxyCompactList}\small\item\em Pointer to the currently active structure. \end{DoxyCompactList}\item 
+\Hypertarget{class_world_a4d295ef260553e6adbd29cc3ea5a88f1}\label{class_world_a4d295ef260553e6adbd29cc3ea5a88f1} 
+std\+::vector$<$ std\+::string $>$ {\bfseries explored\+Structures\+\_\+}
+\begin{DoxyCompactList}\small\item\em List of explored structures. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}}, int $>$ $>$ $>$ \mbox{\hyperlink{class_world_a0acc680d1ba99a4a013d77527a7b5226}{land\+Structure\+Pool\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Stores available structures for each land. \end{DoxyCompactList}\item 
+\Hypertarget{class_world_ac7bbb2537b4f4ccf1c9b7ad78623e4e7}\label{class_world_ac7bbb2537b4f4ccf1c9b7ad78623e4e7} 
+std\+::vector$<$ \mbox{\hyperlink{class_structure}{Structure}} $>$ {\bfseries structures\+\_\+}
+\begin{DoxyCompactList}\small\item\em List of structures in the world. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the game world, including lands, structures, and progression mechanics. 
+
+The \doxylink{class_world}{World} class manages different lands, handles the spawning of structures, tracks explored locations, and determines when the player can advance. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_world_afa39d4e6f714a7a3691ac0c656f5e8a8}\index{World@{World}!World@{World}}
+\index{World@{World}!World@{World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily \label{class_world_afa39d4e6f714a7a3691ac0c656f5e8a8} 
+World\+::\+World (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_world}{World} instance, initializing land and structure states. 
+
+Constructs a \doxylink{class_world}{World} instance, initializing state variables. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_world_a720c8e59cdad1ba0779e24844b46a5a8}\index{World@{World}!advanceLand@{advanceLand}}
+\index{advanceLand@{advanceLand}!World@{World}}
+\doxysubsubsection{\texorpdfstring{advanceLand()}{advanceLand()}}
+{\footnotesize\ttfamily \label{class_world_a720c8e59cdad1ba0779e24844b46a5a8} 
+bool World\+::advance\+Land (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Advances the player to the next land if possible. 
+
+\begin{DoxyReturn}{Returns}
+False if there are no more lands to explore, otherwise true. 
+\end{DoxyReturn}
+\Hypertarget{class_world_ad8200d1eacdf77d579c1048fda9e3116}\index{World@{World}!attemptSpawnStructure@{attemptSpawnStructure}}
+\index{attemptSpawnStructure@{attemptSpawnStructure}!World@{World}}
+\doxysubsubsection{\texorpdfstring{attemptSpawnStructure()}{attemptSpawnStructure()}}
+{\footnotesize\ttfamily \label{class_world_ad8200d1eacdf77d579c1048fda9e3116} 
+bool World\+::attempt\+Spawn\+Structure (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Attempts to spawn a structure in the current land. 
+
+\begin{DoxyReturn}{Returns}
+True if a structure is successfully spawned, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_world_afdf3d8f0837c959d69bc91bce3066c22}\index{World@{World}!canProgress@{canProgress}}
+\index{canProgress@{canProgress}!World@{World}}
+\doxysubsubsection{\texorpdfstring{canProgress()}{canProgress()}}
+{\footnotesize\ttfamily \label{class_world_afdf3d8f0837c959d69bc91bce3066c22} 
+bool World\+::can\+Progress (\begin{DoxyParamCaption}\item[{int}]{artifacts\+Collected}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the player has collected enough artifacts to progress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em artifacts\+Collected} & The number of artifacts collected. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if progression is allowed, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{class_world_aac493002cf0c1351221598b7f8b48ee0}\index{World@{World}!fromJSON@{fromJSON}}
+\index{fromJSON@{fromJSON}!World@{World}}
+\doxysubsubsection{\texorpdfstring{fromJSON()}{fromJSON()}}
+{\footnotesize\ttfamily \label{class_world_aac493002cf0c1351221598b7f8b48ee0} 
+void World\+::from\+JSON (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Data}{}\end{DoxyParamCaption})}
+
+
+
+Loads the \doxylink{class_world}{World} object from a JSON representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Data} & The JSON object containing world state information. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_world_a2f10fb9a33e9f3792aeb9eebdeda55ee}\index{World@{World}!getActiveStructurePtr@{getActiveStructurePtr}}
+\index{getActiveStructurePtr@{getActiveStructurePtr}!World@{World}}
+\doxysubsubsection{\texorpdfstring{getActiveStructurePtr()}{getActiveStructurePtr()}}
+{\footnotesize\ttfamily \label{class_world_a2f10fb9a33e9f3792aeb9eebdeda55ee} 
+\mbox{\hyperlink{class_structure}{Structure}} \texorpdfstring{$\ast$}{*} World\+::get\+Active\+Structure\+Ptr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a pointer to the currently active structure. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the active \doxylink{class_structure}{Structure}, or nullptr if none is active. 
+\end{DoxyReturn}
+\Hypertarget{class_world_a138b5dbc89bcf0035fbc247855b19a6e}\index{World@{World}!getCurrentStructure@{getCurrentStructure}}
+\index{getCurrentStructure@{getCurrentStructure}!World@{World}}
+\doxysubsubsection{\texorpdfstring{getCurrentStructure()}{getCurrentStructure()}}
+{\footnotesize\ttfamily \label{class_world_a138b5dbc89bcf0035fbc247855b19a6e} 
+\mbox{\hyperlink{class_structure}{Structure}} \& World\+::get\+Current\+Structure (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the currently active structure. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the currently active \doxylink{class_structure}{Structure}. 
+\end{DoxyReturn}
+\Hypertarget{class_world_a7771fb9245894fd956895d1d10292cc1}\index{World@{World}!getExploredStructures@{getExploredStructures}}
+\index{getExploredStructures@{getExploredStructures}!World@{World}}
+\doxysubsubsection{\texorpdfstring{getExploredStructures()}{getExploredStructures()}}
+{\footnotesize\ttfamily \label{class_world_a7771fb9245894fd956895d1d10292cc1} 
+std\+::vector$<$ std\+::string $>$ World\+::get\+Explored\+Structures (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves a list of explored structures. 
+
+\begin{DoxyReturn}{Returns}
+A vector of strings representing explored structures. 
+\end{DoxyReturn}
+\Hypertarget{class_world_aba1ae1bb458113a3a3f09e2db2675c83}\index{World@{World}!getLastSpawnedStructureType@{getLastSpawnedStructureType}}
+\index{getLastSpawnedStructureType@{getLastSpawnedStructureType}!World@{World}}
+\doxysubsubsection{\texorpdfstring{getLastSpawnedStructureType()}{getLastSpawnedStructureType()}}
+{\footnotesize\ttfamily \label{class_world_aba1ae1bb458113a3a3f09e2db2675c83} 
+std\+::string World\+::get\+Last\+Spawned\+Structure\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the type of the last spawned structure. 
+
+\begin{DoxyReturn}{Returns}
+The name of the last spawned structure, or "{}nothing"{} if none was spawned. 
+\end{DoxyReturn}
+\Hypertarget{class_world_a1d19133352df63ab4f2773eb7e0b2316}\index{World@{World}!markStructureExplored@{markStructureExplored}}
+\index{markStructureExplored@{markStructureExplored}!World@{World}}
+\doxysubsubsection{\texorpdfstring{markStructureExplored()}{markStructureExplored()}}
+{\footnotesize\ttfamily \label{class_world_a1d19133352df63ab4f2773eb7e0b2316} 
+void World\+::mark\+Structure\+Explored (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Marks a structure as explored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the explored structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_world_a4487904819d550e346adc07cbe05c358}\index{World@{World}!toJSON@{toJSON}}
+\index{toJSON@{toJSON}!World@{World}}
+\doxysubsubsection{\texorpdfstring{toJSON()}{toJSON()}}
+{\footnotesize\ttfamily \label{class_world_a4487904819d550e346adc07cbe05c358} 
+nlohmann\+::json World\+::to\+JSON (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Serializes the \doxylink{class_world}{World} object to JSON. 
+
+\begin{DoxyReturn}{Returns}
+A JSON object representing the world state. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_world_a0acc680d1ba99a4a013d77527a7b5226}\index{World@{World}!landStructurePool\_@{landStructurePool\_}}
+\index{landStructurePool\_@{landStructurePool\_}!World@{World}}
+\doxysubsubsection{\texorpdfstring{landStructurePool\_}{landStructurePool\_}}
+{\footnotesize\ttfamily \label{class_world_a0acc680d1ba99a4a013d77527a7b5226} 
+std\+::vector$<$std\+::vector$<$std\+::pair$<$\mbox{\hyperlink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type}},int$>$ $>$ $>$ World\+::land\+Structure\+Pool\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stores available structures for each land. 
+
+Each land has a vector of structure blueprints, represented as pairs of \doxylink{_structure_8h_aff0cb3a143c587463f28ef629d0cd35e}{Structure\+Type} and room count. These are removed as they are spawned. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_world_8h}{World.\+h}}\item 
+\mbox{\hyperlink{_world_8cpp}{World.\+cpp}}\end{DoxyCompactItemize}
