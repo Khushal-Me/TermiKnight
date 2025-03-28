@@ -76,11 +76,22 @@ TermiKnight/
 └── Utilities.h / Utilities.cpp          # Random generation or other helpers
 ```
 
-## How to Build
+## How to Clone and Build
+
+### Clone the Repository
+
+To get a copy of TermiKnight, run:
+
+```
+git clone https://github.com/Khushal-Me/TermiKnight.git
+cd TermiKnight
+```
+
+### Build the Game
 
 Ensure you have a modern C++ compiler (e.g., `g++ -std=c++17`).
 
-In the TermiKnight directory, run:
+Run the following command in the TermiKnight directory:
 
 ```
 make
@@ -142,3 +153,5 @@ Enemies deal damage based on their attack power. Win battles by defeating all en
 Step into the world of **TermiKnight**, where strategy, luck, and combat prowess determine your fate. Will you claim victory and break the curse? The adventure awaits!
 
 ---
+
+
